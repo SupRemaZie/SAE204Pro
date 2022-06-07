@@ -3,6 +3,7 @@ package com.example.sae204.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -15,11 +16,13 @@ public class ConnexionController {
 
     @FXML
     private Button connexionButton;
+    @FXML
+    private Label loginMessageLabel;
 
 
 
     public void onConnexionButtonClick(ActionEvent event) {
-        Stage EtudiantapkStage;
+    loginMessageLabel.setText("You try to login");
 
     }
 }
