@@ -96,7 +96,7 @@ public class EtudiantController<detailProfil> {
 
         String result=this.myJdbc.executeReadQuery(query);
         this.myResultLabel.setText(result);
-        MyJDBC beuure = this.myJdbc ;
+
 
     }
 

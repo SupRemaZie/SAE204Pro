@@ -15,7 +15,7 @@ public class EtudiantAPK extends Application {
         stage.setTitle("My School Managing +");
         stage.setScene(scene);
         stage.show();
-// damien
+// damien test de mise a jor
 
     }
 
