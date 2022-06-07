@@ -1,12 +1,9 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.EtudiantAPK;
-import com.example.sae204.Modele.MyJDBC;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -17,44 +14,40 @@ import java.sql.SQLException;
 
 public class ConnexionController {
     @FXML
-    private TextField IDTextField;
+    private TextField IDTextField; // champ de l'identifiant
 
     @FXML
-    private TextField PasswordTextField;
+    private TextField PasswordTextField; // champ du password
 
     @FXML
-    private Button connexionButton;
-    @FXML
-    private Label loginMessageLabel;
+    private Label loginMessageLabel; // text d'erreur de login
 
 
 
-    public void onConnexionButtonClick(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
+    public void onConnexionButtonClick() throws SQLException, IOException, ClassNotFoundException {
 
-         String EnterId=IDTextField.getText();
-       String EnterPwd=PasswordTextField.getText();
-        System.out.println(EnterId +"/"+ EnterPwd);
-       if (EnterId=="") {
-           loginMessageLabel.setText("Veuillez entrez un Identifiant");
+        String EnterId=IDTextField.getText();// stockage de l'id entré
+        String EnterPwd=PasswordTextField.getText(); // stockage du password entré
+
+       if (EnterId.equals("")) {
+           loginMessageLabel.setText("Veuillez entrez un Identifiant"); // si l' ID est vide alors msg erreur
        }
-       if (EnterPwd==""){
-           loginMessageLabel.setText("Veuillez entez un mot de passe ");
+       if (EnterPwd.equals("")){
+           loginMessageLabel.setText("Veuillez entez un mot de passe "); // si le mdp est vide alors msg erreur
        }
-        if(EnterId=="" && EnterPwd=="") {
-           loginMessageLabel.setText("Veuillez entrez un identifiant et mot de passe ");
-       }
+        if(EnterId.equals("") && EnterPwd.equals("")) {
+           loginMessageLabel.setText("Veuillez entrez un identifiant et mot de passe "); // si les 2 sont vides alors msg erreur
+        }
 
 
-        EtudiantAPK.myjdbc.connect("root","");
+        EtudiantAPK.myjdbc.connect("root",""); // connection a la base
 
 
-        String query1="SELECT MDP_etu FROM ETUDIANT WHERE Num_etu='" + EnterId + "';" ;
+        String query1="SELECT MDP_etu FROM ETUDIANT WHERE Num_etu='" + EnterId + "';" ; // stockage de la requête
 
-        String result1= EtudiantAPK.myjdbc.executeReadQuery(query1);
-        System.out.println(query1);
-        System.out.println(result1);
-        if(EnterPwd.equals(result1)){
+        String result1= EtudiantAPK.myjdbc.executeReadQuery(query1);  // execute la requete et stocke le resultat
 
+        if(EnterPwd.equals(result1)){ // verife si le mdp dans la base correspond au mdp entré
             GoToPage();
         }
         else {
@@ -63,10 +56,12 @@ public class ConnexionController {
     }
 
     private void GoToPage() throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource("EtudiantView.fxml"));
+        EtudiantAPK.stage=new Stage();
+        FXMLLoader fxmlLoader;
+        fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource("EtudiantView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         EtudiantAPK.stage.setScene(scene);
+        EtudiantAPK.stage.setTitle("My School Managing +");
         EtudiantAPK.stage.show();
     }
 
