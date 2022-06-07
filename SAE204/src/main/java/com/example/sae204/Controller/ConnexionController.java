@@ -43,7 +43,7 @@ public class ConnexionController {
         if(EnterId=="" && EnterPwd=="") {
            loginMessageLabel.setText("Veuillez entrez un identifiant et mot de passe ");
        }
-        //System.out.println(" j'ai reussi les test !!!!!!!");
+
 
         EtudiantAPK.myjdbc.connect("root","");
 
@@ -51,19 +51,23 @@ public class ConnexionController {
         String query1="SELECT MDP_etu FROM ETUDIANT WHERE Num_etu='" + EnterId + "';" ;
 
         String result1= EtudiantAPK.myjdbc.executeReadQuery(query1);
-
+        System.out.println(query1);
         System.out.println(result1);
-        if(EnterPwd==result1){
-            GoToPage("EtudiantView.fxml");
+        if(EnterPwd.equals(result1)){
+
+            GoToPage();
         }
-        loginMessageLabel.setText("Identifiant ou mot de passe invalide");
+        else {
+            loginMessageLabel.setText("Identifiant ou mot de passe invalide");
+        }
     }
 
-    private void GoToPage(String s) throws IOException {
-        Stage windows = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource(s));
+    private void GoToPage() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource("EtudiantView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        windows.setScene(scene);
+        EtudiantAPK.stage.setScene(scene);
+        EtudiantAPK.stage.show();
     }
 
 }

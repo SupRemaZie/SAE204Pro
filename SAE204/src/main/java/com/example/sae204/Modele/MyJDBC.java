@@ -53,7 +53,7 @@ public class MyJDBC {
 
 
         public String executeReadQuery(String query) throws SQLException {
-            String result;
+            String result="";
             if(this.m_dbConnection==null) {
                 //out.println("Veuillez d'abord vous connecter a une base de donnees");
                 result="Veuillez d'abord vous connecter a une base de donnees";
@@ -73,26 +73,26 @@ public class MyJDBC {
             resultSelect.beforeFirst();
 
             //out.println("La table contient " + resultMeta.getColumnCount() + " colonne(s) et " + rowNumbers + " ligne(s)");
-            result="La table contient " + resultMeta.getColumnCount() + " colonne(s) et " + rowNumbers + " ligne(s)";
-            result+="\n";
+           // result="La table contient " + resultMeta.getColumnCount() + " colonne(s) et " + rowNumbers + " ligne(s)";
+            //result+="\n";
             if(resultMeta.getColumnCount()!=0 && rowNumbers!=0) {
                 //On affiche le nom des colonnes
-                for(int i = 1; i <= resultMeta.getColumnCount(); ++i)
-                    result+=resultMeta.getColumnName(i).toUpperCase() + "\t|";
+                //for(int i = 1; i <= resultMeta.getColumnCount(); ++i)
+                   // result+=resultMeta.getColumnName(i).toUpperCase() + "\t|";
                 //out.print(resultMeta.getColumnName(i).toUpperCase() + "\t|");
 
                 //out.println("");
-                result+="\n";
+               // result+="\n";
 
                 //affichage le contenu de la table
                 //String result="";
                 while(resultSelect.next()){
                     for(int i = 1; i <= resultMeta.getColumnCount(); ++i)
-                        result+=resultSelect.getObject(i).toString() + "\t|";
+                        result=resultSelect.getObject(i).toString();
                     //out.print(resultSelect.getObject(i).toString() + "\t|");
 
                     //out.println("");
-                    result+="\n";
+                    //result+="\n";
                 }
 
 
