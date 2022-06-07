@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 
 public class ConnexionController {
-    private MyJDBC myjdbc;
     @FXML
     private TextField IDTextField;
 
@@ -34,7 +33,7 @@ public class ConnexionController {
 
          String EnterId=IDTextField.getText();
        String EnterPwd=PasswordTextField.getText();
-        System.out.println(EnterId +"/ "+ EnterPwd);
+        System.out.println(EnterId +"/"+ EnterPwd);
        if (EnterId=="") {
            loginMessageLabel.setText("Veuillez entrez un Identifiant");
        }
@@ -44,13 +43,16 @@ public class ConnexionController {
         if(EnterId=="" && EnterPwd=="") {
            loginMessageLabel.setText("Veuillez entrez un identifiant et mot de passe ");
        }
-        myjdbc=new MyJDBC("com.microsoft.sqlserver.jdbc.SQLServerDriver","jdbc:sqlserver://172.30.4.243\\LHAMON;databaseName=testaccountDB");
-        myjdbc.connect("porchetd", "Dmien");
+        //System.out.println(" j'ai reussi les test !!!!!!!");
+
+        EtudiantAPK.myjdbc.connect("root","");
 
 
-        String query1="SELECT PWD_etu FROM ETUDIANT WHERE numetu=" + EnterId + ";" ;
+        String query1="SELECT MDP_etu FROM ETUDIANT WHERE Num_etu='" + EnterId + "';" ;
 
-        String result1=this.myjdbc.executeReadQuery(query1);
+        String result1= EtudiantAPK.myjdbc.executeReadQuery(query1);
+
+        System.out.println(result1);
         if(EnterPwd==result1){
             GoToPage("EtudiantView.fxml");
         }

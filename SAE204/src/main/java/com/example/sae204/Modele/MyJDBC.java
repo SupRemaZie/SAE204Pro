@@ -7,6 +7,10 @@ import static java.lang.System.out;
 
 public class MyJDBC {
 
+    private String m_dbConnectorDriver;
+    private Connection m_dbConnection;
+    private String m_serverUrl;
+    private Statement m_state;
 
         //constructor with parameters
         public MyJDBC(String dbConnectorDriver,String serverUrl){
@@ -17,8 +21,8 @@ public class MyJDBC {
         }
 
         public void connect(String userName, String passWord) throws ClassNotFoundException, SQLException {
-            Class.forName(this.m_dbConnectorDriver);//verifie que le driver est bien importe dans le projet
-            out.println("Le driver est bien present et charge");
+            //Class.forName(this.m_dbConnectorDriver);//verifie que le driver est bien importe dans le projet
+            //out.println("Le driver est bien present et charge");
             if (this.m_dbConnection==null) {
                 this.m_dbConnection= DriverManager.getConnection(this.m_serverUrl,userName, passWord);
                 if (this.m_dbConnection==null)
@@ -111,11 +115,6 @@ public class MyJDBC {
 
             return result;
         }
-
-        private String m_dbConnectorDriver;
-        private Connection m_dbConnection;
-        private String m_serverUrl;
-        private Statement m_state;
     }
 
 

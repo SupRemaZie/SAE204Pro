@@ -1,6 +1,7 @@
 package com.example.sae204.Controller;
 
 
+import com.example.sae204.EtudiantAPK;
 import com.example.sae204.Modele.MyJDBC;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.paint.Color;
 import java.sql.SQLException;
 
 public class EtudiantController<detailProfil> {
+
     @FXML
     private Label myConnexionTitle;
     @FXML private Label myIdTitle;
@@ -84,7 +86,7 @@ public class EtudiantController<detailProfil> {
     void myQueryButtonOnPress2(ActionEvent event) throws ClassNotFoundException, SQLException {
         String query1="SELECT dateDebutJus, dateFinJus, ficheAbs, etatJus FROM JUSTIFICATIF WHERE numEtu='"+this.myTableTextField.getText()+"' ORDER BY dateDebutJus DESC;";
 
-        String result1=this.myJdbc.executeReadQuery(query1);
+        String result1= EtudiantAPK.myjdbc.executeReadQuery(query1);
         this.myResultLabel.setText(result1);
     }
 
@@ -94,7 +96,7 @@ public class EtudiantController<detailProfil> {
     void myQueryButtonOnPress(ActionEvent event) throws ClassNotFoundException, SQLException {
         String query="SELECT dateAbs, intCoursAbs, heureAbs FROM ABSENCE INNER JOIN JUSTIFICATIF ON ABSENCE.idJus=JUSTIFICATIF.idJus INNER JOIN ETUDIANT ON ETUDIANT.numEtu=JUSTIFICATIF.numEtu WHERE ETUDIANT.numEtu='"+this.myTableTextField.getText()+"' ORDER BY dateAbs DESC, heureAbs ASC;";
 
-        String result=this.myJdbc.executeReadQuery(query);
+        String result=EtudiantAPK.myjdbc.executeReadQuery(query);
         this.myResultLabel.setText(result);
 
 
@@ -104,10 +106,11 @@ public class EtudiantController<detailProfil> {
     void myConnexionButtonOnPress(ActionEvent event) throws ClassNotFoundException, SQLException {
         if (this.myConnexionButton.getText().equals("Connect")) {
             //Pour Xamp ou easyphp
-            //myJdbc = new MyJDBC("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost/client_voiture?serverTimezone=UTC");
+            //myJdbc = new MyJDBC("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost/absence?serverTimezone=UTC");
             //pour SQL server
-            myJdbc=new MyJDBC("com.microsoft.sqlserver.jdbc.SQLServerDriver","jdbc:sqlserver://172.30.4.243\\LHAMON;databaseName=gaudincDB");
-            myJdbc.connect(this.myIdTextField.getText(), this.myPwdTextField.getText());
+            //myJdbc=new MyJDBC("com.microsoft.sqlserver.jdbc.SQLServerDriver","jdbc:sqlserver://172.30.4.243\\LHAMON;databaseName=gaudincDB");
+            //myJdbc.connect(this.myIdTextField.getText(), this.myPwdTextField.getText());
+            // warning ne pas utiliser !!!!!
             this.myConnexionButton.setText("Disconnect");
             this.myCurrentConnexionStatusTitle.setText("Connected");
             this.myCurrentConnexionStatusTitle.setTextFill(Color.GREEN);
@@ -115,13 +118,13 @@ public class EtudiantController<detailProfil> {
         }
         else{
             this.myConnexionButton.setText("Connect");
-            myJdbc.disconnect();
+            EtudiantAPK.myjdbc.disconnect();
             this.myCurrentConnexionStatusTitle.setText("Disconnected");
             this.myCurrentConnexionStatusTitle.setTextFill(Color.RED);
         }
 
     }
 
-    private MyJDBC myJdbc;
+
 }
 
