@@ -48,17 +48,17 @@ public class ConnexionController {
         String result1= EtudiantAPK.myjdbc.executeReadQuery(query1);  // execute la requete et stocke le resultat
 
         if(EnterPwd.equals(result1)){ // verife si le mdp dans la base correspond au mdp entré
-            GoToPage();
+            GoToPage("EtudiantView.fxml");
         }
         else {
             loginMessageLabel.setText("Identifiant ou mot de passe invalide");
         }
     }
 
-    private void GoToPage() throws IOException {
+    private void GoToPage(String s ) throws IOException {
         EtudiantAPK.stage=new Stage();
         FXMLLoader fxmlLoader;
-        fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource("EtudiantView.fxml"));
+        fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource(s));
         Scene scene = new Scene(fxmlLoader.load());
         EtudiantAPK.stage.setScene(scene);
         EtudiantAPK.stage.setTitle("My School Managing +");
