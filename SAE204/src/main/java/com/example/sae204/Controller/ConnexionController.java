@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 public class ConnexionController {
     @FXML
-    private TextField IDTextField; // champ de l'identifiant
+    public TextField IDTextField; // champ de l'identifiant
 
     @FXML
     private TextField PasswordTextField; // champ du password
