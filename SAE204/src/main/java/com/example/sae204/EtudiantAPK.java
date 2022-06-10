@@ -13,11 +13,12 @@ public class EtudiantAPK extends Application {
      public static MyJDBC myjdbc = new MyJDBC("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1/absence?serverTimezone=UTC");
     @Override
     public void start(Stage stage) throws IOException {
+        this.stage=stage;
         FXMLLoader fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource("ConnexionPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("My School Managing +");
-        stage.setScene(scene);
-        stage.show();
+        this.stage.setTitle("My School Managing +");
+        this.stage.setScene(scene);
+        this.stage.show();
 
 
     }

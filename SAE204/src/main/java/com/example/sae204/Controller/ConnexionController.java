@@ -1,16 +1,18 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.EtudiantAPK;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+import javafx.scene.control.Button;
 
 public class ConnexionController {
     @FXML
@@ -21,6 +23,9 @@ public class ConnexionController {
 
     @FXML
     private Label loginMessageLabel; // text d'erreur de login
+
+    @FXML
+    private Button figma; //bouton temporaire pour passer à la page d'Accueil figma
 
 
 
@@ -62,6 +67,19 @@ public class ConnexionController {
         Scene scene = new Scene(fxmlLoader.load());
         EtudiantAPK.stage.setScene(scene);
         EtudiantAPK.stage.setTitle("My School Managing +");
+        EtudiantAPK.stage.show();
+    }
+    @FXML
+    void figma(ActionEvent event){
+        FXMLLoader fxml= new FXMLLoader(EtudiantAPK.class.getResource("Accueil.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxml.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        EtudiantAPK.stage.setTitle("Accueil");
+        EtudiantAPK.stage.setScene(scene);
         EtudiantAPK.stage.show();
     }
 
