@@ -5,16 +5,23 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae204.Controller.MdpController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1080.0">
          <image>
-            <Image url="@image/Motdepasseoublié.png" />
+            <Image url="@image/Mot%20de%20passe%20oublié.png" />
          </image>
       </ImageView>
-      <TextField layoutX="364.0" layoutY="252.0" prefHeight="67.5" prefWidth="358.5" />
-      <TextField layoutX="364.0" layoutY="406.0" prefHeight="67.5" prefWidth="358.5" />
+      <TextField layoutX="364.0" layoutY="252.0" prefHeight="67.5" prefWidth="358.5">
+         <font>
+            <Font size="30.0" />
+         </font></TextField>
+      <TextField layoutX="364.0" layoutY="406.0" prefHeight="67.5" prefWidth="358.5">
+         <font>
+            <Font size="30.0" />
+         </font></TextField>
       <Button layoutX="374.0" layoutY="535.0" mnemonicParsing="false" opacity="0.0" prefHeight="92.0" prefWidth="332.0" />
       <Button fx:id="retour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#retour" opacity="0.0" prefHeight="49.0" prefWidth="65.0" />
    </children>
