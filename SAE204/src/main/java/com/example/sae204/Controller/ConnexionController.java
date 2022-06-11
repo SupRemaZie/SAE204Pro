@@ -48,7 +48,7 @@ public class ConnexionController extends Controller{
         }
 
 
-        EtudiantAPK.myjdbc.connect("root",""); // connection a la base
+        //EtudiantAPK.myjdbc.connect("root",""); // connection a la base
         String result1="", result2="";
         LinkedList<Etudiant> listEtu=DAO.listerEtu();
         /*if(AccueilController.etatButton=="E"){
@@ -58,7 +58,7 @@ public class ConnexionController extends Controller{
         */
         if(AccueilController.etatButton=="E"){
             for (Etudiant etu : listEtu) {
-                if(etu.getNum_etu()==EnterId) {
+                if(etu.getNum_etu().equals(EnterId)) {
                     result1 = etu.getMdp_etu();
                 }
             }
