@@ -1,6 +1,8 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.EtudiantAPK;
+import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.Etudiant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
+
 import javafx.scene.control.Button;
 
 public class ConnexionController extends Controller{
@@ -45,11 +49,20 @@ public class ConnexionController extends Controller{
 
 
         EtudiantAPK.myjdbc.connect("root",""); // connection a la base
-        String result1="";
-        String result2="";
-        if(AccueilController.etatButton=="E"){
+        String result1="", result2="";
+        LinkedList<Etudiant> listEtu=DAO.listerEtu();
+        /*if(AccueilController.etatButton=="E"){
             String query1="SELECT MDP_etu FROM ETUDIANT WHERE Num_etu='" + EnterId + "';" ; // stockage de la requête
              result1= EtudiantAPK.myjdbc.executeReadQuery(query1);
+        }
+        */
+        if(AccueilController.etatButton=="E"){
+            for (Etudiant etu : listEtu) {
+                if(etu.getNum_etu()==EnterId) {
+                    result1 = etu.getMdp_etu();
+                }
+            }
+            System.out.println("result1 :"+result1);
         }
         else if(AccueilController.etatButton=="P"){
            String  query2="SELECT MDP_per FROM PERSONNEL WHERE Harpege='" + EnterId + "';" ;

@@ -8,8 +8,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DAO {
+    private static int connexion =0;
     public static void connexion() throws SQLException, ClassNotFoundException {
-        EtudiantAPK.myjdbc.connect("root",""); // connection a la base
+        EtudiantAPK.myjdbc.connect("root", ""); // connection a la base
+        connexion=1;
+
+
     }
     public static LinkedList<Etudiant> listerEtu() throws SQLException, ClassNotFoundException {
         connexion();

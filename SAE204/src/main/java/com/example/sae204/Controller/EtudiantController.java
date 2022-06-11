@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class EtudiantController {
+public class EtudiantController extends  Controller{
     @FXML
     private Button DisconnectButton;
 
@@ -17,6 +17,7 @@ public class EtudiantController {
 
     @FXML
     void onDisconnectButtonClick(ActionEvent event) {
+        GoToPage("Accueil.fxml", "Accueil");
 
     }
 
