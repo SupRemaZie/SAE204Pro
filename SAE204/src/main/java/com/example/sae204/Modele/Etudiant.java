@@ -1,6 +1,6 @@
 package com.example.sae204.Modele;
 
-public class Etudiant  {
+public class Etudiant {
     private String Num_etu;
     private String Nom_etu;
     private String Prenom_etu;

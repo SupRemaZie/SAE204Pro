@@ -25,7 +25,7 @@ public class AccueilController {
 
     @FXML
     void bouton_per(ActionEvent event) {
-        if(bouton_etu.isFocused()){
+        if(bouton_per.isFocused()){
             etatButton="P";
             System.out.println(etatButton);
         }
