@@ -1,39 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="766.0" prefWidth="1256.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae204.Controller.EtudiantController">
+<AnchorPane prefHeight="768.0" prefWidth="1080.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae204.Controller.EtudiantController">
    <children>
-      <ImageView fitHeight="142.0" fitWidth="380.0" layoutX="167.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="167.0">
+      <ImageView fitHeight="768.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/visu_trombi_etu.png" />
+            <Image url="@image/EtudiantAccueil.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="142.0" fitWidth="380.0" layoutX="688.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/mes_info_etu.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="48.0" fitWidth="297.0" layoutX="474.0" layoutY="737.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/deconexion_etu.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="155.0" fitWidth="324.0" layoutX="-2.0" layoutY="680.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/iut_logo.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="VisuTrombiEtuButton" layoutX="172.0" layoutY="276.0" minHeight="78.0" minWidth="250.0" mnemonicParsing="false" onAction="#onVisuTrombiEtuButtonClick" opacity="0.0" prefHeight="141.0" prefWidth="370.0" />
-      <Button fx:id="VisuInfoEtuButton" layoutX="695.0" layoutY="403.0" mnemonicParsing="false" onAction="#onVisuInfoEtuButtonClick" opacity="0.0" prefHeight="142.0" prefWidth="371.0" />
-      <Button fx:id="DisconnectButton" layoutX="481.0" layoutY="739.0" mnemonicParsing="false" onAction="#onDisconnectButtonClick" opacity="0.0" prefHeight="37.0" prefWidth="310.0" text="Button" />
-      <ImageView fitHeight="203.0" fitWidth="1360.0" layoutX="-11.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/vecteur_etu.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="VisuTrombiEtuButton" layoutX="216.0" layoutY="280.0" minHeight="78.0" minWidth="250.0" mnemonicParsing="false" onAction="#onVisuTrombiEtuButtonClick" opacity="0.0" prefHeight="108.0" prefWidth="288.0" />
+      <Button fx:id="VisuInfoEtuButton" layoutX="569.0" layoutY="368.0" mnemonicParsing="false" onAction="#onVisuInfoEtuButtonClick" opacity="0.0" prefHeight="108.0" prefWidth="296.0" />
+      <Button fx:id="DisconnectButton" layoutX="424.0" layoutY="621.0" mnemonicParsing="false" onAction="#onDisconnectButtonClick" opacity="0.0" prefHeight="37.0" prefWidth="232.0" text="Button" />
+      <Label layoutX="14.0" layoutY="30.0" text="Adresse.mail@gmail.com" />
    </children>
 </AnchorPane>

@@ -1,18 +1,16 @@
 package com.example.sae204.Controller;
 
-import com.example.sae204.EtudiantAPK;
-import javafx.event.ActionEvent;
+import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.Etudiant;
+import com.example.sae204.Modele.Personnel;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import javafx.scene.control.Button;
+import java.util.LinkedList;
 
 public class ConnexionController extends Controller{
     @FXML
@@ -44,17 +42,37 @@ public class ConnexionController extends Controller{
         }
 
 
-        EtudiantAPK.myjdbc.connect("root",""); // connection a la base
-        String result1="";
-        String result2="";
-        if(AccueilController.etatButton=="E"){
+        //EtudiantAPK.myjdbc.connect("root",""); // connection a la base
+        String result1="", result2="";
+        LinkedList<Etudiant> listEtu=DAO.listerEtu();
+        LinkedList<Personnel> listPer=DAO.listerPer();
+        /*if(AccueilController.etatButton=="E"){
             String query1="SELECT MDP_etu FROM ETUDIANT WHERE Num_etu='" + EnterId + "';" ; // stockage de la requête
              result1= EtudiantAPK.myjdbc.executeReadQuery(query1);
         }
+        */
+
+        if(AccueilController.etatButton=="E"){
+            for (Etudiant etu : listEtu) {
+                if(etu.getNum_etu().equals(EnterId)) {
+                    result1 = etu.getMdp_etu();
+                }
+            }
+            System.out.println("result1 :"+result1);
+        }
+
         else if(AccueilController.etatButton=="P"){
+            for (Personnel per : listPer) {
+                if(per.getHarpege().equals(EnterId)) {
+                    result2 = per.getMdp_per();
+                }
+            }
+            System.out.println("result2 :"+result2);
+        }
+        /*else if(AccueilController.etatButton=="P"){
            String  query2="SELECT MDP_per FROM PERSONNEL WHERE Harpege='" + EnterId + "';" ;
              result2= EtudiantAPK.myjdbc.executeReadQuery(query2);// stockage de la requête
-        }
+        }*/
 
               // execute la requete et stocke le resultat
 
