@@ -1,6 +1,6 @@
 package com.example.sae204.Modele;
 
-public class Etudiant {
+public class Etudiant  {
     private String Num_etu;
     private String Nom_etu;
     private String Prenom_etu;
@@ -32,4 +32,5 @@ public class Etudiant {
         Id_groupe_TP = id_groupe_TP;
         Id_promo = id_promo;
     }
+
 }

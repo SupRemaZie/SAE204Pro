@@ -1,6 +1,6 @@
 package com.example.sae204;
 
-import com.example.sae204.Modele.MyJDBC;
+import com.example.sae204.Controller.MyJDBC;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +14,7 @@ public class EtudiantAPK extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         this.stage=stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource("ConnexionPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource("Accueil.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         this.stage.setTitle("My School Managing +");
         this.stage.setScene(scene);

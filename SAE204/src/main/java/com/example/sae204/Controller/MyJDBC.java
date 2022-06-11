@@ -1,4 +1,4 @@
-package com.example.sae204.Modele;
+package com.example.sae204.Controller;
 
 import java.sql.*;
 import static java.lang.System.out;
@@ -21,15 +21,12 @@ public class MyJDBC {
         }
 
         public void connect(String userName, String passWord) throws ClassNotFoundException, SQLException {
-            //Class.forName(this.m_dbConnectorDriver);//verifie que le driver est bien importe dans le projet
-            //out.println("Le driver est bien present et charge");
             if (this.m_dbConnection==null) {
                 this.m_dbConnection= DriverManager.getConnection(this.m_serverUrl,userName, passWord);
                 if (this.m_dbConnection==null)
                     out.println("Connexion echouee");
                 else {
                     out.println("Connexion effective !");
-                    //https://openclassrooms.com/fr/courses/26832-apprenez-a-programmer-en-java/26543-fouiller-dans-sa-base-de-donnees
                     this.m_state = this.m_dbConnection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
                 }
             }
