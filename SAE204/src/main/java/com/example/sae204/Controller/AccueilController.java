@@ -30,7 +30,7 @@ public class AccueilController {
             etatButton="P";
             System.out.println(etatButton);
         }
-        Controller.GoToPage("ConnexionPage.fxml","Page de Connexion");
+        Controller.GoToPage("ChoixRole.fxml","Choix du rôle");
     }
 }
 

@@ -12,16 +12,16 @@ public class ChoixRoleController extends Controller{
     @FXML
     private Button retour;
 
-    public static String choixRole;
+    public static String choixRole; //Utilisé pour connaître le rôle de l'utilisateur (dont Etudiant)
 
-    void retour(ActionEvent event){
+    public void retour(ActionEvent event){
         GoToPage("Accueil.fxml", "Accueil");
     }
-    void setBouton_prof(ActionEvent event){
+    public void bouton_prof(ActionEvent event){
         choixRole="P";
         GoToPage("ConnexionPage.fxml", "Page de Connexion");
     }
-    void setBouton_sec(ActionEvent event){
+    public void bouton_sec(ActionEvent event){
         choixRole="S";
         GoToPage("ConnexionPage.fxml", "Page de Connexion");
     }

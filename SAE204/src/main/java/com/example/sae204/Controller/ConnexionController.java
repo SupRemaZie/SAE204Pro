@@ -51,11 +51,7 @@ public class ConnexionController extends Controller{
         //EtudiantAPK.myjdbc.connect("root",""); // connection a la base
         String result1="", result2="";
         LinkedList<Etudiant> listEtu=DAO.listerEtu();
-        /*if(AccueilController.etatButton=="E"){
-            String query1="SELECT MDP_etu FROM ETUDIANT WHERE Num_etu='" + EnterId + "';" ; // stockage de la requête
-             result1= EtudiantAPK.myjdbc.executeReadQuery(query1);
-        }
-        */
+
         if(AccueilController.etatButton=="E"){
             for (Etudiant etu : listEtu) {
                 if(etu.getNum_etu().equals(EnterId)) {
@@ -79,6 +75,14 @@ public class ConnexionController extends Controller{
         }
         else {
             loginMessageLabel.setText("Identifiant ou mot de passe invalide");
+        }
+    }
+    public void retour(ActionEvent event){
+        if(ChoixRoleController.choixRole.equals("E")){
+            GoToPage("Accueil.fxml", "Accueil");
+        }
+        else{
+            GoToPage("ChoixRole.fxml", "Choix du rôle");
         }
     }
 

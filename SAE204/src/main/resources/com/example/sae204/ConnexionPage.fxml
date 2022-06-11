@@ -28,5 +28,6 @@
             <Font name="Arial" size="15.0" />
          </font></Label>
       <Button fx:id="connexionButton" layoutX="382.0" layoutY="505.0" mnemonicParsing="false" onAction="#onConnexionButtonClick" opacity="0.0" prefHeight="92.0" prefWidth="322.0" style="-fx-background-color: blue;" />
+      <Button fx:id="retour" layoutX="8.0" layoutY="18.0" mnemonicParsing="false" onAction="#retour" opacity="0.0" prefHeight="50.0" prefWidth="65.0" />
    </children>
 </AnchorPane>
