@@ -3,28 +3,30 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae204.Controller.ConnexionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1080.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae204.Controller.ConnexionController">
    <children>
-      <TextField fx:id="IDTextField" layoutX="193.0" layoutY="159.0" prefHeight="22.0" prefWidth="213.0" />
-      <TextField fx:id="PasswordTextField" layoutX="192.0" layoutY="239.0" prefHeight="22.0" prefWidth="213.0" />
-      <Label layoutX="272.0" layoutY="124.0" text="Identifiant" textFill="WHITE">
+      <ImageView fitHeight="768.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/Connexion.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="IDTextField" layoutX="364.0" layoutY="252.0" prefHeight="67.5" prefWidth="358.5">
          <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="261.0" layoutY="209.0" text="Mot de passe " textFill="WHITE">
+            <Font size="30.0" />
+         </font></TextField>
+      <TextField fx:id="PasswordTextField" layoutX="364.0" layoutY="406.0" prefHeight="67.5" prefWidth="358.5">
          <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Circle fill="DODGERBLUE" layoutX="299.0" layoutY="57.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="36.0" layoutX="266.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" width="68.0" />
-      <Button fx:id="connexionButton" layoutX="256.0" layoutY="308.0" mnemonicParsing="false" onAction="#onConnexionButtonClick" style="-fx-background-color: blue;" text="Se connecter" />
-      <Label fx:id="loginMessageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="279.0" prefHeight="18.0" prefWidth="395.0" textFill="#f71111" />
+            <Font size="30.0" />
+         </font></TextField>
+      <Label fx:id="loginMessageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-98.0" layoutY="725.0" prefHeight="50.0" prefWidth="1279.0" text="Pour des raisons de sécurité, veuillez vous déconnecter et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font></Label>
+      <Button fx:id="connexionButton" layoutX="382.0" layoutY="505.0" mnemonicParsing="false" onAction="#onConnexionButtonClick" opacity="0.0" prefHeight="92.0" prefWidth="322.0" style="-fx-background-color: blue;" />
    </children>
 </AnchorPane>
