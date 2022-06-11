@@ -20,6 +20,7 @@ public class AccueilController {
             etatButton="E";
             System.out.println(etatButton);
         }
+        ChoixRoleController.choixRole="E";
         Controller.GoToPage("ConnexionPage.fxml","Page de Connexion");
     }
 

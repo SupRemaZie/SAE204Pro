@@ -24,8 +24,6 @@ public class EtudiantAPK extends Application {
         this.stage.setTitle("Accueil");
         this.stage.setScene(scene);
         this.stage.show();
-
-
     }
 
     public static void main(String[] args) {
