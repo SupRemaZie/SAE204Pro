@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import javafx.scene.control.Button;
 
-public class ConnexionController {
+public class ConnexionController extends Controller{
     @FXML
     public TextField IDTextField; // champ de l'identifiant
 
@@ -53,34 +53,17 @@ public class ConnexionController {
         String result1= EtudiantAPK.myjdbc.executeReadQuery(query1);  // execute la requete et stocke le resultat
 
         if(EnterPwd.equals(result1)){ // verife si le mdp dans la base correspond au mdp entré
-            GoToPage("EtudiantView.fxml");
+            GoToPage("EtudiantView.fxml", "Etudiant_Connexion");
         }
         else {
             loginMessageLabel.setText("Identifiant ou mot de passe invalide");
         }
     }
 
-    private void GoToPage(String s ) throws IOException {
-        EtudiantAPK.stage=new Stage();
-        FXMLLoader fxmlLoader;
-        fxmlLoader = new FXMLLoader(EtudiantAPK.class.getResource(s));
-        Scene scene = new Scene(fxmlLoader.load());
-        EtudiantAPK.stage.setScene(scene);
-        EtudiantAPK.stage.setTitle("My School Managing +");
-        EtudiantAPK.stage.show();
-    }
+
     @FXML
     void figma(ActionEvent event){
-        FXMLLoader fxml= new FXMLLoader(EtudiantAPK.class.getResource("Accueil.fxml"));
-        Scene scene = null;
-        try {
-            scene = new Scene(fxml.load());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        EtudiantAPK.stage.setTitle("Accueil");
-        EtudiantAPK.stage.setScene(scene);
-        EtudiantAPK.stage.show();
+        GoToPage("Accueil.fxml", "Accueil");
     }
 
 }
