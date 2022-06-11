@@ -3,18 +3,16 @@ package com.example.sae204.Modele;
 import com.example.sae204.EtudiantAPK;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class DAO {
     private static int connexion =0;
     public static void connexion() throws SQLException, ClassNotFoundException {
         EtudiantAPK.myjdbc.connect("root", ""); // connection a la base
         connexion=1;
-
-
     }
+
+
     public static LinkedList<Etudiant> listerEtu() throws SQLException, ClassNotFoundException {
         if (connexion ==0)
             connexion();
@@ -62,6 +60,31 @@ public class DAO {
             listEtu.add(etu);
         }
         return listEtu;
+    }
+
+    public static LinkedList<Personnel> listerPer() throws SQLException, ClassNotFoundException {
+        if (connexion ==0)
+            connexion();
+        LinkedList<Personnel> listPer=new LinkedList<Personnel>();
+        String query="SELECT COUNT(Harpege) FROM personnel;" ; // stockage de la requête
+        int nbPer= Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query)); //On prends le nombre de personnel
+        for(int i=0;i<nbPer;i++){
+            query="SELECT Harpege FROM personnel LIMIT 1 OFFSET "+i+";" ;
+            String Harpege=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query="SELECT MDP_per FROM personnel WHERE Harpege = '"+Harpege+"';";
+            String Mdp_per=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query="SELECT Nom_per FROM personnel WHERE Harpege = '"+Harpege+"';";
+            String Nom_per=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query="SELECT Prenom_per FROM personnel WHERE Harpege = '"+Harpege+"';";
+            String Prenom_per=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            Personnel per = new Personnel(Harpege, Mdp_per, Nom_per,Prenom_per);
+            listPer.add(per);
+        }
+        return listPer;
     }
 }
 //SELECT * FROM etudiant LIMIT 1 OFFSET 0;

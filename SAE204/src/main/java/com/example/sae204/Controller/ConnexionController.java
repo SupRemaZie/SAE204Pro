@@ -50,7 +50,12 @@ public class ConnexionController extends Controller{
 
         //EtudiantAPK.myjdbc.connect("root",""); // connection a la base
         String result1="", result2="";
-        LinkedList<Etudiant> listEtu=DAO.listerEtu(); //On fais la liste de tous les étudiants
+        LinkedList<Etudiant> listEtu=DAO.listerEtu();
+        /*if(AccueilController.etatButton=="E"){
+            String query1="SELECT MDP_etu FROM ETUDIANT WHERE Num_etu='" + EnterId + "';" ; // stockage de la requête
+             result1= EtudiantAPK.myjdbc.executeReadQuery(query1);
+        }
+        */
         if(AccueilController.etatButton=="E"){
             for (Etudiant etu : listEtu) {
                 if(etu.getNum_etu().equals(EnterId)) {
