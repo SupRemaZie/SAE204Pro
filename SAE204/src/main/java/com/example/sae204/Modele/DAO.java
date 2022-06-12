@@ -97,7 +97,6 @@ public class DAO {
         int nbGrpAffil = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query)); //On prends le nombre de groupe lié au groupe parent
         for(int i = 0; i < nbGrpAffil;i++){
             query="SELECT Nom_groupe FROM groupe WHERE Groupe_parent='"+Grp_parent+"'LIMIT 1 OFFSET "+i+";";
-            System.out.println(query);
             String GrpAffilGrpPar = EtudiantAPK.myjdbc.executeReadQuery(query);
             listGrpAffilGrpParents.add(GrpAffilGrpPar);
         }
