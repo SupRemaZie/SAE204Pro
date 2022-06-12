@@ -76,11 +76,11 @@ public class ConnexionController extends Controller{
         else if(EnterPwd.equals(result2) && !EnterId.equals("") && !EnterPwd.equals("")){
             System.out.println(EnterId);
             System.out.println(ChoixRoleController.choixRole);
-            if (DAO.verif(EnterId, ChoixRoleController.choixRole)){
+            if (DAO.verif(EnterId, ChoixRoleController.choixRole) && ChoixRoleController.choixRole.equals("Enseignant")){
                 GoToPage("EnseignantAcc.fxml","Acceuil enseignant");// page pour le personnel
             }
 
-            else if (DAO.verif(EnterId, ChoixRoleController.choixRole)){
+            else if (DAO.verif(EnterId, ChoixRoleController.choixRole)&& ChoixRoleController.choixRole.equals("Secrétariat")){
                 GoToPage("SecretaireAcc.fxml","Acceuil secrétaire");// page pour le personnel
             }
             else{
