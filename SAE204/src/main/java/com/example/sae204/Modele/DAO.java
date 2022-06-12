@@ -184,6 +184,47 @@ public class DAO {
         return mail;
     }
 
+    public static String getNomPromo(String num_etu) throws SQLException {
+        String query ="select niveau from promotion join etudiant on etudiant.Id_promo=promotion.Id_promo where num_etu='"+num_etu+"';";
+        String promo = EtudiantAPK.myjdbc.executeReadQuery(query);
+        return promo;
+    }
+
+    public static String getAmenagement(String num_etu) throws SQLException {
+        String amenagement="";
+        String query ="select Dem_etu from etudiant where Num_etu='"+num_etu+"';";
+        String dem = EtudiantAPK.myjdbc.executeReadQuery(query);
+        if (dem.equals("0"))
+            amenagement+= "non ";
+        amenagement+="démissionnaire, ";
+        query ="select Red_etu from etudiant where Num_etu='"+num_etu+"';";
+        String red = EtudiantAPK.myjdbc.executeReadQuery(query);
+        if (red.equals("0"))
+            amenagement+= "non ";
+        amenagement+="redoublant";
+        return amenagement;
+    }
+
+    public static String getGroupe(String num_etu) throws SQLException {
+        String groupe="",groupetemp;
+        String query = "select count(Nom_groupe) from groupe join appartenance on appartenance.id_groupe=groupe.Id_groupe join etudiant on etudiant.Num_etu=appartenance.num_etu where etudiant.Num_etu='"+num_etu+"' group by etudiant.Num_etu;";
+        int nbgroupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        for(int i=0;i<nbgroupe;i++){
+            query = "select Nom_groupe from groupe join appartenance on appartenance.id_groupe=groupe.Id_groupe join etudiant on etudiant.Num_etu=appartenance.num_etu where etudiant.Num_etu='"+num_etu+"' LIMIT 1 OFFSET "+i+";";
+            groupetemp = EtudiantAPK.myjdbc.executeReadQuery(query);
+            if (i==0)
+                groupe+=groupetemp;
+            else
+                groupe+=", " + groupetemp;
+        }
+        return groupe;
+    }
+
+    public static String getPhoto(String num_etu) throws SQLException {
+        String query = "select Photo_etu from etudiant where Num_etu='"+num_etu+"';";
+        String photo = EtudiantAPK.myjdbc.executeReadQuery(query);
+        return photo;
+    }
 }
 //SELECT * FROM etudiant LIMIT 1 OFFSET 0;
 //SELECT COUNT(Num_etu) FROM etudiant;

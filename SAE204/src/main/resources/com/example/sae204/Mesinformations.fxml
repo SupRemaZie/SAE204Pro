@@ -26,20 +26,34 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="amenagement" layoutX="650.0" layoutY="302.0">
+      <Label fx:id="amenagement" layoutX="649.0" layoutY="313.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="groupe" layoutX="563.0" layoutY="463.0">
+      <Label fx:id="promotion" layoutX="596.0" layoutY="415.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="promotion" layoutX="596.0" layoutY="416.0">
+      <Label fx:id="groupe" layoutX="563.0" layoutY="450.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
+      <Label fx:id="statut" layoutX="430.0" layoutY="573.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="prenom" layoutX="75.0" layoutY="500.0">
+         <font>
+            <Font size="48.0" />
+         </font></Label>
+      <Label fx:id="nom" layoutX="75.0" layoutY="575.0">
+         <font>
+            <Font size="48.0" />
+         </font></Label>
+      <ImageView fx:id="photo" fitHeight="251.0" fitWidth="359.0" layoutX="31.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -54,6 +54,7 @@ public class EtudiantController extends  Controller implements Initializable{
             e.printStackTrace();
         }
         adressemaillabel.setText(mail);
+
     }
 }
 
