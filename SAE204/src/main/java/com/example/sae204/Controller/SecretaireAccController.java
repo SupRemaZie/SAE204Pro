@@ -43,7 +43,7 @@ public class SecretaireAccController extends Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            ChampGroupe();
+            ChampGroupeParent();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -51,7 +51,7 @@ public class SecretaireAccController extends Controller implements Initializable
         }
     }
 
-    void ChampGroupe () throws SQLException, ClassNotFoundException {
+    void ChampGroupeParent () throws SQLException, ClassNotFoundException {
         GrouParentList.getItems().addAll(DAO.ListGrpParent());
 
         GrouParentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -60,6 +60,17 @@ public class SecretaireAccController extends Controller implements Initializable
                 CurrentGroupe = GrouParentList.getSelectionModel().getSelectedItem();
 
                 ParentSelected.setText(CurrentGroupe);
+                try {
+                    for(String grp : DAO.ListGrpAffilGrpParent(CurrentGroupe)){
+                        GroupeList.getItems().add(grp);
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
 
 
             }

@@ -88,29 +88,19 @@ public class DAO {
         }
         return listGrp;
     }
-    public static LinkedList<Promotion> listerPromo() throws  SQLException, ClassNotFoundException{
-        if (connexion ==0)
+
+    public static LinkedList<String> ListGrpAffilGrpParent(String Grp_parent) throws SQLException, ClassNotFoundException {
+        if (connexion == 0)
             connexion();
-        LinkedList<Promotion> listPromo = new LinkedList<>();
-        String query="SELECT COUNT(Id_promo) FROM promotion;";
-        int nbPromo = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
-        for(int i=0; i<nbPromo; i++){
-            query ="SElECT Id_promo FROM promotion LIMIT 1 OFFSET"+i+";";
-            String Id_promo =EtudiantAPK.myjdbc.executeReadQuery(query);
-
-            query ="SElECT Annee_debut FROM promotion WHERE Id_promo="+Id_promo+";";
-            String Annee_debut =EtudiantAPK.myjdbc.executeReadQuery(query);
-
-            query ="SElECT Annee_fin FROM promotion WHERE Id_promo="+Id_promo+";";
-            String Annee_fin =EtudiantAPK.myjdbc.executeReadQuery(query);
-
-            query ="SElECT Niveau FROM promotion WHERE Id_promo="+Id_promo+";";
-            String Niveau =EtudiantAPK.myjdbc.executeReadQuery(query);
-
-            Promotion promo=new Promotion(Id_promo,Annee_debut,Annee_fin,Niveau);
-            listPromo.add(promo);
+        LinkedList<String> listGrpAffilGrpParents= new LinkedList<String>();
+        String query = "SELECT COUNT(Nom_groupe) FROM GROUPE WHERE Groupe_parent="+"'"+Grp_parent+"'"+";"; // stockage de la requête
+        int nbGrpAffil = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query)); //On prends le nombre de groupe lié au groupe parent
+        for(int i = 0; i < nbGrpAffil;i++){
+            query="SELECT Nom_groupe FROM groupe WHERE Groupe_parent="+Grp_parent+"LIMIT 1 OFFSET"+i+";";
+            String GrpAffilGrpPar = EtudiantAPK.myjdbc.executeReadQuery(query);
+            listGrpAffilGrpParents.add(GrpAffilGrpPar);
         }
-        return listPromo;
+        return listGrpAffilGrpParents;
     }
     public static  LinkedList<String> ListGrpParent() throws SQLException, ClassNotFoundException {
         if (connexion == 0)
