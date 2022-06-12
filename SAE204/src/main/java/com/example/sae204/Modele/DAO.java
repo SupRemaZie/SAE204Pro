@@ -1,5 +1,7 @@
 package com.example.sae204.Modele;
 
+import com.example.sae204.Controller.ChoixRoleController;
+import com.example.sae204.Controller.ConnexionController;
 import com.example.sae204.EtudiantAPK;
 
 import java.sql.SQLException;
@@ -81,10 +83,53 @@ public class DAO {
             query="SELECT Prenom_per FROM personnel WHERE Harpege = '"+Harpege+"';";
             String Prenom_per=EtudiantAPK.myjdbc.executeReadQuery(query);
 
-            Personnel per = new Personnel(Harpege, Mdp_per, Nom_per,Prenom_per);
+            query="SELECT Adresse_mail FROM personnel WHERE Harpege = '"+Harpege+"';";
+            String Adresse_mail=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            Personnel per = new Personnel(Harpege, Mdp_per, Nom_per,Prenom_per,Adresse_mail);
             listPer.add(per);
         }
         return listPer;
+    }
+
+
+    public static boolean verif(String enterId, String choixRole) throws SQLException {
+        String query= "select Nom_role from roles join assignation on roles.Id_role=assignation.Id_role join personnel on personnel.Harpege=assignation.Harpege where personnel.Harpege='"+enterId+"' AND Nom_role LIKE 'E%';";
+        String role=EtudiantAPK.myjdbc.executeReadQuery(query);
+        if (role.equals(choixRole)){
+            return true;
+        }
+        query= "select Nom_role from roles join assignation on roles.Id_role=assignation.Id_role join personnel on personnel.Harpege=assignation.Harpege where personnel.Harpege='"+enterId+"' AND Nom_role LIKE 'S%';";
+        role=EtudiantAPK.myjdbc.executeReadQuery(query);
+        if (role.equals(choixRole)){
+            return true;
+        }
+        return false;
+    }
+
+    public static String mail(String ident) throws SQLException {
+        String mail="";
+        if (ChoixRoleController.choixRole.equals("E")){
+            String query="SELECT prenom_etu FROM etudiant WHERE num_etu = '"+ident+"';";
+            String prenom_etu=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query="SELECT nom_etu FROM etudiant WHERE num_etu = '"+ident+"';";
+            String nom_etu=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            mail = prenom_etu+"."+nom_etu+".etu@univ-lemans.fr";
+        }
+        else if (ChoixRoleController.choixRole.equals(("P"))){
+
+            String query="SELECT Prenom_per FROM personnel WHERE Harpege = '"+ident+"';";
+            String Prenom_per=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query="SELECT Nom_per FROM personnel WHERE Harpege = '"+ident+"';";
+            String Nom_per=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+                mail=Prenom_per+"."+Nom_per+"@univ-lemans.fr";
+
+        }
+        return mail;
     }
 }
 //SELECT * FROM etudiant LIMIT 1 OFFSET 0;

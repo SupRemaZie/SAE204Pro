@@ -18,11 +18,11 @@ public class ChoixRoleController extends Controller{
         GoToPage("Accueil.fxml", "Accueil");
     }
     public void bouton_prof(ActionEvent event){
-        choixRole="P";
+        choixRole="Enseignant";
         GoToPage("ConnexionPage.fxml", "Page de Connexion");
     }
     public void bouton_sec(ActionEvent event){
-        choixRole="S";
+        choixRole="Secrétariat";
         GoToPage("ConnexionPage.fxml", "Page de Connexion");
     }
 }
