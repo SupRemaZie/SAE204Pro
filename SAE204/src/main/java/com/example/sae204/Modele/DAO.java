@@ -93,11 +93,10 @@ public class DAO {
         if (connexion == 0)
             connexion();
         LinkedList<String> listGrpAffilGrpParents= new LinkedList<String>();
-        String query = "SELECT COUNT(Nom_groupe) FROM GROUPE WHERE Groupe_parent="+"'"+Grp_parent+"'"+";"; // stockage de la requête
+        String query = "SELECT COUNT(Nom_groupe) FROM GROUPE WHERE Groupe_parent='"+Grp_parent+"';"; // stockage de la requête
         int nbGrpAffil = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query)); //On prends le nombre de groupe lié au groupe parent
         for(int i = 0; i < nbGrpAffil;i++){
             query="SELECT Nom_groupe FROM groupe WHERE Groupe_parent='"+Grp_parent+"'LIMIT 1 OFFSET "+i+";";
-            System.out.println(query);
             String GrpAffilGrpPar = EtudiantAPK.myjdbc.executeReadQuery(query);
             listGrpAffilGrpParents.add(GrpAffilGrpPar);
         }
@@ -173,7 +172,7 @@ public class DAO {
             query="SELECT nom_etu FROM etudiant WHERE num_etu = '"+ident+"';";
             String nom_etu=EtudiantAPK.myjdbc.executeReadQuery(query);
 
-            mail = prenom_etu+"."+nom_etu+".Etu@univ-lemans.fr";
+            mail = prenom_etu+"."+nom_etu+".etu@univ-lemans.fr";
         }
         else if (ChoixRoleController.choixRole.equals(("Enseignant")) || ChoixRoleController.choixRole.equals("Secrétariat")){
 
