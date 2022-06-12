@@ -36,7 +36,8 @@ public class EtudiantController extends  Controller implements Initializable{
 
     @FXML
     void onVisuInfoEtuButtonClick(ActionEvent event) {
-
+        EtudiantsinfoController.num_etu = num_etu;
+        GoToPage("Mesinformations.fxml","Information sur l'étudiant");
     }
 
     @FXML
