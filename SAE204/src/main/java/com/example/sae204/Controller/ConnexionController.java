@@ -72,7 +72,7 @@ public class ConnexionController extends Controller{
 
         if(EnterPwd.equals(result1) && !EnterId.equals("") && !EnterPwd.equals("")){ // verife si le mdp dans la base correspond au mdp entré
             EtudiantController.num_etu = EnterId;
-            GoToPage("EtudiantView.fxml", "Etudiant_Connexion");
+            GoToPage("EtudiantView.fxml", "Accueil etudiant");
         }
         else if(EnterPwd.equals(result2) && !EnterId.equals("") && !EnterPwd.equals("")){
             if (DAO.verif(EnterId, ChoixRoleController.choixRole) && ChoixRoleController.choixRole.equals("Enseignant")){

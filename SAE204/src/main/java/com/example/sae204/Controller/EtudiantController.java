@@ -42,7 +42,7 @@ public class EtudiantController extends  Controller implements Initializable{
 
     @FXML
     void onVisuTrombiEtuButtonClick(ActionEvent event) {
-
+        GoToPage("VisualiserTrombiEtu.fxml", "Visualiser trombinoscope");
     }
 
     @Override
