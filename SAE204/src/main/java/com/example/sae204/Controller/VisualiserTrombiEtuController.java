@@ -190,6 +190,7 @@ public class VisualiserTrombiEtuController extends Controller implements Initial
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        cacherPhoto(4);
     }
 
     @Override
@@ -204,6 +205,127 @@ public class VisualiserTrombiEtuController extends Controller implements Initial
 
     }
     public void cacherPhoto(int n){
+        if(n>0) {
+            image24.setOpacity(0);
+            prenom24.setOpacity(0);
+            nom24.setOpacity(0);
+        }
+        if(n>1) {
+            image23.setOpacity(0);
+            prenom23.setOpacity(0);
+            nom23.setOpacity(0);
+        }
+        if(n>2) {
+            image22.setOpacity(0);
+            prenom22.setOpacity(0);
+            nom22.setOpacity(0);
+        }
+        if(n>3) {
+            image21.setOpacity(0);
+            prenom21.setOpacity(0);
+            nom21.setOpacity(0);
+        }
+        if(n>4) {
+            image20.setOpacity(0);
+            prenom20.setOpacity(0);
+            nom20.setOpacity(0);
+        }
+        if(n>5) {
+            image19.setOpacity(0);
+            prenom19.setOpacity(0);
+            nom19.setOpacity(0);
+        }
+        if(n>6) {
+            image18.setOpacity(0);
+            prenom18.setOpacity(0);
+            nom18.setOpacity(0);
+        }
+        if(n>7) {
+            image17.setOpacity(0);
+            prenom17.setOpacity(0);
+            nom17.setOpacity(0);
+        }
+        if(n>8) {
+            image16.setOpacity(0);
+            prenom16.setOpacity(0);
+            nom16.setOpacity(0);
+        }
+        if(n>9) {
+            image15.setOpacity(0);
+            prenom15.setOpacity(0);
+            nom15.setOpacity(0);
+        }
+        if(n>10) {
+            image14.setOpacity(0);
+            prenom14.setOpacity(0);
+            nom14.setOpacity(0);
+        }
+        if(n>11) {
+            image13.setOpacity(0);
+            prenom13.setOpacity(0);
+            nom13.setOpacity(0);
+        }
+        if(n>12) {
+            image12.setOpacity(0);
+            prenom12.setOpacity(0);
+            nom12.setOpacity(0);
+        }
+        if(n>13) {
+            image11.setOpacity(0);
+            prenom11.setOpacity(0);
+            nom11.setOpacity(0);
+        }
+        if(n>14) {
+            image10.setOpacity(0);
+            prenom10.setOpacity(0);
+            nom10.setOpacity(0);
+        }
+        if(n>15) {
+            image9.setOpacity(0);
+            prenom9.setOpacity(0);
+            nom9.setOpacity(0);
+        }
+        if(n>16) {
+            image8.setOpacity(0);
+            prenom8.setOpacity(0);
+            nom8.setOpacity(0);
+        }
+        if(n>17) {
+            image7.setOpacity(0);
+            prenom7.setOpacity(0);
+            nom7.setOpacity(0);
+        }
+        if(n>18) {
+            image6.setOpacity(0);
+            prenom6.setOpacity(0);
+            nom6.setOpacity(0);
+        }
+        if(n>19) {
+            image5.setOpacity(0);
+            prenom5.setOpacity(0);
+            nom5.setOpacity(0);
+        }
+        if(n>20) {
+            image4.setOpacity(0);
+            prenom4.setOpacity(0);
+            nom4.setOpacity(0);
+        }
+        if(n>21) {
+            image3.setOpacity(0);
+            prenom3.setOpacity(0);
+            nom3.setOpacity(0);
+        }
+        if(n>22) {
+            image2.setOpacity(0);
+            prenom2.setOpacity(0);
+            nom2.setOpacity(0);
+        }
+        if(n>23) {
+            image1.setOpacity(0);
+            prenom1.setOpacity(0);
+            nom1.setOpacity(0);
+        }
+
 
     }
 }
