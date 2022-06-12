@@ -94,7 +94,7 @@ public class EtudiantsinfoController extends Controller implements Initializable
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                String photo1 = "G:\\SAE201image\\"+recup;
+                String photo1 = "SAE204/src/main/resources/com/example/sae204/image/PhotoEtudiant/"+recup;
                 try {
                     photo.setImage(new Image(new FileInputStream(photo1)));
                 } catch (FileNotFoundException e) {
