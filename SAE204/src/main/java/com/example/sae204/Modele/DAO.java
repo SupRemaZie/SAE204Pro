@@ -2,6 +2,7 @@ package com.example.sae204.Modele;
 
 import com.example.sae204.Controller.ConnexionController;
 import com.example.sae204.EtudiantAPK;
+import javafx.collections.ObservableArray;
 
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -62,6 +63,54 @@ public class DAO {
         }
         return listEtu;
     }
+    public static LinkedList<Groupe> listerGrp() throws SQLException, ClassNotFoundException {
+        if (connexion ==0)
+            connexion();
+        LinkedList<Groupe> listGrp= new LinkedList<>();
+        String query="SELECT COUNT(Id_groupe) FROM groupe;";
+        int nbGrp=Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+
+        for(int i = 0;i<nbGrp;i++){
+            query="SELECT Id_groupe FROM groupe LIMIT 1 OFFSET "+i+";";
+            String Id_groupe=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query="SELECT Nom_groupe FROM groupe WHERE Id_groupe="+Id_groupe+";";
+            String Nom_groupe=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query="SELECT Groupe_parent FROM groupe LIMIT 1 OFFSET "+Id_groupe+";";
+            String Grp_parent=EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            Groupe grp=new Groupe(Id_groupe,Nom_groupe,Grp_parent);
+            listGrp.add(grp);
+
+        }
+        return listGrp;
+    }
+    public static LinkedList<Promotion> listerPromo() throws  SQLException, ClassNotFoundException{
+        if (connexion ==0)
+            connexion();
+        LinkedList<Promotion> listPromo = new LinkedList<>();
+        String query="SELECT COUNT(Id_promo) FROM promotion;";
+        int nbPromo = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        for(int i=0; i<nbPromo; i++){
+            query ="SElECT Id_promo FROM promotion LIMIT 1 OFFSET"+i+";";
+            String Id_promo =EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query ="SElECT Annee_debut FROM promotion WHERE Id_promo="+Id_promo+";";
+            String Annee_debut =EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query ="SElECT Annee_fin FROM promotion WHERE Id_promo="+Id_promo+";";
+            String Annee_fin =EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            query ="SElECT Niveau FROM promotion WHERE Id_promo="+Id_promo+";";
+            String Niveau =EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            Promotion promo=new Promotion(Id_promo,Annee_debut,Annee_fin,Niveau);
+            listPromo.add(promo);
+        }
+        return listPromo;
+    }
+
 
     public static LinkedList<Personnel> listerPer() throws SQLException, ClassNotFoundException {
         if (connexion ==0)

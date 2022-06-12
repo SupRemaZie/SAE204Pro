@@ -1,9 +1,12 @@
 package com.example.sae204.Controller;
 
 
+import com.example.sae204.Modele.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+
+import java.sql.SQLException;
 
 public class AccueilController {
 
@@ -15,13 +18,14 @@ public class AccueilController {
     public static String etatButton;
 
     @FXML
-    void bouton_etu(ActionEvent event) {
+    void bouton_etu(ActionEvent event) throws SQLException, ClassNotFoundException {
         if(bouton_etu.isFocused()){
             etatButton="E";
             System.out.println(etatButton);
         }
         ChoixRoleController.choixRole="E";
         Controller.GoToPage("ConnexionPage.fxml","Page de Connexion");
+
     }
 
     @FXML
