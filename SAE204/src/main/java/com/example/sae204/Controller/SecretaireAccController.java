@@ -26,6 +26,8 @@ public class SecretaireAccController extends Controller implements Initializable
     @FXML
     private ListView<String> GrouParentList;
 
+
+    private String CurrentGroupeParent;
     private String CurrentGroupe;
 
     @FXML
@@ -57,11 +59,13 @@ public class SecretaireAccController extends Controller implements Initializable
         GrouParentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                CurrentGroupe = GrouParentList.getSelectionModel().getSelectedItem();
+                CurrentGroupeParent = GrouParentList.getSelectionModel().getSelectedItem();
 
-                ParentSelected.setText(CurrentGroupe);
+                ParentSelected.setText(CurrentGroupeParent);
+                GroupeList.getItems().clear();
                 try {
-                    for(String grp : DAO.ListGrpAffilGrpParent(CurrentGroupe)){
+                    for(String grp : DAO.ListGrpAffilGrpParent(CurrentGroupeParent)){
+
                         GroupeList.getItems().add(grp);
                     }
 
@@ -70,11 +74,17 @@ public class SecretaireAccController extends Controller implements Initializable
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
+                GroupeList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                        CurrentGroupe = GroupeList.getSelectionModel().getSelectedItem();
 
-
-
-            }
+                        GroupeSelected.setText(CurrentGroupe);
+                    }
+                });
+        }
         });
     }
 
 }
+
