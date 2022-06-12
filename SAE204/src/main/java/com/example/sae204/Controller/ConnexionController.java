@@ -75,9 +75,8 @@ public class ConnexionController extends Controller{
             GoToPage("EtudiantView.fxml", "Etudiant_Connexion");
         }
         else if(EnterPwd.equals(result2) && !EnterId.equals("") && !EnterPwd.equals("")){
-            System.out.println(EnterId);
-            System.out.println(ChoixRoleController.choixRole);
             if (DAO.verif(EnterId, ChoixRoleController.choixRole) && ChoixRoleController.choixRole.equals("Enseignant")){
+                EnseignantAccController.Harpege = EnterId;
                 GoToPage("EnseignantAcc.fxml","Acceuil enseignant");// page pour le personnel
             }
 

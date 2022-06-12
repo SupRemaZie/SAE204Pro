@@ -157,6 +157,8 @@ public class DAO {
     }
 
     public static String mail(String ident) throws SQLException {
+
+        System.out.println(ChoixRoleController.choixRole);
         String mail="";
         if (ChoixRoleController.choixRole.equals("E")){
             String query="SELECT prenom_etu FROM etudiant WHERE num_etu = '"+ident+"';";
@@ -167,7 +169,7 @@ public class DAO {
 
             mail = prenom_etu+"."+nom_etu+".etu@univ-lemans.fr";
         }
-        else if (ChoixRoleController.choixRole.equals(("P"))){
+        else if (ChoixRoleController.choixRole.equals(("Enseignant")) || ChoixRoleController.choixRole.equals("Secrétariat")){
 
             String query="SELECT Prenom_per FROM personnel WHERE Harpege = '"+ident+"';";
             String Prenom_per=EtudiantAPK.myjdbc.executeReadQuery(query);
