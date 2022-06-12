@@ -10,4 +10,9 @@ public class Groupe {
         Nom_grp = nom_grp;
         Grp_parent = grp_parent;
     }
+
+    @Override
+    public String toString() {
+        return Nom_grp;
+    }
 }

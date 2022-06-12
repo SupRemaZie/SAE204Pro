@@ -85,7 +85,9 @@ public class MyJDBC {
                 //String result="";
                 while(resultSelect.next()){
                     for(int i = 1; i <= resultMeta.getColumnCount(); ++i)
+                        
                         result=resultSelect.getObject(i).toString();
+
                     //out.print(resultSelect.getObject(i).toString() + "\t|");
 
                     //out.println("");

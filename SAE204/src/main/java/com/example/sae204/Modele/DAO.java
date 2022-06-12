@@ -78,8 +78,9 @@ public class DAO {
             query="SELECT Nom_groupe FROM groupe WHERE Id_groupe="+Id_groupe+";";
             String Nom_groupe=EtudiantAPK.myjdbc.executeReadQuery(query);
 
-            query="SELECT Groupe_parent FROM groupe LIMIT 1 OFFSET "+Id_groupe+";";
+            query="SELECT Groupe_parent FROM groupe WHERE Id_groupe="+Id_groupe+";";
             String Grp_parent=EtudiantAPK.myjdbc.executeReadQuery(query);
+
 
             Groupe grp=new Groupe(Id_groupe,Nom_groupe,Grp_parent);
             listGrp.add(grp);

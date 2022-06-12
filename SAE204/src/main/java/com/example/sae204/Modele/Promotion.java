@@ -12,4 +12,9 @@ public class Promotion {
         Annee_fin = annee_fin;
         Niveau = niveau;
     }
+
+    @Override
+    public String toString() {
+        return Niveau+"\n";
+    }
 }
