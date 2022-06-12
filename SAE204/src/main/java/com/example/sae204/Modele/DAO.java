@@ -172,7 +172,7 @@ public class DAO {
             query="SELECT nom_etu FROM etudiant WHERE num_etu = '"+ident+"';";
             String nom_etu=EtudiantAPK.myjdbc.executeReadQuery(query);
 
-            mail = prenom_etu+"."+nom_etu+".etu@univ-lemans.fr";
+            mail = prenom_etu+"."+nom_etu+".Etu@univ-lemans.fr";
         }
         else if (ChoixRoleController.choixRole.equals(("Enseignant")) || ChoixRoleController.choixRole.equals("Secrétariat")){
 
