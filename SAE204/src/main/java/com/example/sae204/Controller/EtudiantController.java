@@ -3,6 +3,7 @@ package com.example.sae204.Controller;
 
 import com.example.sae204.EtudiantAPK;
 import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.Etudiant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,6 +43,7 @@ public class EtudiantController extends  Controller implements Initializable{
 
     @FXML
     void onVisuTrombiEtuButtonClick(ActionEvent event) {
+        VisualiserTrombiEtuController.num_etu = num_etu;
         GoToPage("VisualiserTrombiEtu.fxml", "Visualiser trombinoscope");
     }
 
