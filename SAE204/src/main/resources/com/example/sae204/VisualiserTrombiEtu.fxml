@@ -18,12 +18,173 @@
       <Button fx:id="rechercherEtu" layoutX="507.0" layoutY="208.0" mnemonicParsing="false" onAction="#rechercherEtu" opacity="0.0" prefHeight="63.0" prefWidth="61.0" />
       <Label fx:id="adressemaillabel" layoutX="14.0" layoutY="30.0" text="Adresse.mail@gmail.com" />
       <Button fx:id="retour" layoutX="12.0" layoutY="78.0" mnemonicParsing="false" onAction="#retour" opacity="0.0" prefHeight="59.0" prefWidth="73.0" />
-      <Button fx:id="afficherImage" layoutX="140.0" layoutY="382.0" mnemonicParsing="false" onAction="#afficherImage" text="Afficher image" />
-      <ImageView fx:id="image1" fitHeight="127.5" fitWidth="127.5" layoutX="138.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="image2" fitHeight="127.5" fitWidth="127.5" layoutX="598.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="afficherImage" layoutX="439.0" layoutY="566.0" mnemonicParsing="false" onAction="#afficherImage" text="Afficher image" />
+      <ImageView fx:id="image1" fitHeight="100.0" fitWidth="75.0" layoutX="40.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/PhotoEtudiant/ElisabethBlanchard.png" />
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image></ImageView>
+      <ImageView fx:id="image2" fitHeight="75.0" fitWidth="75.0" layoutX="130.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="image3" fitHeight="75.0" fitWidth="75.0" layoutX="220.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image4" fitHeight="75.0" fitWidth="75.0" layoutX="310.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image5" fitHeight="75.0" fitWidth="75.0" layoutX="400.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image6" fitHeight="75.0" fitWidth="75.0" layoutX="490.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image7" fitHeight="75.0" fitWidth="75.0" layoutX="580.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image8" fitHeight="75.0" fitWidth="75.0" layoutX="670.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image9" fitHeight="75.0" fitWidth="75.0" layoutX="760.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom1" layoutX="40.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom1" layoutX="40.0" layoutY="385.0" text="Prénom" />
+      <ImageView fx:id="image10" fitHeight="75.0" fitWidth="75.0" layoutX="850.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image11" fitHeight="75.0" fitWidth="75.0" layoutX="940.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom2" layoutX="130.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom2" layoutX="130.0" layoutY="385.0" text="Prénom" />
+      <Label fx:id="nom3" layoutX="220.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom3" layoutX="220.0" layoutY="385.0" text="Prénom" />
+      <Label fx:id="nom4" layoutX="310.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom4" layoutX="310.0" layoutY="385.0" text="Prénom" />
+      <Label fx:id="nom5" layoutX="400.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom5" layoutX="400.0" layoutY="385.0" text="Prénom" />
+      <Label fx:id="nom6" layoutX="490.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom6" layoutX="490.0" layoutY="385.0" text="Prénom" />
+      <Label fx:id="nom7" layoutX="580.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom7" layoutX="580.0" layoutY="385.0" text="Prénom" />
+      <Label fx:id="nom8" layoutX="670.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom8" layoutX="670.0" layoutY="385.0" text="Prénom" />
+      <Label fx:id="nom9" layoutX="760.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom9" layoutX="760.0" layoutY="385.0" text="Prénom" />
+      <Label fx:id="nom10" layoutX="850.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom10" layoutX="850.0" layoutY="385.0" text="Prénom" />
+      <Label fx:id="nom11" layoutX="940.0" layoutY="400.0" text="Nom" />
+      <Label fx:id="prenom11" layoutX="940.0" layoutY="385.0" text="Prénom" />
+      <ImageView fx:id="image12" fitHeight="100.0" fitWidth="75.0" layoutX="40.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom12" layoutX="40.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom12" layoutX="40.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image13" fitHeight="100.0" fitWidth="75.0" layoutX="130.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom13" layoutX="130.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom13" layoutX="130.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image14" fitHeight="100.0" fitWidth="75.0" layoutX="220.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom14" layoutX="220.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom14" layoutX="220.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image15" fitHeight="100.0" fitWidth="75.0" layoutX="310.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom15" layoutX="310.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom15" layoutX="310.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image16" fitHeight="100.0" fitWidth="75.0" layoutX="402.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom16" layoutX="402.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom16" layoutX="402.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image17" fitHeight="100.0" fitWidth="75.0" layoutX="490.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom17" layoutX="490.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom17" layoutX="490.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image18" fitHeight="100.0" fitWidth="75.0" layoutX="580.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom18" layoutX="580.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom18" layoutX="580.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image19" fitHeight="100.0" fitWidth="75.0" layoutX="670.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom19" layoutX="670.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom19" layoutX="670.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image20" fitHeight="100.0" fitWidth="75.0" layoutX="760.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom20" layoutX="760.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom20" layoutX="760.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image21" fitHeight="100.0" fitWidth="75.0" layoutX="850.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom21" layoutX="850.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom21" layoutX="850.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image22" fitHeight="100.0" fitWidth="75.0" layoutX="940.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom22" layoutX="940.0" layoutY="533.0" text="Nom" />
+      <Label fx:id="prenom22" layoutX="940.0" layoutY="518.0" text="Prénom" />
+      <ImageView fx:id="image23" fitHeight="100.0" fitWidth="75.0" layoutX="40.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom23" layoutX="40.0" layoutY="672.0" text="Nom" />
+      <Label fx:id="prenom23" layoutX="40.0" layoutY="657.0" text="Prénom" />
+      <ImageView fx:id="image24" fitHeight="100.0" fitWidth="75.0" layoutX="130.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PhotoEtudiant/HugoTruil.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nom24" layoutX="130.0" layoutY="672.0" text="Nom" />
+      <Label fx:id="prenom24" layoutX="130.0" layoutY="657.0" text="Prénom" />
    </children>
 </AnchorPane>
