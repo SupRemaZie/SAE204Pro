@@ -11,6 +11,15 @@ public class Groupe {
         Grp_parent = grp_parent;
     }
 
+    public String getNom_grp() {
+        return Nom_grp;
+    }
+
+    public String getGrp_parent() {
+        return Grp_parent;
+    }
+
+
     @Override
     public String toString() {
         return Nom_grp;

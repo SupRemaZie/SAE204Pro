@@ -112,6 +112,20 @@ public class DAO {
         }
         return listPromo;
     }
+    public static  LinkedList<String> ListGrpParent() throws SQLException, ClassNotFoundException {
+        if (connexion == 0)
+            connexion();
+        LinkedList<String> listGrpParents = new LinkedList<String>();
+        String query = "SELECT COUNT(DISTINCT groupe_parent) FROM GROUPE;"; // stockage de la requête
+        int nbGrpParent = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query)); //On prends le nombre de personnel
+        for (int i = 0; i < nbGrpParent; i++) {
+            query = "SELECT DISTINCT Groupe_parent FROM groupe LIMIT 1 OFFSET " + i + ";";
+            String GrpParent = EtudiantAPK.myjdbc.executeReadQuery(query);
+            listGrpParents.add(GrpParent);
+        }
+        return listGrpParents;
+    }
+
 
 
     public static LinkedList<Personnel> listerPer() throws SQLException, ClassNotFoundException {
