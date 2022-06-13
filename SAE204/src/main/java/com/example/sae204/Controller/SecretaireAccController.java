@@ -34,12 +34,19 @@ public class SecretaireAccController extends Controller implements Initializable
     private Label ParentSelected;
     @FXML
     private ListView<String> GroupeList;
-
+    @FXML
+    private Label adressemaillabel;
 
 
     @FXML
     void onDisconnectButtonClick(ActionEvent event) {
         GoToPage("Accueil.fxml", "Accueil");
+    }
+
+
+    @FXML
+    void afficherList(ActionEvent event){
+
     }
 
     @Override
