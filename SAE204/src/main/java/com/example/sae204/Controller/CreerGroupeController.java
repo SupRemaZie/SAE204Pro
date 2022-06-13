@@ -66,7 +66,7 @@ public class CreerGroupeController extends Controller implements Initializable {
 
     public void onAjouterEtudiantButtonClick(ActionEvent event) {
         AjouterEtuController.Harpege = Harpege;
-        GoToPage("Ajouteretu.fxml","Ajouter les étudiants au nouveau groupe");
+        GoToPage("AjouterEtu.fxml","Ajouter les étudiants au nouveau groupe");
     }
 
     @Override
