@@ -11,7 +11,11 @@ import java.util.LinkedList;
 public class DAO {
     private static int connexion =0;
     public static void connexion() throws SQLException, ClassNotFoundException {
+
+        //serveur local
         EtudiantAPK.myjdbc.connect("root", ""); // connection a la base
+        //serveur debian
+        EtudiantAPK.myjdbc.connect("root", "rootroot");//connection a la base
         connexion=1;
     }
     private static  LinkedList<String> listGrpAffilGrpParents= new LinkedList<>();
