@@ -6,10 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -22,13 +19,6 @@ public class CreerGroupeController extends Controller implements Initializable {
 
     @FXML
     private Button AjouterEtudiantButton;
-
-    @FXML
-    private ListView<String> GrouParentList;
-
-    @FXML
-    private ListView<String> GroupeList;
-
     @FXML
     private Label GroupeSelected;
 
@@ -44,6 +34,10 @@ public class CreerGroupeController extends Controller implements Initializable {
     private Label adressemaillabel;
     @FXML
     private Label erreur;
+    @FXML
+    private ComboBox<String> listGroupe;
+    @FXML
+    private ComboBox<String> listGroupeEnfant;
 
     public void retour(ActionEvent event){
         GoToPage("SecretaireAcc.fxml", "Accueil");
@@ -72,7 +66,7 @@ public class CreerGroupeController extends Controller implements Initializable {
 
     public void onAjouterEtudiantButtonClick(ActionEvent event) {
         AjouterEtuController.Harpege = Harpege;
-        GoToPage("Ajouteretu.fxml","Ajouter les étudiants au groupe");
+        GoToPage("Ajouteretu.fxml","Ajouter les étudiants au nouveau groupe");
     }
 
     @Override
@@ -96,30 +90,27 @@ public class CreerGroupeController extends Controller implements Initializable {
     }
 
     void ChampGroupeParent () throws SQLException, ClassNotFoundException {
-        GrouParentList.getItems().addAll(DAO.ListGrpParent());
+        listGroupe.getItems().addAll(DAO.ListGrpParent());
 
-        GrouParentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+        listGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                CurrentGroupeParent = GrouParentList.getSelectionModel().getSelectedItem();
+                CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
 
-                ParentSelected.setText(CurrentGroupeParent);
-                GroupeList.getItems().clear();
+                listGroupeEnfant.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
 
                 try {
-                    GroupeList.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
+                    listGroupeEnfant.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                GroupeList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                listGroupeEnfant.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                     @Override
                     public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                        CurrentGroupe = GroupeList.getSelectionModel().getSelectedItem();
-
-                        GroupeSelected.setText(CurrentGroupe);
+                        CurrentGroupe = listGroupeEnfant.getSelectionModel().getSelectedItem();
                     }
                 });
             }
