@@ -15,7 +15,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class VisualiserTrombiEtuController extends Controller implements Initializable{
+public class EtudiantTrombiController extends Controller implements Initializable{
 
     public static String num_etu;
 
@@ -172,7 +172,7 @@ public class VisualiserTrombiEtuController extends Controller implements Initial
     @FXML
     private Label adressemaillabel;
 
-    public VisualiserTrombiEtuController() throws MalformedURLException{
+    public EtudiantTrombiController() throws MalformedURLException{
     }
 
     @FXML
