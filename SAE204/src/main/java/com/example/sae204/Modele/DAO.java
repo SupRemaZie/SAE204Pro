@@ -106,6 +106,7 @@ public class DAO {
              GrpAffilGrpPar= EtudiantAPK.myjdbc.executeReadQuery(query);
             listGrpAffilGrpParents.add(GrpAffilGrpPar);
 
+
             ListGrpAffilGrpParent(GrpAffilGrpPar);
             
 
@@ -174,7 +175,7 @@ public class DAO {
 
     public static String mail(String ident) throws SQLException {
 
-        System.out.println(ChoixRoleController.choixRole);
+
         String mail="";
         if (ChoixRoleController.choixRole.equals("E")){
             String query="SELECT prenom_etu FROM etudiant WHERE num_etu = '"+ident+"';";

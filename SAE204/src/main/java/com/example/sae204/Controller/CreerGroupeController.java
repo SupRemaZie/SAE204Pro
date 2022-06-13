@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 public class CreerGroupeController extends Controller implements Initializable {
     private static String CurrentGroupeParent;
     private static String CurrentGroupe;
+    public  static String Harpege;
 
     @FXML
     private Button AjouterEtudiantButton;
@@ -39,8 +40,34 @@ public class CreerGroupeController extends Controller implements Initializable {
 
     @FXML
     private Button ValiderButton;
+    @FXML
+    private Label adressemaillabel;
+    @FXML
+    private Label erreur;
+
+    public void retour(ActionEvent event){
+        GoToPage("SecretaireAcc.fxml", "Accueil");
+    }
+
 
     public void onValiderButtonClick(ActionEvent event) {
+
+        if (GroupeSelected.getText().equals("") && !NomTextField.getText().equals("")){
+            erreur.setText("");
+            System.out.println(ParentSelected.toString());
+
+        }
+        else if(!(GroupeSelected.getText().equals("") && ParentSelected.getText().equals("")&& NomTextField.getText().equals(""))){
+            erreur.setText("");
+            System.out.println(GroupeSelected);
+
+        }
+        else {
+            erreur.setText("Nom du groupe ou groupe vide");
+        }
+
+
+
 
     }
 
@@ -49,6 +76,14 @@ public class CreerGroupeController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String mail ="";
+        try {
+            mail = DAO.mail(Harpege);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        adressemaillabel.setText(mail);
+
         try {
             ChampGroupeParent();
         } catch (SQLException e) {
@@ -68,6 +103,7 @@ public class CreerGroupeController extends Controller implements Initializable {
 
                 ParentSelected.setText(CurrentGroupeParent);
                 GroupeList.getItems().clear();
+                DAO.listGrpAffilGrpParents.clear();
 
                 try {
                     GroupeList.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));

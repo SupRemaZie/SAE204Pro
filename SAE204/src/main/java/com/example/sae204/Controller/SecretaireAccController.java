@@ -82,9 +82,10 @@ void afficherList(){
                 ParentSelected.setText(CurrentGroupeParent);
                 GroupeList.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
-                System.out.println("clear");
+
                 try {
                     GroupeList.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
+                    GroupeList.getItems().add("VIDE");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
@@ -95,8 +96,13 @@ void afficherList(){
                     @Override
                     public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                         CurrentGroupe = GroupeList.getSelectionModel().getSelectedItem();
+                        if(CurrentGroupe.equals("VIDE")){
+                            GroupeSelected.setText("");
+                        }
+                        else{
+                            GroupeSelected.setText(CurrentGroupe);
+                        }
 
-                        GroupeSelected.setText(CurrentGroupe);
                     }
                 });
             }
@@ -104,6 +110,7 @@ void afficherList(){
     }
 
     public void onCreateGroupButtonClick(ActionEvent event) {
+        CreerGroupeController.Harpege = Harpege;
         GoToPage("Creer_groupe.fxml","Créer un groupe");
     }
 }
