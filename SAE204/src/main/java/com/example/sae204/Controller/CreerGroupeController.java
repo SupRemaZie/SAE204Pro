@@ -93,6 +93,7 @@ public class CreerGroupeController extends Controller implements Initializable {
         }
 
     }
+
     void ChampGroupeParent () throws SQLException, ClassNotFoundException {
         GrouParentList.getItems().addAll(DAO.ListGrpParent());
 

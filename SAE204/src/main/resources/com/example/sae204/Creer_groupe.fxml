@@ -36,6 +36,6 @@
       <Button fx:id="AjouterEtudiantButton" layoutX="60.0" layoutY="573.0" mnemonicParsing="false" onAction="#onAjouterEtudiantButtonClick" opacity="0.0" prefHeight="32.0" prefWidth="307.0" />
       <Label fx:id="adressemaillabel" layoutX="14.0" layoutY="30.0" text="Adresse.mail@gmail.com" />
       <Label fx:id="erreur" layoutX="647.0" layoutY="366.0" textFill="RED" />
-      <Button layoutX="14.0" layoutY="79.0" mnemonicParsing="false" onAction="#retour" opacity="0.0" prefHeight="54.0" prefWidth="65.0" />
+      <Button fx:id="retour" layoutX="14.0" layoutY="79.0" mnemonicParsing="false" onAction="#retour" opacity="0.0" prefHeight="54.0" prefWidth="65.0" />
    </children>
 </AnchorPane>
