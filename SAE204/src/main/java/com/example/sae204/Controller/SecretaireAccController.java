@@ -81,6 +81,7 @@ void afficherList(){
 
                 ParentSelected.setText(CurrentGroupeParent);
                 GroupeList.getItems().clear();
+                DAO.listGrpAffilGrpParents.clear();
                 System.out.println("clear");
                 try {
                     GroupeList.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));

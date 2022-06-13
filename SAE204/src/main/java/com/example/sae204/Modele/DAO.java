@@ -18,7 +18,7 @@ public class DAO {
         EtudiantAPK.myjdbc.connect("root", "rootroot");//connection a la base
         connexion=1;
     }
-    private static  LinkedList<String> listGrpAffilGrpParents= new LinkedList<>();
+    public static  LinkedList<String> listGrpAffilGrpParents= new LinkedList<>();
 
 
     public static LinkedList<Etudiant> listerEtu() throws SQLException, ClassNotFoundException {
