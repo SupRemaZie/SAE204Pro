@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SecretaireAccController extends Controller implements Initializable {
-
+    public static String Harpege;
     @FXML
     private Label GroupeSelected;
     @FXML
@@ -52,6 +52,12 @@ public class SecretaireAccController extends Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            DAO.mail(Harpege);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
             ChampGroupeParent();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,7 +65,10 @@ public class SecretaireAccController extends Controller implements Initializable
             e.printStackTrace();
         }
     }
+@FXML
+void afficherList(){
 
+}
     void ChampGroupeParent () throws SQLException, ClassNotFoundException {
         GrouParentList.getItems().addAll(DAO.ListGrpParent());
 

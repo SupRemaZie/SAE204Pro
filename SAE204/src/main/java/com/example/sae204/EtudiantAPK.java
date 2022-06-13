@@ -15,7 +15,10 @@ import java.util.LinkedList;
 
 public class EtudiantAPK extends Application {
     public static Stage stage;
-     public static MyJDBC myjdbc = new MyJDBC("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1/absence?serverTimezone=UTC");
+    public static MyJDBC myjdbc = new MyJDBC("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1/absence?serverTimezone=UTC");
+
+
+
     @Override
     public void start(Stage stage) throws IOException, SQLException, ClassNotFoundException {
         this.stage=stage;
