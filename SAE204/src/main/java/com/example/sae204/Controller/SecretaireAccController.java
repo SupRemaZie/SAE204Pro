@@ -51,11 +51,13 @@ public class SecretaireAccController extends Controller implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String mail ="";
         try {
-            DAO.mail(Harpege);
+            mail = DAO.mail(Harpege);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        adressemaillabel.setText(mail);
 
         try {
             ChampGroupeParent();
