@@ -14,6 +14,7 @@ public class DAO {
         EtudiantAPK.myjdbc.connect("root", ""); // connection a la base
         connexion=1;
     }
+    private static  LinkedList<String> listGrpAffilGrpParents= new LinkedList<>();
 
 
     public static LinkedList<Etudiant> listerEtu() throws SQLException, ClassNotFoundException {
@@ -90,15 +91,20 @@ public class DAO {
     }
 
     public static LinkedList<String> ListGrpAffilGrpParent(String Grp_parent) throws SQLException, ClassNotFoundException {
+        String GrpAffilGrpPar = null;
         if (connexion == 0)
             connexion();
-        LinkedList<String> listGrpAffilGrpParents= new LinkedList<String>();
+
         String query = "SELECT COUNT(Nom_groupe) FROM GROUPE WHERE Groupe_parent='"+Grp_parent+"';"; // stockage de la requête
         int nbGrpAffil = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query)); //On prends le nombre de groupe lié au groupe parent
         for(int i = 0; i < nbGrpAffil;i++){
             query="SELECT Nom_groupe FROM groupe WHERE Groupe_parent='"+Grp_parent+"'LIMIT 1 OFFSET "+i+";";
-            String GrpAffilGrpPar = EtudiantAPK.myjdbc.executeReadQuery(query);
+             GrpAffilGrpPar= EtudiantAPK.myjdbc.executeReadQuery(query);
             listGrpAffilGrpParents.add(GrpAffilGrpPar);
+
+            ListGrpAffilGrpParent(GrpAffilGrpPar);
+            
+
         }
         return listGrpAffilGrpParents;
     }
@@ -112,6 +118,7 @@ public class DAO {
             query = "SELECT DISTINCT Groupe_parent FROM groupe LIMIT 1 OFFSET " + i + ";";
             String GrpParent = EtudiantAPK.myjdbc.executeReadQuery(query);
             listGrpParents.add(GrpParent);
+
         }
         return listGrpParents;
     }
