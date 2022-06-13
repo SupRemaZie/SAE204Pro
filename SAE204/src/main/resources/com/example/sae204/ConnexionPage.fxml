@@ -15,11 +15,11 @@
             <Image url="@image/Connexion.png" />
          </image>
       </ImageView>
-      <TextField fx:id="IDTextField" layoutX="364.0" layoutY="252.0" prefHeight="67.5" prefWidth="358.5">
+      <TextField fx:id="IDTextField" layoutX="364.0" layoutY="252.0" prefHeight="67.5" prefWidth="358.5" text="10ETU">
          <font>
             <Font size="30.0" />
          </font></TextField>
-      <TextField fx:id="PasswordTextField" layoutX="364.0" layoutY="406.0" prefHeight="67.5" prefWidth="358.5">
+      <TextField fx:id="PasswordTextField" layoutX="364.0" layoutY="406.0" prefHeight="67.5" prefWidth="358.5" text="Vml597nb">
          <font>
             <Font size="30.0" />
          </font></TextField>
@@ -30,5 +30,9 @@
       <Button fx:id="connexionButton" layoutX="382.0" layoutY="505.0" mnemonicParsing="false" onAction="#onConnexionButtonClick" opacity="0.0" prefHeight="92.0" prefWidth="322.0" style="-fx-background-color: blue;" />
       <Button fx:id="retour" layoutX="8.0" layoutY="18.0" mnemonicParsing="false" onAction="#retour" opacity="0.0" prefHeight="50.0" prefWidth="65.0" />
       <Button fx:id="mdpforget" layoutX="392.0" layoutY="626.0" mnemonicParsing="false" onAction="#onMdpforgetButtonClick" opacity="0.0" prefHeight="50.0" prefWidth="304.0" style="-fx-background-color: blue;" />
+      <Label layoutX="832.0" layoutY="252.0" text="14PER" />
+      <Label layoutX="832.0" layoutY="299.0" text="Ole271az" />
+      <Label layoutX="93.0" layoutY="263.0" text="Hki791bv" />
+      <Label layoutX="93.0" layoutY="231.0" text="10PER" />
    </children>
 </AnchorPane>
