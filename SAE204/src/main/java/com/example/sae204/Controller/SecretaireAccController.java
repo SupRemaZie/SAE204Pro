@@ -111,7 +111,7 @@ void afficherList(){
 
     public void onCreateGroupButtonClick(ActionEvent event) {
         CreerGroupeController.Harpege = Harpege;
-        GoToPage("Creer_groupe.fxml","Créer un groupe");
+        GoToPage("Creergroupe.fxml","Créer un groupe");
     }
 }
 

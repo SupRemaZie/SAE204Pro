@@ -60,7 +60,6 @@ public class CreerGroupeController extends Controller implements Initializable {
         else if(!(GroupeSelected.getText().equals("") && ParentSelected.getText().equals("")&& NomTextField.getText().equals(""))){
             erreur.setText("");
             System.out.println(GroupeSelected);
-
         }
         else {
             erreur.setText("Nom du groupe ou groupe vide");
@@ -72,6 +71,8 @@ public class CreerGroupeController extends Controller implements Initializable {
     }
 
     public void onAjouterEtudiantButtonClick(ActionEvent event) {
+        AjouterEtuController.Harpege = Harpege;
+        GoToPage("Ajouteretu.fxml","Ajouter les étudiants au groupe");
     }
 
     @Override
