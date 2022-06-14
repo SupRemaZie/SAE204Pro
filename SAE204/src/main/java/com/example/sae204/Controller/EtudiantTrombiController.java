@@ -1,6 +1,7 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.Groupe;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class EtudiantTrombiController extends Controller implements Initializable{
@@ -178,12 +180,12 @@ public class EtudiantTrombiController extends Controller implements Initializabl
     ComboBox<String>listGroupe;
     @FXML
     ComboBox<String>listGroupeEnfant;
-
-
     @FXML
     private Label adressemaillabel;
 
-    public EtudiantTrombiController() throws MalformedURLException{
+    private LinkedList<Groupe> listGroup=DAO.listerGrp();
+
+    public EtudiantTrombiController() throws MalformedURLException, SQLException, ClassNotFoundException {
     }
 
     @FXML
@@ -210,9 +212,18 @@ public class EtudiantTrombiController extends Controller implements Initializabl
         try {
             mail = DAO.mail(num_etu);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         adressemaillabel.setText(mail);
+
+        try {
+            ChampGroupeParent();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
     }
     public void cacherPhoto(int n){
@@ -340,7 +351,6 @@ public class EtudiantTrombiController extends Controller implements Initializabl
 
     }
 
-
     void ChampGroupeParent () throws SQLException, ClassNotFoundException {
         listGroupe.getItems().addAll(DAO.ListGrpParent());
 
@@ -348,6 +358,8 @@ public class EtudiantTrombiController extends Controller implements Initializabl
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
+
+                //--> mettre ici la fonction pour renvoyer les étudiants du groupe
 
                 listGroupeEnfant.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
@@ -368,5 +380,14 @@ public class EtudiantTrombiController extends Controller implements Initializabl
                 });
             }
         });
+    }
+    public void afficherPhoto(){
+        String leGroupe;
+        if(CurrentGroupe.equals(null)){
+            leGroupe=CurrentGroupeParent;
+        }
+        else{
+            leGroupe=CurrentGroupe;
+        }
     }
 }

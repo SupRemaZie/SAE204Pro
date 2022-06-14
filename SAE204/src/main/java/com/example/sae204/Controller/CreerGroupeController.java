@@ -105,7 +105,6 @@ public class CreerGroupeController extends Controller implements Initializable {
 
                 try {
                     listGroupeEnfant.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
-                    listGroupeEnfant.getItems().add("VIDE");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {

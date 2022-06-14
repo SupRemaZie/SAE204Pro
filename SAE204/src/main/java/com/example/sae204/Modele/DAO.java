@@ -18,7 +18,6 @@ public class DAO {
     }
     public static  LinkedList<String> listGrpAffilGrpParents= new LinkedList<>();
 
-
     public static LinkedList<Etudiant> listerEtu() throws SQLException, ClassNotFoundException {
         if (connexion ==0)
             connexion();
@@ -66,6 +65,25 @@ public class DAO {
             listEtu.add(etu);
         }
         return listEtu;
+    }
+
+    public static  LinkedList<Etudiant> listerAppEtu(String nom_groupe) throws SQLException, ClassNotFoundException {
+        LinkedList<Etudiant> listAppEtu = new LinkedList<Etudiant>();
+        String num_etu;
+        //String groupe="",groupetemp;
+        String query = "select count(appartenance.num_etu) from groupe join appartenance on appartenance.id_groupe=groupe.Id_groupe join etudiant on etudiant.Num_etu=appartenance.num_etu where appartenance.id_groupe='" + nom_groupe + "' group by appartenance.id_groupe;";
+        int nbEtu = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        for (int i = 0; i < nbEtu; i++) {
+            query = "select appartenance.num_etu from groupe join appartenance on appartenance.id_groupe=groupe.Id_groupe join etudiant on etudiant.Num_etu=appartenance.num_etu where groupe.Id_groupe='" + nom_groupe + "' LIMIT 1 OFFSET " + i + ";";
+            num_etu = EtudiantAPK.myjdbc.executeReadQuery(query);
+            LinkedList<Etudiant> listEtu=listerEtu();
+            for(Etudiant etu : listEtu){
+                if(etu.getNum_etu()==num_etu){
+                    listAppEtu.add(etu);
+                }
+            }
+        }
+        return listAppEtu;
     }
     public static LinkedList<Groupe> listerGrp() throws SQLException, ClassNotFoundException {
         if (connexion ==0)
@@ -219,7 +237,7 @@ public class DAO {
         return amenagement;
     }
 
-    public static String getGroupe(String num_etu) throws SQLException {
+    public static String getGroupe(String num_etu) throws SQLException { //liste les groupes lié à un étudiant
         String groupe="",groupetemp;
         String query = "select count(Nom_groupe) from groupe join appartenance on appartenance.id_groupe=groupe.Id_groupe join etudiant on etudiant.Num_etu=appartenance.num_etu where etudiant.Num_etu='"+num_etu+"' group by etudiant.Num_etu;";
         int nbgroupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
