@@ -7,6 +7,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
@@ -20,15 +21,14 @@ public class AjouterEtuController extends Controller implements Initializable {
     public static String CurrentGroupeParent1;
     public static String CurrentGroupe1;
     public static String NouveauGroupe1;
+    @FXML
+    public static Button retour;
 
     @FXML
     private Label adressemaillabel;
 
     @FXML
     private Label CurrentGroupeParent;
-
-    @FXML
-    private Label CurrentGroupe;
 
     @FXML
     private Label NouveauGroupe;
@@ -56,7 +56,6 @@ public class AjouterEtuController extends Controller implements Initializable {
 
         adressemaillabel.setText(mail);
         CurrentGroupeParent.setText(CurrentGroupeParent1);
-        CurrentGroupe.setText(CurrentGroupe1);
         NouveauGroupe.setText(NouveauGroupe1);
 
     }
@@ -69,5 +68,6 @@ public class AjouterEtuController extends Controller implements Initializable {
     DAO.listGrpAffilGrpParents.clear();
     listGroupeEnfant.getItems().clear();
     listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent1));
+    listGroupeEnfant.getItems().add("AUCUN");
     }
 }

@@ -33,6 +33,7 @@ public class SecretaireAccController extends Controller implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         String mail ="";
         try {
             mail = DAO.mail(Harpege);

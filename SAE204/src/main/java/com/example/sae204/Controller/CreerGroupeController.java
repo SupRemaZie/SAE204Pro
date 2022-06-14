@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CreerGroupeController extends Controller implements Initializable {
-    private static String CurrentGroupeParent;
+    public static String CurrentGroupeParent;
     private static String CurrentGroupe;
     public static String Harpege;
 
@@ -23,7 +23,7 @@ public class CreerGroupeController extends Controller implements Initializable {
 
 
     @FXML
-    private TextField NomTextField ;
+    private  TextField NomTextField ;
 
     public static String groupeParent;
 
@@ -39,6 +39,10 @@ public class CreerGroupeController extends Controller implements Initializable {
     private ComboBox<String> listGroupeEnfant;
 
     public void retour(ActionEvent event) {
+
+        listGroupe.getSelectionModel().select("AUCUN");
+        //AjouterEtuController.NouveauGroupe1.
+
         GoToPage("SecretaireAcc.fxml", "Accueil");
     }
 
@@ -46,7 +50,7 @@ public class CreerGroupeController extends Controller implements Initializable {
     public void onValiderButtonClick(ActionEvent event) {
 
         if(verif()==1){
-            erreur.setText("Nom textfield ou groupe non selectionné");
+            erreur.setText("Veuillez entrez un Nom de groupe ou un groupe parent");
         }
 
         else if (verif() == 0) {
@@ -86,22 +90,29 @@ public class CreerGroupeController extends Controller implements Initializable {
         else if (verif() == 0) {
             erreur.setText("");
             groupeParent = String.valueOf(listGroupe.getValue());
+            AjouterEtuController.CurrentGroupeParent1 = groupeParent;
+            AjouterEtuController.NouveauGroupe1 = NomTextField.getText();
+            AjouterEtuController.Harpege = Harpege;
+            GoToPage("AjouterEtu.fxml", "Ajouter les étudiants au nouveau groupe");
         }
         else if (verif()==2){
             erreur.setText("");
             groupeParent = String.valueOf(listGroupeEnfant.getValue());
-        }
-        if (verif()==1 || verif()==2){
             AjouterEtuController.CurrentGroupeParent1 = groupeParent;
             AjouterEtuController.NouveauGroupe1 = NomTextField.getText();
             AjouterEtuController.Harpege = Harpege;
             GoToPage("AjouterEtu.fxml", "Ajouter les étudiants au nouveau groupe");
         }
 
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        NomTextField.setText(AjouterEtuController.NouveauGroupe1); // sauvegarde du nom
+        listGroupe.getSelectionModel().select(CurrentGroupeParent); // sauvegarde du groupe
+
+
         String mail = "";
         try {
             mail = DAO.mail(Harpege);
@@ -109,7 +120,16 @@ public class CreerGroupeController extends Controller implements Initializable {
             throw new RuntimeException(e);
         }
         adressemaillabel.setText(mail);
-
+        listGroupeEnfant.getItems().clear();
+        DAO.listGrpAffilGrpParents.clear();
+        try {
+            listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        listGroupeEnfant.getItems().add("AUCUN");
         try {
             ChampGroupeParent();
         } catch (SQLException e) {
@@ -126,19 +146,26 @@ public class CreerGroupeController extends Controller implements Initializable {
         listGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
+
+                    CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
+                    System.out.println("Parent "+CurrentGroupeParent);
+
+
+
                 listGroupeEnfant.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
 
                 try {
+                    System.out.println("coucou");
                     listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
-
+                    System.out.println("cocucou");
 
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
+                System.out.println("bonjour");
                 listGroupeEnfant.getItems().add("AUCUN");
 
 
