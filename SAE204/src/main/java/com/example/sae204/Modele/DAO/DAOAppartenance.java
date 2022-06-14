@@ -2,12 +2,11 @@ package com.example.sae204.Modele.DAO;
 
 import com.example.sae204.EtudiantAPK;
 import com.example.sae204.Modele.Appartenance;
-import com.example.sae204.Modele.Groupe;
 
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class AppartenanceDAO {
+public class DAOAppartenance {
 
     public static LinkedList<Appartenance> listerAppartenance() throws SQLException, ClassNotFoundException {
         DAO.connexion();

@@ -363,9 +363,8 @@ public class EtudiantTrombiController extends Controller implements Initializabl
 
                 System.out.println();
                 try {
-                    LinkedList<Etudiant> listEtu = DAO.listerAppEtu(CurrentGroupeParent);
+                    LinkedList<Etudiant> listEtu = chercherEtuGroupePromo(CurrentGroupeParent);
                     for (Etudiant etu : listEtu) {
-                        System.out.println("oui");
                         System.out.println(etu.getNom_etu());
                     }
 
