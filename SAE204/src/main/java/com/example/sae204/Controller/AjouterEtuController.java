@@ -1,14 +1,19 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO.DAO;
+import com.example.sae204.Modele.DAO.DAOGroupe;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
 
 public class AjouterEtuController extends Controller implements Initializable {
     public static String Harpege;
@@ -29,12 +34,23 @@ public class AjouterEtuController extends Controller implements Initializable {
     private Label NouveauGroupe;
 
 
+    @FXML
+    private ComboBox<String> listGroupeEnfant;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String mail = "";
         try {
             mail = DAO.mail(Harpege);
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            ChampGroupeParent();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -48,3 +64,24 @@ public class AjouterEtuController extends Controller implements Initializable {
         GoToPage("Creergroupe.fxml","Créer un groupe");
     }
 }
+
+    void ChampGroupeParent() throws SQLException, ClassNotFoundException {
+        listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent1));
+
+
+
+                try {
+                    listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
+
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                listGroupeEnfant.getItems().add("AUCUN");
+
+
+            }
+        });
+    }
