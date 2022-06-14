@@ -1,6 +1,7 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.Etudiant;
 import com.example.sae204.Modele.Groupe;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -357,9 +358,21 @@ public class EtudiantTrombiController extends Controller implements Initializabl
         listGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
+                    CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
 
-                //--> mettre ici la fonction pour renvoyer les étudiants du groupe
+                System.out.println();
+                try {
+                    LinkedList<Etudiant> listEtu = DAO.listerAppEtu(CurrentGroupeParent);
+                    for (Etudiant etu : listEtu) {
+                        System.out.println("oui");
+                        System.out.println(etu.getNom_etu());
+                    }
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
 
                 listGroupeEnfant.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
