@@ -48,26 +48,31 @@ public class CreerGroupeController extends Controller implements Initializable {
         if(verif()==1){
             erreur.setText("Nom textfield ou groupe non selectionné");
         }
-        else if(verif()==0){
-            groupeParent=String.valueOf(listGroupe.getSelectionModel().getSelectedItem());
-            System.out.println(groupeParent);
-        }
+
+        else if (verif() == 0) {
+                erreur.setText("");
+                groupeParent = String.valueOf(listGroupe.getValue());
+                System.out.println(groupeParent);
+            }
         else{
-            groupeParent=String.valueOf(listGroupeEnfant.getSelectionModel().getSelectedItem());
+            erreur.setText("");
+            groupeParent=String.valueOf(listGroupeEnfant.getValue());
             System.out.println(groupeParent);
         }
+
     }
-    public  int verif(){
-        if(!(NomTextField.getText().equals(""))&&!(listGroupe.getSelectionModel().getSelectedItem().equals("")|| listGroupe.getItems().equals("AUCUN"))&&(listGroupeEnfant.getItems().equals("")|| listGroupeEnfant.getItems().equals("AUCUN"))){
-            System.out.println("Je recupère à gauche");
+    public  int verif(){ //
+
+        if(!(NomTextField.getText().equals(""))&&!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
+
             return 0;
 
         }
-        else if(!(NomTextField.getText().equals(""))&&!(listGroupe.getItems().equals("")|| listGroupe.getItems().equals("AUCUN"))&&!(listGroupeEnfant.getItems().equals("")|| listGroupeEnfant.getItems().equals("AUCUN"))){
-            System.out.println("je recupère a droite ");
+        else if(!(NomTextField.getText().equals(""))&&!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&!(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
+
             return 2;
         }
-        System.out.println("je print une erreur ");
+
         return 1;
 
     }

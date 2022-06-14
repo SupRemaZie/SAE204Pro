@@ -34,7 +34,7 @@ public class DAOGroupe extends DAO {
     }
     public static LinkedList<String> ListGrpAffilGrpParent(String Grp_parent) throws SQLException, ClassNotFoundException {
         String GrpAffilGrpPar = null;
-        System.out.println(listGrpAffilGrpParents);
+
         if (connexion == 0)
             connexion();
         String query = "SELECT COUNT(Nom_groupe) FROM GROUPE WHERE Groupe_parent='"+Grp_parent+"';"; // stockage de la requête
