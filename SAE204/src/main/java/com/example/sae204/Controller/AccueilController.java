@@ -21,24 +21,15 @@ public class AccueilController {
 
     @FXML
     void bouton_etu(ActionEvent event) throws SQLException, ClassNotFoundException {
-        if(bouton_etu.isFocused()){
-            etatButton="E";
-            System.out.println(etatButton);
-        }
+        etatButton="E";
         ChoixRoleController.choixRole="E";
         Controller.GoToPage("ConnexionPage.fxml","Page de Connexion");
-        for(Groupe grp : DAOGroupe.listerGrp()){
-            System.out.println(grp.toString());;
-        }
 
     }
 
     @FXML
     void bouton_per(ActionEvent event) {
-        if(bouton_per.isFocused()){
-            etatButton="P";
-            System.out.println(etatButton);
-        }
+        etatButton="P";
         Controller.GoToPage("ChoixRole.fxml","Choix du rôle");
     }
 }

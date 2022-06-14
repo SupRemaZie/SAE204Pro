@@ -25,6 +25,14 @@ public class DAO {
 
 
     public static  LinkedList<Etudiant> listerAppEtu(String nom_groupe) throws SQLException, ClassNotFoundException {
+
+
+
+
+
+
+
+
         LinkedList<Etudiant> listAppEtu = new LinkedList<Etudiant>();
         String num_etu=" ";
         String query = "select count(Niveau) from promotion;";
