@@ -1,7 +1,7 @@
 package com.example.sae204.Controller;
 
 
-import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.DAO.DAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

@@ -1,6 +1,7 @@
 package com.example.sae204.Controller;
 
-import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.DAO.DAO;
+import com.example.sae204.Modele.DAO.DAOGroupe;
 import com.example.sae204.Modele.Etudiant;
 import com.example.sae204.Modele.Groupe;
 import javafx.beans.value.ChangeListener;
@@ -184,7 +185,7 @@ public class EtudiantTrombiController extends Controller implements Initializabl
     @FXML
     private Label adressemaillabel;
 
-    private LinkedList<Groupe> listGroup=DAO.listerGrp();
+    private LinkedList<Groupe> listGroup= DAOGroupe.listerGrp();
 
     public EtudiantTrombiController() throws MalformedURLException, SQLException, ClassNotFoundException {
     }
@@ -353,7 +354,7 @@ public class EtudiantTrombiController extends Controller implements Initializabl
     }
 
     void ChampGroupeParent () throws SQLException, ClassNotFoundException {
-        listGroupe.getItems().addAll(DAO.ListGrpParent());
+        listGroupe.getItems().addAll(DAOGroupe.ListGrpParent());
 
         listGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -378,7 +379,7 @@ public class EtudiantTrombiController extends Controller implements Initializabl
                 DAO.listGrpAffilGrpParents.clear();
 
                 try {
-                    listGroupeEnfant.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
+                    listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
                     listGroupeEnfant.getItems().add("VIDE");
                 } catch (SQLException e) {
                     e.printStackTrace();

@@ -10,4 +10,6 @@ module com.example.sae204 {
     opens com.example.sae204.Controller to javafx.fxml;
     exports com.example.sae204.Modele;
     opens com.example.sae204.Modele to javafx.fxml;
+    exports com.example.sae204.Modele.DAO;
+    opens com.example.sae204.Modele.DAO to javafx.fxml;
 }

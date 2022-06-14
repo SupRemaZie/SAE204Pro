@@ -1,13 +1,8 @@
 package com.example.sae204.Controller;
 
-import com.example.sae204.EtudiantAPK;
-import com.example.sae204.Modele.DAO;
-import com.example.sae204.Modele.Etudiant;
-import com.example.sae204.Modele.Groupe;
-import com.example.sae204.Modele.Promotion;
+import com.example.sae204.Modele.DAO.DAO;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,8 +10,6 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class SecretaireAccController extends Controller implements Initializable {

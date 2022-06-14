@@ -1,8 +1,6 @@
 package com.example.sae204;
 
 import com.example.sae204.Controller.MyJDBC;
-import com.example.sae204.Modele.DAO;
-import com.example.sae204.Modele.Etudiant;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,8 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class EtudiantAPK extends Application {
     public static Stage stage;

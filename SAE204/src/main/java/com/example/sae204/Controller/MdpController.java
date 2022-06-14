@@ -1,6 +1,8 @@
 package com.example.sae204.Controller;
 
-import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.DAO.DAO;
+import com.example.sae204.Modele.DAO.DAOEtudiant;
+import com.example.sae204.Modele.DAO.DAOPersonnel;
 import com.example.sae204.Modele.Etudiant;
 import com.example.sae204.Modele.Personnel;
 import javafx.fxml.FXML;
@@ -37,7 +39,7 @@ public class MdpController extends Controller{
         }
 
         else if (AccueilController.etatButton=="E"){
-            LinkedList<Etudiant> listEtu=DAO.listerEtu();
+            LinkedList<Etudiant> listEtu= DAOEtudiant.listerEtu();
             for (Etudiant etu : listEtu) {
                 if(etu.getNum_etu().equals(EnterId) && etu.getAdresse_mail_etu().equals(EnterMail))
                     Controller.GoToPage("MotDePasseOubliee2.fxml","Confirmation de l'envoi");
@@ -45,7 +47,7 @@ public class MdpController extends Controller{
             erreur.setText("Identifiant ou mot de passe invalide");
         }
         else if (AccueilController.etatButton=="P"){
-            LinkedList<Personnel> listPer=DAO.listerPer();
+            LinkedList<Personnel> listPer= DAOPersonnel.listerPer();
             for (Personnel per : listPer) {
                 if(per.getHarpege().equals(Enterid.getText()) && per.getAdresse_mail().equals(Entermail.getText()))
                     Controller.GoToPage("MotDePasseOubliee2.fxml","Confirmation de l'envoi");

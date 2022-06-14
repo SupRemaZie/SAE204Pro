@@ -1,6 +1,9 @@
 package com.example.sae204.Controller;
 
-import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.DAO.DAO;
+import com.example.sae204.Modele.DAO.DAOEtudiant;
+import com.example.sae204.Modele.DAO.DAOGroupe;
+import com.example.sae204.Modele.DAO.DAOPromo;
 import com.example.sae204.Modele.Etudiant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +15,6 @@ import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -60,7 +61,7 @@ public class  EtudiantsinfoController extends Controller implements Initializabl
         }
         adressemaillabel.setText(mail);
         try {
-            listEtu=DAO.listerEtu();
+            listEtu=DAOEtudiant.listerEtu();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -72,17 +73,17 @@ public class  EtudiantsinfoController extends Controller implements Initializabl
                 datedenaissance.setText(etu.getDate_etu());
                 amenagement.setText(etu.getDesc_etu());
                 try {
-                    promotion.setText(DAO.getNomPromo(num_etu));
+                    promotion.setText(DAOPromo.getNomPromo(num_etu));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 try {
-                    statut.setText(DAO.getAmenagement(num_etu));
+                    statut.setText(DAOEtudiant.getAmenagement(num_etu));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 try {
-                    groupe.setText(DAO.getGroupe(num_etu));
+                    groupe.setText(DAOGroupe.getGroupe(num_etu));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -90,7 +91,7 @@ public class  EtudiantsinfoController extends Controller implements Initializabl
                 prenom.setText(etu.getPrenom_etu());
                 String recup = null;
                 try {
-                    recup = DAO.getPhoto(num_etu);
+                    recup = DAOEtudiant.getPhoto(num_etu);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

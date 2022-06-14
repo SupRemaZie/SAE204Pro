@@ -1,23 +1,19 @@
 package com.example.sae204.Controller;
 
-import com.example.sae204.EtudiantAPK;
-import com.example.sae204.Modele.DAO;
+import com.example.sae204.Modele.DAO.DAO;
+import com.example.sae204.Modele.DAO.DAOEtudiant;
+import com.example.sae204.Modele.DAO.DAOPersonnel;
 import com.example.sae204.Modele.Etudiant;
 import com.example.sae204.Modele.Personnel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
-
-import javafx.scene.control.Button;
 
 public class ConnexionController extends Controller{
     @FXML
@@ -40,8 +36,8 @@ public class ConnexionController extends Controller{
         String EnterId=IDTextField.getText();// stockage de l'id entré
         String EnterPwd=PasswordTextField.getText(); // stockage du password entré
         String result1="", result2="";
-        LinkedList<Etudiant> listEtu=DAO.listerEtu();
-        LinkedList<Personnel> listPer=DAO.listerPer();
+        LinkedList<Etudiant> listEtu= DAOEtudiant.listerEtu();
+        LinkedList<Personnel> listPer= DAOPersonnel.listerPer();
 
         if(EnterId.equals("") && EnterPwd.equals("")) {
             loginMessageLabel.setText("Veuillez entrez un identifiant et mot de passe "); // si les 2 sont vides alors msg erreur
