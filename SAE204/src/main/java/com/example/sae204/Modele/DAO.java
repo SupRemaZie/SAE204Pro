@@ -7,6 +7,7 @@ import javafx.collections.ObservableArray;
 
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class DAO {
     private static int connexion =0;
@@ -69,10 +70,40 @@ public class DAO {
 
     public static  LinkedList<Etudiant> listerAppEtu(String nom_groupe) throws SQLException, ClassNotFoundException {
         LinkedList<Etudiant> listAppEtu = new LinkedList<Etudiant>();
-        String num_etu;
-        //String groupe="",groupetemp;
-        String query = "select count(appartenance.num_etu) from groupe join appartenance on appartenance.id_groupe=groupe.Id_groupe join etudiant on etudiant.Num_etu=appartenance.num_etu where appartenance.id_groupe='" + nom_groupe + "' group by appartenance.id_groupe;";
+        String num_etu=" ";
+        String query = "select count(Niveau) from promotion;";
+        int nbniveau = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        for (int i = 0; i < nbniveau; i++){ //on parcours toutes les promotions existantes
+            query = "SELECT Niveau FROM promotion LIMIT 1 OFFSET "+i+";";
+            String nom_promo = EtudiantAPK.myjdbc.executeReadQuery(query);
+
+            //Si le groupe choisi est une promotion
+            if (Objects.equals(nom_groupe, nom_promo)){
+                query ="select count(num_etu) from etudiant join promotion on promotion.Id_promo=etudiant.Id_promo where Niveau = '"+nom_groupe+"';";
+                int nbEtu = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+                for (int j = 0; j < nbEtu; j++) { //On parcours tous les étudiants appartenant à la promotion
+                    query ="select num_etu from promotion join etudiant on etudiant.Id_promo=promotion.Id_promo where Niveau='"+nom_groupe+"' LIMIT 1 OFFSET "+j+";";
+                    num_etu = EtudiantAPK.myjdbc.executeReadQuery(query);
+                    LinkedList<Etudiant> listEtu=listerEtu();
+                    System.out.println("liste etu "+ listerEtu());
+                    System.out.println("num etu "+ num_etu);
+                    for(Etudiant etu : listEtu) {
+                        if (etu.getNum_etu().equals(num_etu)) {
+                            listAppEtu.add(etu);
+                            break;
+                        }
+                    }
+                }return listAppEtu;
+            }
+
+        }//else(){}
+
+        //requete groupe
+        /*String query = "select count(appartenance.num_etu) from groupe join appartenance on appartenance.id_groupe=groupe.Id_groupe join etudiant on etudiant.Num_etu=appartenance.num_etu where groupe.Nom_groupe='"+nom_groupe+"';";
         int nbEtu = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+
+
+
         for (int i = 0; i < nbEtu; i++) {
             query = "select appartenance.num_etu from groupe join appartenance on appartenance.id_groupe=groupe.Id_groupe join etudiant on etudiant.Num_etu=appartenance.num_etu where groupe.Id_groupe='" + nom_groupe + "' LIMIT 1 OFFSET " + i + ";";
             num_etu = EtudiantAPK.myjdbc.executeReadQuery(query);
@@ -83,6 +114,8 @@ public class DAO {
                 }
             }
         }
+
+         */
         return listAppEtu;
     }
     public static LinkedList<Groupe> listerGrp() throws SQLException, ClassNotFoundException {
