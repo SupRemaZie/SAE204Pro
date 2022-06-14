@@ -21,12 +21,9 @@ import java.util.ResourceBundle;
 
 public class SecretaireAccController extends Controller implements Initializable {
     public static String Harpege;
-    @FXML
-    private Label GroupeSelected;
+
     private String CurrentGroupeParent;
-    private String CurrentGroupe;
-    @FXML
-    private ListView<String> GroupeList;
+
     @FXML
     private Label adressemaillabel;
     @FXML
@@ -66,31 +63,20 @@ public class SecretaireAccController extends Controller implements Initializable
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
-
                 listGroupeEnfant.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
 
                 try {
                     listGroupeEnfant.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
-                    listGroupeEnfant.getItems().add("VIDE");
+
+
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                listGroupeEnfant.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-                    @Override
-                    public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                        CurrentGroupe = listGroupeEnfant.getSelectionModel().getSelectedItem();
-                        if(CurrentGroupe.equals("VIDE")){
-                            GroupeSelected.setText("");
-                        }
-                        else{
-                            GroupeSelected.setText(CurrentGroupe);
-                        }
+                listGroupeEnfant.getItems().add("AUCUN");
 
-                    }
-                });
             }
         });
     }
