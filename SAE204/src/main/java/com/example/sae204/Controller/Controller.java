@@ -2,6 +2,7 @@ package com.example.sae204.Controller;
 
 import com.example.sae204.EtudiantAPK;
 
+import com.example.sae204.Modele.Etudiant;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 
 public class Controller {
@@ -30,6 +32,7 @@ public class Controller {
         EtudiantAPK.stage.setScene(scene);
         EtudiantAPK.stage.show();
     }
+    //public LinkedList<Etudiant> chercherEtuDansPromo
 
 
 }
