@@ -68,6 +68,7 @@ public class ConnexionController extends Controller{
 
         if(EnterPwd.equals(result1) && !EnterId.equals("") && !EnterPwd.equals("")){ // verife si le mdp dans la base correspond au mdp entré
             EtudiantController.num_etu = EnterId;
+            EtudiantController.etudiantActuel=EtudiantController.trouverEtu(EnterId);
             GoToPage("EtudiantView.fxml", "Accueil etudiant");
         }
         else if(EnterPwd.equals(result2) && !EnterId.equals("") && !EnterPwd.equals("")){

@@ -196,10 +196,6 @@ public class EtudiantTrombiController extends Controller implements Initializabl
     public void retour(ActionEvent event){
         GoToPage("EtudiantView.fxml", "Accueil etudiant");
     }
-    @FXML
-    public void rechercherEtu(ActionEvent event){
-
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String mail ="";
@@ -217,7 +213,14 @@ public class EtudiantTrombiController extends Controller implements Initializabl
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        cacherPhoto(24);
+        try {
+            listEtu=Controller.chercherEtuGroupePromo(EtudiantController.trouverPromo(EtudiantController.etudiantActuel).getNiveau());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        afficherPhoto(listEtu);
 
 
     }

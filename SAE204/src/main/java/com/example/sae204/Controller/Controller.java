@@ -24,6 +24,9 @@ public class Controller {
 
 
 
+    public void rechercherEtu(){
+
+    }
     static void GoToPage(String fichier_fxml, String nom) {
         FXMLLoader fxml = new FXMLLoader(EtudiantAPK.class.getResource(fichier_fxml));
         Scene scene = null;
@@ -37,7 +40,7 @@ public class Controller {
         EtudiantAPK.stage.setScene(scene);
         EtudiantAPK.stage.show();
     }
-    public LinkedList<Etudiant> chercherEtuDansPromo(Promotion promo) throws SQLException, ClassNotFoundException {
+    public static LinkedList<Etudiant> chercherEtuDansPromo(Promotion promo) throws SQLException, ClassNotFoundException {
         LinkedList<Etudiant> listEtuPromo=new LinkedList<>();
         LinkedList<Etudiant> listEtu= DAOEtudiant.listerEtu();
         for(Etudiant etu : listEtu){
@@ -47,7 +50,7 @@ public class Controller {
         }
         return listEtuPromo;
     }
-    public LinkedList<Etudiant> chercherEtuDansGroupe(Groupe groupe) throws SQLException, ClassNotFoundException {
+    public static LinkedList<Etudiant> chercherEtuDansGroupe(Groupe groupe) throws SQLException, ClassNotFoundException {
         LinkedList<Etudiant> listEtuGroupe=new LinkedList<>();
         LinkedList<Etudiant> listEtu= DAOEtudiant.listerEtu();
         LinkedList<Appartenance> listApp= DAOAppartenance.listerAppartenance();
@@ -66,7 +69,7 @@ public class Controller {
         return listEtuGroupe;
     }
 
-    public LinkedList<Etudiant> chercherEtuGroupePromo(String nomGroupe) throws SQLException, ClassNotFoundException {
+    public static LinkedList<Etudiant> chercherEtuGroupePromo(String nomGroupe) throws SQLException, ClassNotFoundException {
         LinkedList<Promotion> listPromo=DAOPromo.listerPromo();
         LinkedList<Etudiant> listEtuGroupePromo;
         for(Promotion promo : listPromo){
