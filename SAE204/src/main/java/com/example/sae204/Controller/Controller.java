@@ -1,18 +1,21 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.EtudiantAPK;
-import com.example.sae204.Modele.DAO;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
+import javafx.scene.control.ComboBox;
+
+import javafx.scene.control.TextField;
+
 
 
 import java.io.IOException;
-import java.sql.SQLException;
+
 
 public class Controller {
+
+
 
     static void GoToPage(String fichier_fxml, String nom) {
         FXMLLoader fxml = new FXMLLoader(EtudiantAPK.class.getResource(fichier_fxml));
@@ -27,5 +30,6 @@ public class Controller {
         EtudiantAPK.stage.setScene(scene);
         EtudiantAPK.stage.show();
     }
+
 
 }

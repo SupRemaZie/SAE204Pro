@@ -15,18 +15,16 @@ import java.util.ResourceBundle;
 public class CreerGroupeController extends Controller implements Initializable {
     private static String CurrentGroupeParent;
     private static String CurrentGroupe;
-    public  static String Harpege;
+    public static String Harpege;
 
     @FXML
     private Button AjouterEtudiantButton;
-    @FXML
-    private Label GroupeSelected;
+
 
     @FXML
-    private TextField NomTextField;
+    private TextField NomTextField ;
 
-    @FXML
-    private Label ParentSelected;
+    public static String groupeParent;
 
     @FXML
     private Button ValiderButton;
@@ -39,42 +37,52 @@ public class CreerGroupeController extends Controller implements Initializable {
     @FXML
     private ComboBox<String> listGroupeEnfant;
 
-    public void retour(ActionEvent event){
+    public void retour(ActionEvent event) {
         GoToPage("SecretaireAcc.fxml", "Accueil");
     }
 
 
     public void onValiderButtonClick(ActionEvent event) {
 
-        if (GroupeSelected.getText().equals("") && !NomTextField.getText().equals("")){
-            erreur.setText("");
-            System.out.println(ParentSelected.toString());
+        if(verif()==1){
+            erreur.setText("Nom textfield ou groupe non selectionné");
+        }
+        else if(verif()==0){
+            groupeParent=String.valueOf(listGroupe.getSelectionModel().getSelectedItem());
+            System.out.println(groupeParent);
+        }
+        else{
+            groupeParent=String.valueOf(listGroupeEnfant.getSelectionModel().getSelectedItem());
+            System.out.println(groupeParent);
+        }
+    }
+    public  int verif(){
+        if(!(NomTextField.getText().equals(""))&&!(listGroupe.getSelectionModel().getSelectedItem().equals("")|| listGroupe.getItems().equals("AUCUN"))&&(listGroupeEnfant.getItems().equals("")|| listGroupeEnfant.getItems().equals("AUCUN"))){
+            System.out.println("Je recupère à gauche");
+            return 0;
 
         }
-        else if(!(GroupeSelected.getText().equals("") && ParentSelected.getText().equals("")&& NomTextField.getText().equals(""))){
-            erreur.setText("");
-            System.out.println(GroupeSelected);
+        else if(!(NomTextField.getText().equals(""))&&!(listGroupe.getItems().equals("")|| listGroupe.getItems().equals("AUCUN"))&&!(listGroupeEnfant.getItems().equals("")|| listGroupeEnfant.getItems().equals("AUCUN"))){
+            System.out.println("je recupère a droite ");
+            return 2;
         }
-        else {
-            erreur.setText("Nom du groupe ou groupe vide");
-        }
-
-
-
+        System.out.println("je print une erreur ");
+        return 1;
 
     }
 
     public void onAjouterEtudiantButtonClick(ActionEvent event) {
-        AjouterEtuController.CurrentGroupe1 = CurrentGroupe;
+
+        AjouterEtuController.CurrentGroupe1 = listGroupeEnfant.getSelectionModel().getSelectedItem();
         AjouterEtuController.CurrentGroupeParent1 = CurrentGroupeParent;
         AjouterEtuController.NouveauGroupe1 = NomTextField.getText();
         AjouterEtuController.Harpege = Harpege;
-        GoToPage("AjouterEtu.fxml","Ajouter les étudiants au nouveau groupe");
+        GoToPage("AjouterEtu.fxml", "Ajouter les étudiants au nouveau groupe");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String mail ="";
+        String mail = "";
         try {
             mail = DAO.mail(Harpege);
         } catch (SQLException e) {
@@ -92,30 +100,28 @@ public class CreerGroupeController extends Controller implements Initializable {
 
     }
 
-    void ChampGroupeParent () throws SQLException, ClassNotFoundException {
+    void ChampGroupeParent() throws SQLException, ClassNotFoundException {
         listGroupe.getItems().addAll(DAO.ListGrpParent());
 
         listGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
-
                 listGroupeEnfant.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
 
                 try {
                     listGroupeEnfant.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
+
+
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                listGroupeEnfant.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-                    @Override
-                    public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                        CurrentGroupe = listGroupeEnfant.getSelectionModel().getSelectedItem();
-                    }
-                });
+                listGroupeEnfant.getItems().add("AUCUN");
+
+
             }
         });
     }
