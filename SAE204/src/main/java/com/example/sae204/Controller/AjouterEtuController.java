@@ -12,9 +12,22 @@ import java.util.ResourceBundle;
 
 public class AjouterEtuController extends Controller implements Initializable {
     public static String Harpege;
+    public static String CurrentGroupeParent1;
+    public static String CurrentGroupe1;
+    public static String NouveauGroupe1;
 
     @FXML
     private Label adressemaillabel;
+
+    @FXML
+    private Label CurrentGroupeParent;
+
+    @FXML
+    private Label CurrentGroupe;
+
+    @FXML
+    private Label NouveauGroupe;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -25,6 +38,10 @@ public class AjouterEtuController extends Controller implements Initializable {
             e.printStackTrace();
         }
         adressemaillabel.setText(mail);
+        CurrentGroupeParent.setText(CurrentGroupeParent1);
+        CurrentGroupe.setText(CurrentGroupe1);
+        NouveauGroupe.setText(NouveauGroupe1);
+
     }
     public void retour(ActionEvent event){
         GoToPage("Creergroupe.fxml","Créer un groupe");

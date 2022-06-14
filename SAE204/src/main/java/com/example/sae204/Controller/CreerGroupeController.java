@@ -65,6 +65,9 @@ public class CreerGroupeController extends Controller implements Initializable {
     }
 
     public void onAjouterEtudiantButtonClick(ActionEvent event) {
+        AjouterEtuController.CurrentGroupe1 = CurrentGroupe;
+        AjouterEtuController.CurrentGroupeParent1 = CurrentGroupeParent;
+        AjouterEtuController.NouveauGroupe1 = NomTextField.getText();
         AjouterEtuController.Harpege = Harpege;
         GoToPage("AjouterEtu.fxml","Ajouter les étudiants au nouveau groupe");
     }
