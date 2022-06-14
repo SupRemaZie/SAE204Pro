@@ -23,31 +23,22 @@ public class SecretaireAccController extends Controller implements Initializable
     public static String Harpege;
     @FXML
     private Label GroupeSelected;
-    @FXML
-    private ListView<String> GrouParentList;
-
-
     private String CurrentGroupeParent;
     private String CurrentGroupe;
-
-    @FXML
-    private Label ParentSelected;
     @FXML
     private ListView<String> GroupeList;
     @FXML
     private Label adressemaillabel;
-
+    @FXML
+    private ComboBox<String> listGroupe;
+    @FXML
+    private ComboBox<String> listGroupeEnfant;
 
     @FXML
     void onDisconnectButtonClick(ActionEvent event) {
         GoToPage("Accueil.fxml", "Accueil");
     }
 
-
-    @FXML
-    void afficherList(ActionEvent event){
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,36 +58,37 @@ public class SecretaireAccController extends Controller implements Initializable
             e.printStackTrace();
         }
     }
-@FXML
-void afficherList(){
 
-}
     void ChampGroupeParent () throws SQLException, ClassNotFoundException {
-        GrouParentList.getItems().addAll(DAO.ListGrpParent());
+        listGroupe.getItems().addAll(DAO.ListGrpParent());
 
-        GrouParentList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+        listGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                CurrentGroupeParent = GrouParentList.getSelectionModel().getSelectedItem();
+                CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
 
-                ParentSelected.setText(CurrentGroupeParent);
-                GroupeList.getItems().clear();
+                listGroupeEnfant.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
-                System.out.println("clear");
+
                 try {
-                    GroupeList.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
+                    listGroupeEnfant.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
+                    listGroupeEnfant.getItems().add("VIDE");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-
-                GroupeList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                listGroupeEnfant.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                     @Override
                     public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                        CurrentGroupe = GroupeList.getSelectionModel().getSelectedItem();
+                        CurrentGroupe = listGroupeEnfant.getSelectionModel().getSelectedItem();
+                        if(CurrentGroupe.equals("VIDE")){
+                            GroupeSelected.setText("");
+                        }
+                        else{
+                            GroupeSelected.setText(CurrentGroupe);
+                        }
 
-                        GroupeSelected.setText(CurrentGroupe);
                     }
                 });
             }
@@ -104,7 +96,8 @@ void afficherList(){
     }
 
     public void onCreateGroupButtonClick(ActionEvent event) {
-        GoToPage("Creer_groupe.fxml","Créer un groupe");
+        CreerGroupeController.Harpege = Harpege;
+        GoToPage("Creergroupe.fxml","Créer un groupe");
     }
 }
 
