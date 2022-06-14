@@ -78,12 +78,26 @@ public class CreerGroupeController extends Controller implements Initializable {
     }
 
     public void onAjouterEtudiantButtonClick(ActionEvent event) {
+        String groupeParent="";
+        if(verif()==1){
+            erreur.setText("Nom textfield ou groupe non selectionné");
+        }
 
-        AjouterEtuController.CurrentGroupe1 = listGroupeEnfant.getSelectionModel().getSelectedItem();
-        AjouterEtuController.CurrentGroupeParent1 = CurrentGroupeParent;
-        AjouterEtuController.NouveauGroupe1 = NomTextField.getText();
-        AjouterEtuController.Harpege = Harpege;
-        GoToPage("AjouterEtu.fxml", "Ajouter les étudiants au nouveau groupe");
+        else if (verif() == 0) {
+            erreur.setText("");
+            groupeParent = String.valueOf(listGroupe.getValue());
+        }
+        else if (verif()==2){
+            erreur.setText("");
+            groupeParent = String.valueOf(listGroupeEnfant.getValue());
+        }
+        if (verif()==1 || verif()==2){
+            AjouterEtuController.CurrentGroupeParent1 = groupeParent;
+            AjouterEtuController.NouveauGroupe1 = NomTextField.getText();
+            AjouterEtuController.Harpege = Harpege;
+            GoToPage("AjouterEtu.fxml", "Ajouter les étudiants au nouveau groupe");
+        }
+
     }
 
     @Override
