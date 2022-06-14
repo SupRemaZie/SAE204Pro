@@ -101,7 +101,6 @@ public class DAO {
 
     public static String mail(String ident) throws SQLException {
 
-
         String mail="";
         if (ChoixRoleController.choixRole.equals("E")){
             String query="SELECT prenom_etu FROM etudiant WHERE num_etu = '"+ident+"';";
@@ -121,7 +120,6 @@ public class DAO {
             String Nom_per=EtudiantAPK.myjdbc.executeReadQuery(query);
 
             mail=Prenom_per+"."+Nom_per+"@univ-lemans.fr";
-
         }
         return mail;
     }

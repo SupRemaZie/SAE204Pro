@@ -19,10 +19,9 @@ import java.util.ResourceBundle;
 public class AjouterEtuController extends Controller implements Initializable {
     public static String Harpege;
     public static String CurrentGroupeParent1;
-    public static String CurrentGroupe1;
     public static String NouveauGroupe1;
     @FXML
-    public static Button retour;
+    public Button retour;
 
     @FXML
     private Label adressemaillabel;
@@ -31,7 +30,7 @@ public class AjouterEtuController extends Controller implements Initializable {
     private Label CurrentGroupeParent;
 
     @FXML
-    private Label NouveauGroupe;
+    public Label NouveauGroupe;
 
 
     @FXML

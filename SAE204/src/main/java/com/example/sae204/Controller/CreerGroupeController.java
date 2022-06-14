@@ -23,7 +23,7 @@ public class CreerGroupeController extends Controller implements Initializable {
 
 
     @FXML
-    private  TextField NomTextField ;
+    public TextField NomTextField;
 
     public static String groupeParent;
 
@@ -41,7 +41,7 @@ public class CreerGroupeController extends Controller implements Initializable {
     public void retour(ActionEvent event) {
 
         listGroupe.getSelectionModel().select("AUCUN");
-        //AjouterEtuController.NouveauGroupe1.
+
 
         GoToPage("SecretaireAcc.fxml", "Accueil");
     }
@@ -56,16 +56,23 @@ public class CreerGroupeController extends Controller implements Initializable {
         else if (verif() == 0) {
                 erreur.setText("");
                 groupeParent = String.valueOf(listGroupe.getValue());
+                PopUpValiderController.nomGroupe = NomTextField.getText();
+                PopUpValiderController.nomGroupeParent = groupeParent;
                 System.out.println(groupeParent);
+                GoToPage("PopUpValider.fxml","Verification Saisis");
             }
         else{
             erreur.setText("");
             groupeParent=String.valueOf(listGroupeEnfant.getValue());
+            PopUpValiderController.nomGroupe = NomTextField.getText();
+            PopUpValiderController.nomGroupeParent = groupeParent;
+            PopUpValiderController.Harpege = Harpege;
             System.out.println(groupeParent);
+            GoToPage("PopUpValider.fxml","Verification Saisis");
         }
 
     }
-    public  int verif(){
+    public int verif(){
 
         if(!(NomTextField.getText().equals(""))&&!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
 
@@ -111,6 +118,9 @@ public class CreerGroupeController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         NomTextField.setText(AjouterEtuController.NouveauGroupe1); // sauvegarde du nom
         listGroupe.getSelectionModel().select(CurrentGroupeParent); // sauvegarde du groupe
+
+
+
 
 
         String mail = "";
