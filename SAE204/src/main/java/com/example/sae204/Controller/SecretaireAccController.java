@@ -77,6 +77,7 @@ public class SecretaireAccController extends Controller implements Initializable
                 }
                 listGroupeEnfant.getItems().add("AUCUN");
 
+
             }
         });
     }
