@@ -61,7 +61,7 @@ public class CreerGroupeController extends Controller implements Initializable {
         }
 
     }
-    public  int verif(){ //
+    public  int verif(){
 
         if(!(NomTextField.getText().equals(""))&&!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
 
