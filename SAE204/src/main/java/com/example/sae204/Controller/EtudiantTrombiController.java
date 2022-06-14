@@ -1,9 +1,12 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,6 +23,9 @@ public class EtudiantTrombiController extends Controller implements Initializabl
     public static String num_etu;
 
     //Déclaration des images du trombinoscope
+
+    private static String CurrentGroupeParent;
+    private static String CurrentGroupe;
     @FXML
     ImageView image1=new ImageView();
     @FXML
@@ -168,6 +174,11 @@ public class EtudiantTrombiController extends Controller implements Initializabl
     Label prenom23=new Label();
     @FXML
     Label prenom24=new Label();
+    @FXML
+    ComboBox<String>listGroupe;
+    @FXML
+    ComboBox<String>listGroupeEnfant;
+
 
     @FXML
     private Label adressemaillabel;
@@ -327,5 +338,35 @@ public class EtudiantTrombiController extends Controller implements Initializabl
         }
 
 
+    }
+
+
+    void ChampGroupeParent () throws SQLException, ClassNotFoundException {
+        listGroupe.getItems().addAll(DAO.ListGrpParent());
+
+        listGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
+
+                listGroupeEnfant.getItems().clear();
+                DAO.listGrpAffilGrpParents.clear();
+
+                try {
+                    listGroupeEnfant.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
+                    listGroupeEnfant.getItems().add("VIDE");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                listGroupeEnfant.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                        CurrentGroupe = listGroupeEnfant.getSelectionModel().getSelectedItem();
+                    }
+                });
+            }
+        });
     }
 }

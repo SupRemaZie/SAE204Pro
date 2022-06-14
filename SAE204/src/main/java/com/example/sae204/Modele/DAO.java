@@ -12,10 +12,8 @@ public class DAO {
     private static int connexion =0;
     public static void connexion() throws SQLException, ClassNotFoundException {
 
-        //serveur local
+        //connexion à un serveur local
         EtudiantAPK.myjdbc.connect("root", ""); // connection a la base
-        //serveur debian
-        EtudiantAPK.myjdbc.connect("root", "rootroot");//connection a la base
         connexion=1;
     }
     public static  LinkedList<String> listGrpAffilGrpParents= new LinkedList<>();
@@ -103,12 +101,12 @@ public class DAO {
         int nbGrpAffil = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query)); //On prends le nombre de groupe lié au groupe parent
         for(int i = 0; i < nbGrpAffil;i++){
             query="SELECT Nom_groupe FROM groupe WHERE Groupe_parent='"+Grp_parent+"'LIMIT 1 OFFSET "+i+";";
-             GrpAffilGrpPar= EtudiantAPK.myjdbc.executeReadQuery(query);
+            GrpAffilGrpPar= EtudiantAPK.myjdbc.executeReadQuery(query);
             listGrpAffilGrpParents.add(GrpAffilGrpPar);
 
 
             ListGrpAffilGrpParent(GrpAffilGrpPar);
-            
+
 
         }
         return listGrpAffilGrpParents;
@@ -194,7 +192,7 @@ public class DAO {
             query="SELECT Nom_per FROM personnel WHERE Harpege = '"+ident+"';";
             String Nom_per=EtudiantAPK.myjdbc.executeReadQuery(query);
 
-                mail=Prenom_per+"."+Nom_per+"@univ-lemans.fr";
+            mail=Prenom_per+"."+Nom_per+"@univ-lemans.fr";
 
         }
         return mail;
