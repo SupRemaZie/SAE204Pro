@@ -37,6 +37,7 @@ public class AjouterEtuController extends Controller implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         adressemaillabel.setText(mail);
         CurrentGroupeParent.setText(CurrentGroupeParent1);
         CurrentGroupe.setText(CurrentGroupe1);

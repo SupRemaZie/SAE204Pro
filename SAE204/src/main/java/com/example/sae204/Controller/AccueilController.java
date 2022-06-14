@@ -27,7 +27,9 @@ public class AccueilController {
         }
         ChoixRoleController.choixRole="E";
         Controller.GoToPage("ConnexionPage.fxml","Page de Connexion");
-
+        for(Groupe grp : DAOGroupe.listerGrp()){
+            System.out.println(grp.toString());;
+        }
 
     }
 
