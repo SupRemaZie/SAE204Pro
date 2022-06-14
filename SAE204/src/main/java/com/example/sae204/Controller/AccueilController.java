@@ -1,7 +1,8 @@
 package com.example.sae204.Controller;
 
 
-import com.example.sae204.Modele.DAO.DAO;
+
+import com.example.sae204.Modele.DAO.DAOGroupe;
 import com.example.sae204.Modele.Groupe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +27,7 @@ public class AccueilController {
         }
         ChoixRoleController.choixRole="E";
         Controller.GoToPage("ConnexionPage.fxml","Page de Connexion");
-        for(Groupe grp : DAO.listerGrp()){
+        for(Groupe grp : DAOGroupe.listerGrp()){
             System.out.println(grp.toString());;
         }
 

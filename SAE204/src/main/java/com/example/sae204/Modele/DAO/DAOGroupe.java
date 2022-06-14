@@ -8,6 +8,9 @@ import java.util.LinkedList;
 
 public class DAOGroupe extends DAO {
     public static LinkedList<Groupe> listerGrp() throws SQLException, ClassNotFoundException {
+        if(DAO.connexion==0){
+            connexion();
+        }
         LinkedList<Groupe> listGrp= new LinkedList<>();
         String query="SELECT COUNT(Id_groupe) FROM groupe;";
         int nbGrp=Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));

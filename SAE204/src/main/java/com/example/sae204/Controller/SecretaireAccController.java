@@ -1,6 +1,7 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO.DAO;
+import com.example.sae204.Modele.DAO.DAOGroupe;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -50,7 +51,7 @@ public class SecretaireAccController extends Controller implements Initializable
     }
 
     void ChampGroupeParent () throws SQLException, ClassNotFoundException {
-        listGroupe.getItems().addAll(DAO.ListGrpParent());
+        listGroupe.getItems().addAll(DAOGroupe.ListGrpParent());
 
         listGroupe.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -60,7 +61,7 @@ public class SecretaireAccController extends Controller implements Initializable
                 DAO.listGrpAffilGrpParents.clear();
 
                 try {
-                    listGroupeEnfant.getItems().addAll(DAO.ListGrpAffilGrpParent(CurrentGroupeParent));
+                    listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
 
 
                 } catch (SQLException e) {
