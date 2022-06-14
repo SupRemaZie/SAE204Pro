@@ -32,7 +32,7 @@ public class ConnexionController extends Controller{
 
 
     public void onMdpforgetButtonClick(){
-        GoToPage("MotDePasseOubliee.fxml","Mot de passe oubliee");
+        GoToPage("MotDePasseOubliee.fxml","Mot de passe oublié");
     }
 
     public void onConnexionButtonClick() throws SQLException, IOException, ClassNotFoundException {
