@@ -96,9 +96,9 @@ public class DAO {
 
     public static LinkedList<String> ListGrpAffilGrpParent(String Grp_parent) throws SQLException, ClassNotFoundException {
         String GrpAffilGrpPar = null;
+        System.out.println(listGrpAffilGrpParents);
         if (connexion == 0)
             connexion();
-
         String query = "SELECT COUNT(Nom_groupe) FROM GROUPE WHERE Groupe_parent='"+Grp_parent+"';"; // stockage de la requête
         int nbGrpAffil = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query)); //On prends le nombre de groupe lié au groupe parent
         for(int i = 0; i < nbGrpAffil;i++){
