@@ -63,25 +63,11 @@ public class AjouterEtuController extends Controller implements Initializable {
     public void retour(ActionEvent event){
         GoToPage("Creergroupe.fxml","Créer un groupe");
     }
-}
+
 
     void ChampGroupeParent() throws SQLException, ClassNotFoundException {
-        listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent1));
-
-
-
-                try {
-                    listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
-
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-                listGroupeEnfant.getItems().add("AUCUN");
-
-
-            }
-        });
+    DAO.listGrpAffilGrpParents.clear();
+    listGroupeEnfant.getItems().clear();
+    listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent1));
     }
+}
