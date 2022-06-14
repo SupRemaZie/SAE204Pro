@@ -14,7 +14,7 @@ public class DAOPromo {
         return promo;
     }
 
-    public LinkedList<Promotion> ListPromo() throws SQLException {
+    public LinkedList<Promotion> listerPromo() throws SQLException {
         LinkedList<Promotion> listPromo= new LinkedList<>();
         String query = "select count(Niveau) FROM promotion;";
         int nbPromo = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
