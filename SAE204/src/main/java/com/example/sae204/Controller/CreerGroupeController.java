@@ -166,16 +166,13 @@ public class CreerGroupeController extends Controller implements Initializable {
                 DAO.listGrpAffilGrpParents.clear();
 
                 try {
-                    System.out.println("coucou");
                     listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
-                    System.out.println("cocucou");
 
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                System.out.println("bonjour");
                 listGroupeEnfant.getItems().add("AUCUN");
 
 
