@@ -13,7 +13,7 @@ public class DAOAppartenance {
         LinkedList<Appartenance> listApp= new LinkedList<>();
         String query="SELECT COUNT(DISTINCT num_etu) FROM appartenance;";
         int nbApp=Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
-        for (int i=0; i<nbApp; i++){
+        for (int i=0; i<nbApp*2; i+=2){
             query="SELECT num_etu FROM appartenance LIMIT 1 OFFSET "+i+";";
             String num_etu=EtudiantAPK.myjdbc.executeReadQuery(query);
             query="SELECT COUNT(Id_groupe) FROM appartenance WHERE num_etu='"+num_etu+"'";
@@ -21,7 +21,10 @@ public class DAOAppartenance {
             for (int j=0; j<nbEtu; j++){
                 query="SELECT id_groupe FROM appartenance WHERE num_etu='"+num_etu+"' LIMIT 1 OFFSET "+j+";";
                 String id_groupe=EtudiantAPK.myjdbc.executeReadQuery(query);
-                listApp.add(new Appartenance(num_etu, id_groupe));
+                Appartenance app = new Appartenance(num_etu, id_groupe);
+                if(!listApp.contains(app)) {
+                    listApp.add(app);
+                }
             }
         }
         return listApp;

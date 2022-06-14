@@ -379,7 +379,7 @@ public class EtudiantTrombiController extends Controller implements Initializabl
 
                 try {
                     listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
-                    listGroupeEnfant.getItems().add("VIDE");
+                    listGroupeEnfant.getItems().add("AUCUN");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
@@ -389,6 +389,18 @@ public class EtudiantTrombiController extends Controller implements Initializabl
                     @Override
                     public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                         CurrentGroupe = listGroupeEnfant.getSelectionModel().getSelectedItem();
+                        try {
+                            LinkedList<Etudiant> listEtu = chercherEtuGroupePromo(CurrentGroupe);
+
+                            System.out.println();
+                            for (Etudiant etu : listEtu) {
+                                System.out.println(etu.getNom_etu());
+                            }
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        } catch (ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 });
             }

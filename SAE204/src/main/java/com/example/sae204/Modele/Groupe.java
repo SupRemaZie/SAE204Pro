@@ -24,4 +24,8 @@ public class Groupe {
     public String toString() {
         return Nom_grp;
     }
+
+    public String getId_grp() {
+        return Id_grp;
+    }
 }
