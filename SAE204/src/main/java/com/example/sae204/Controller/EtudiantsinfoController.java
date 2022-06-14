@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-public class EtudiantsinfoController extends Controller implements Initializable {
+public class  EtudiantsinfoController extends Controller implements Initializable {
     public static String num_etu;
 
     @FXML
