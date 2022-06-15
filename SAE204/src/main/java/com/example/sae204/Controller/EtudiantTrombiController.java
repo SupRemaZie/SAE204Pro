@@ -722,13 +722,10 @@ public class EtudiantTrombiController extends Controller implements Initializabl
                     System.out.println("err ");
                 }
 
-                System.out.println();
                 try {
                     listEtu = chercherEtuGroupePromo(CurrentGroupeParent);
                     afficherPhoto(listEtu);
-                    for (Etudiant etu : listEtu) {
-                        System.out.println(etu.getNom_etu());
-                    }
+
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -764,10 +761,6 @@ public class EtudiantTrombiController extends Controller implements Initializabl
                             listEtu = chercherEtuGroupePromo(CurrentGroupe);
                             afficherPhoto(listEtu);
 
-                            System.out.println();
-                            for (Etudiant etu : listEtu) {
-                                System.out.println(etu.getNom_etu());
-                            }
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
                         } catch (ClassNotFoundException e) {

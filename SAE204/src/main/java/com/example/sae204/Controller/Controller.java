@@ -55,12 +55,9 @@ public class Controller {
         LinkedList<Etudiant> listEtu= DAOEtudiant.listerEtu();
         LinkedList<Appartenance> listApp= DAOAppartenance.listerAppartenance();
         int i=0,j=0;
-        //for(Appartenance app : listApp) {
-        //    System.out.println(app.getId_groupe() + "/" + app.getNum_etu());
-        //}
         for(Etudiant etu : listEtu){
             for(Appartenance app : listApp) {
-                if (etu.getNum_etu().equals(app.getNum_etu())&&app.getId_groupe().equals(groupe.getId_grp())) {
+                if (etu.getNum_etu().equals(app.getNum_etu())&&app.getId_groupe()==groupe.getId_grp()) {
                     listEtuGroupe.add(etu);
                     break;
                 }

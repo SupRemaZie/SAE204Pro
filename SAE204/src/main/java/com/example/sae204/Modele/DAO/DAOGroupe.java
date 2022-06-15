@@ -17,7 +17,7 @@ public class DAOGroupe extends DAO {
 
         for(int i = 0;i<nbGrp;i++){
             query="SELECT Id_groupe FROM groupe LIMIT 1 OFFSET "+i+";";
-            String Id_groupe=EtudiantAPK.myjdbc.executeReadQuery(query);
+            int Id_groupe= Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
 
             query="SELECT Nom_groupe FROM groupe WHERE Id_groupe="+Id_groupe+";";
             String Nom_groupe=EtudiantAPK.myjdbc.executeReadQuery(query);

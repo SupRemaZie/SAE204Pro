@@ -20,7 +20,7 @@ public class DAOAppartenance {
             int nbEtu=Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
             for (int j=0; j<nbEtu; j++){
                 query="SELECT id_groupe FROM appartenance WHERE num_etu='"+num_etu+"' LIMIT 1 OFFSET "+j+";";
-                String id_groupe=EtudiantAPK.myjdbc.executeReadQuery(query);
+                int id_groupe= Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
                 Appartenance app = new Appartenance(num_etu, id_groupe);
                 if(!listApp.contains(app)) {
                     listApp.add(app);
