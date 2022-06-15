@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.ResourceBundle;
 
 public class SecretaireAccController extends Controller implements Initializable {
@@ -24,6 +25,7 @@ public class SecretaireAccController extends Controller implements Initializable
     private ComboBox<String> listGroupe;
     @FXML
     private ComboBox<String> listGroupeEnfant;
+    private String CurrentGroupeEnfant;
 
     @FXML
     void onDisconnectButtonClick(ActionEvent event) {
@@ -76,6 +78,7 @@ public class SecretaireAccController extends Controller implements Initializable
 
                 try {
                     listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
+                    CurrentGroupeEnfant=listGroupeEnfant.getSelectionModel().getSelectedItem();
 
 
                 } catch (SQLException e) {
@@ -96,8 +99,18 @@ public class SecretaireAccController extends Controller implements Initializable
     }
     @FXML
     public void visualiserGr(){
+        if(verif()==1){
+            System.out.println("Erreur veuillez entrez un groupe");
+        }
+        else if(verif()==0){
+            PersonnelTrombiController.CurrentGroupeParent=CurrentGroupeParent;
+            GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
+        }
+        else {
+            PersonnelTrombiController.CurrentGroupeParent=CurrentGroupeEnfant;
+            GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
+        }
 
-        GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
     }
     @FXML
     public void supprimerGr(){

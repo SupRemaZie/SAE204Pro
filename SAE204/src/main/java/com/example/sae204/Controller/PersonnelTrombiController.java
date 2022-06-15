@@ -29,7 +29,7 @@ public class PersonnelTrombiController extends Controller implements Initializab
     public String groupeParent;
     //Déclaration des images du trombinoscope
 
-    private static String CurrentGroupeParent;
+    public static String CurrentGroupeParent;
     private static String CurrentGroupe;
     @FXML
     ImageView image1=new ImageView();
@@ -188,6 +188,7 @@ public class PersonnelTrombiController extends Controller implements Initializab
 
     private LinkedList<Groupe> listGroup= DAOGroupe.listerGrp();
     LinkedList<Etudiant> listEtu=new LinkedList<>();
+
 
     public PersonnelTrombiController() throws MalformedURLException, SQLException, ClassNotFoundException {
     }
