@@ -753,9 +753,7 @@ public class EtudiantTrombiController extends Controller implements Initializabl
                         else if (verif()==2){
                             CurrentGroupe=String.valueOf(listGroupeEnfant.getValue());
                         }
-                        else {
-                            System.out.println("err ");
-                        }
+
                         try {
                             listEtu = chercherEtuGroupePromo(CurrentGroupe);
                             afficherPhoto(listEtu);

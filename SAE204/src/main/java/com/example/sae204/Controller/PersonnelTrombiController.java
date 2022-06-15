@@ -774,9 +774,7 @@ public class PersonnelTrombiController extends Controller implements Initializab
                 else if (verif()==2){
                     CurrentGroupeParent=String.valueOf(listGroupeEnfant.getValue());
                 }
-                else {
-                    System.out.println("err ");
-                }
+
 
                 try {
                     listEtu = chercherEtuGroupePromo(CurrentGroupeParent);
@@ -810,9 +808,7 @@ public class PersonnelTrombiController extends Controller implements Initializab
                         else if (verif()==2){
                             CurrentGroupe=String.valueOf(listGroupeEnfant.getValue());
                         }
-                        else {
-                            System.out.println("err ");
-                        }
+
                         try {
                             listEtu = chercherEtuGroupePromo(CurrentGroupe);
                             afficherPhoto(listEtu);

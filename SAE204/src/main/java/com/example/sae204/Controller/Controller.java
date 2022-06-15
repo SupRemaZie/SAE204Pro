@@ -9,12 +9,6 @@ import com.example.sae204.Modele.Groupe;
 import com.example.sae204.Modele.Promotion;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-
-import javafx.scene.control.TextField;
-
-
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -54,7 +48,6 @@ public class Controller {
         LinkedList<Etudiant> listEtuGroupe=new LinkedList<>();
         LinkedList<Etudiant> listEtu= DAOEtudiant.listerEtu();
         LinkedList<Appartenance> listApp= DAOAppartenance.listerAppartenance();
-        int i=0,j=0;
         for(Etudiant etu : listEtu){
             for(Appartenance app : listApp) {
                 if (etu.getNum_etu().equals(app.getNum_etu())&&app.getId_groupe()==groupe.getId_grp()) {

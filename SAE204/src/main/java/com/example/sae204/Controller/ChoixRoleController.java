@@ -5,12 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class ChoixRoleController extends Controller{
-    @FXML
-    private Button bouton_prof;
-    @FXML
-    private Button bouton_sec;
-    @FXML
-    private Button retour;
+
+
 
     public static String choixRole; //Utilisé pour connaître le rôle de l'utilisateur (dont Etudiant)
 

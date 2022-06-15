@@ -69,7 +69,7 @@ public class EtudiantController extends  Controller implements Initializable{
                 return etu;
             }
         }
-        System.out.println("ERREUR pas d'étudiant trouvé avec cet id");
+
         return  null;
     }
     public static Promotion trouverPromo(Etudiant etu) throws SQLException {
@@ -79,7 +79,6 @@ public class EtudiantController extends  Controller implements Initializable{
                 return promo;
             }
         }
-        System.out.println("ERREUR pas de promotion trouvé avec cet étudiant");
         return  null;
     }
 }

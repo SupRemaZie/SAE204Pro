@@ -48,7 +48,7 @@ public class PersonnelEtudiantsinfoController extends Controller implements Init
 
     @FXML
     public void retour(ActionEvent event){
-        System.out.println("c bon");
+
         GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
     }
 

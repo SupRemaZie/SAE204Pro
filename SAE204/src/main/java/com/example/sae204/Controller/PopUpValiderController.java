@@ -30,7 +30,7 @@ public class PopUpValiderController extends Controller implements Initializable 
 
     @FXML
     void onVerifValiderButtonClick() throws SQLException {
-        System.out.println(CreerGroupeController.NomduGroupe);
+
         DAOGroupe.CreerGroupe(CreerGroupeController.NomduGroupe,CreerGroupeController.CurrentGroupeParent);
         for (Etudiant etu : AjouterEtuController.nouveauGroupeliste){
             DAOAppartenance.CreerAppartenance(etu.getPrenom_etu(), etu.getNom_etu(), CreerGroupeController.NomduGroupe);
@@ -46,14 +46,14 @@ public class PopUpValiderController extends Controller implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(Harpege);
+
         String mail = "";
         try {
             mail = DAO.mail(ConnexionController.Harpege);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(mail);
+
         adressemaillabel.setText(mail);
         VerifNomDeGroupeLab.setText(nomGroupe);
         VerifGroupeParentLab.setText(nomGroupeParent);

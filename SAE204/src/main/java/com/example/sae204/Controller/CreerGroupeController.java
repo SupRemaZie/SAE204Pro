@@ -2,10 +2,8 @@ package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOGroupe;
-import com.example.sae204.Modele.Groupe;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -16,7 +14,6 @@ import java.util.ResourceBundle;
 
 public class CreerGroupeController extends Controller implements Initializable {
     public static String CurrentGroupeParent;
-    private static String CurrentGroupe;
     public static String Harpege;
     public static String NomduGroupe ;
 
@@ -27,8 +24,6 @@ public class CreerGroupeController extends Controller implements Initializable {
     public static String groupeParent;
 
     @FXML
-    private Button ValiderButton;
-    @FXML
     private Label adressemaillabel;
     @FXML
     private Label erreur;
@@ -37,7 +32,7 @@ public class CreerGroupeController extends Controller implements Initializable {
     @FXML
     private ComboBox<String> listGroupeEnfant;
 
-    public void retour(ActionEvent event) {
+    public void retour() {
 
         listGroupe.getSelectionModel().select("AUCUN");
 
@@ -45,7 +40,7 @@ public class CreerGroupeController extends Controller implements Initializable {
     }
 
 
-    public void onValiderButtonClick(ActionEvent event) throws SQLException, ClassNotFoundException {
+    public void onValiderButtonClick()  {
             NomduGroupe=NomTextField.getText();
             if (verif() == 1) {
                 erreur.setText("Veuillez entrez un Nom de groupe ou un groupe parent");
@@ -90,7 +85,7 @@ public class CreerGroupeController extends Controller implements Initializable {
             return 1;
     }
 
-    public void onAjouterEtudiantButtonClick(ActionEvent event) {
+    public void onAjouterEtudiantButtonClick() {
         String groupeParent="";
 
         if (verif() == 1) {

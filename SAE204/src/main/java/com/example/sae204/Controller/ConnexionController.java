@@ -5,13 +5,13 @@ import com.example.sae204.Modele.DAO.DAOEtudiant;
 import com.example.sae204.Modele.DAO.DAOPersonnel;
 import com.example.sae204.Modele.Etudiant;
 import com.example.sae204.Modele.Personnel;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.LinkedList;
 
@@ -34,7 +34,7 @@ public class ConnexionController extends Controller{
     }
 
     @FXML
-    public void onConnexionButtonClick() throws SQLException, IOException, ClassNotFoundException {
+    public void onConnexionButtonClick() throws SQLException, ClassNotFoundException {
 
         String EnterId=IDTextField.getText();// stockage de l'id entré
         String EnterPwd=PasswordTextField.getText(); // stockage du password entré
@@ -52,14 +52,14 @@ public class ConnexionController extends Controller{
            loginMessageLabel.setText("Veuillez entez un mot de passe "); // si le mdp est vide alors msg erreur
         }
 
-        else if(AccueilController.etatButton=="E"){ //Si l'utilisateur est un étudiant
+        else if(AccueilController.etatButton.equals("E")){ //Si l'utilisateur est un étudiant
             for (Etudiant etu : listEtu) {
                 if(etu.getNum_etu().equals(EnterId)) { //On cherche un étudiant qui a pour ID celui entré par l'utilisateur
                     result1 = etu.getMdp_etu();        //Quand on en trouve un, on stocke le mot de passe assigné à cet étudiant
                 }
             }
         }
-        else if(AccueilController.etatButton=="P"){ //Si l'utilisateur est un membre du personnel
+        else if(AccueilController.etatButton.equals("P")){ //Si l'utilisateur est un membre du personnel
             for (Personnel per : listPer) {
                 if(per.getHarpege().equals(EnterId)) {  //On cherche un étudiant qui a pour ID celui entré par l'utilisateur
                     result2 = per.getMdp_per();         //Quand on en trouve un, on stocke le mot de passe assigné à ce membre du personnel
