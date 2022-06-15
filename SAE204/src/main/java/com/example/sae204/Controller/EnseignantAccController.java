@@ -24,6 +24,7 @@ public class EnseignantAccController extends Controller implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //On affiche l'adresse mail Le Man université de l'étudiant
         String mail = "";
         try {
             mail = DAO.mail(ConnexionController.Harpege);
@@ -38,6 +39,7 @@ public class EnseignantAccController extends Controller implements Initializable
     }
     @FXML
     public void visualiserGr() throws SQLException {
+        //On affiche par défaut le trombinoscope de la première promotion stocké dans la base
         PersonnelTrombiController.CurrentGroupeParent= DAOPromo.listerPromo().peek().getNiveau();
         GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
     }

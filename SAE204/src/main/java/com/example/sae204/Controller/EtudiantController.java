@@ -21,15 +21,6 @@ public class EtudiantController extends  Controller implements Initializable{
     public static String num_etu;
 
     @FXML
-    private Button DisconnectButton;
-
-    @FXML
-    private Button VisuInfoEtuButton;
-
-    @FXML
-    private Button VisuTrombiEtuButton;
-
-    @FXML
     private Label adressemaillabel;
     public static Etudiant etudiantActuel;
 
