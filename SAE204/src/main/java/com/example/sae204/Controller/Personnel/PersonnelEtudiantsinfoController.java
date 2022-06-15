@@ -1,5 +1,7 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Personnel;
 
+import com.example.sae204.Controller.Accueil.ConnexionController;
+import com.example.sae204.Controller.Controller;
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOEtudiant;
 import com.example.sae204.Modele.DAO.DAOGroupe;
@@ -20,7 +22,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-public class  EtudiantsinfoController extends Controller implements Initializable {
+public class PersonnelEtudiantsinfoController extends Controller implements Initializable {
     public static String num_etu;
 
     @FXML
@@ -46,8 +48,10 @@ public class  EtudiantsinfoController extends Controller implements Initializabl
     @FXML
     private ImageView photo;
 
+    @FXML
     public void retour(ActionEvent event){
-        GoToPage("EtudiantView.fxml", "Accueil");
+
+        GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
     }
 
     @Override
@@ -55,7 +59,7 @@ public class  EtudiantsinfoController extends Controller implements Initializabl
         String mail = "";
         LinkedList<Etudiant> listEtu=new LinkedList<>();
         try {
-            mail = DAO.mail(num_etu);
+            mail = DAO.mail(ConnexionController.Harpege);
         } catch (SQLException e) {
             e.printStackTrace();
         }

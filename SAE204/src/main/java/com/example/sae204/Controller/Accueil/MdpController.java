@@ -1,6 +1,7 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Accueil;
 
-import com.example.sae204.Modele.DAO.DAO;
+import com.example.sae204.Controller.Accueil.AccueilController;
+import com.example.sae204.Controller.Controller;
 import com.example.sae204.Modele.DAO.DAOEtudiant;
 import com.example.sae204.Modele.DAO.DAOPersonnel;
 import com.example.sae204.Modele.Etudiant;
@@ -13,7 +14,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class MdpController extends Controller{
+public class MdpController extends Controller {
 
     @FXML
     TextField Enterid;

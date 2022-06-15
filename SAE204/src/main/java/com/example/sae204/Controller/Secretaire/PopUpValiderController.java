@@ -1,5 +1,9 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Secretaire;
 
+import com.example.sae204.Controller.Accueil.ConnexionController;
+import com.example.sae204.Controller.Controller;
+import com.example.sae204.Controller.Secretaire.AjouterEtuController;
+import com.example.sae204.Controller.Secretaire.CreerGroupeController;
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOAppartenance;
 import com.example.sae204.Modele.DAO.DAOGroupe;
@@ -10,7 +14,6 @@ import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class PopUpValiderController extends Controller implements Initializable {

@@ -1,12 +1,8 @@
 package com.example.sae204.Modele.DAO;
 
-import com.example.sae204.Controller.ChoixRoleController;
-import com.example.sae204.Controller.ConnexionController;
+import com.example.sae204.Controller.Accueil.ChoixRoleController;
 import com.example.sae204.EtudiantAPK;
 import com.example.sae204.Modele.Etudiant;
-import com.example.sae204.Modele.Groupe;
-import com.example.sae204.Modele.Personnel;
-import javafx.collections.ObservableArray;
 
 import java.sql.SQLException;
 import java.util.LinkedList;

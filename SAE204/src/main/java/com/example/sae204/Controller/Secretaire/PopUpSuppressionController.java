@@ -1,5 +1,7 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Secretaire;
 
+import com.example.sae204.Controller.Accueil.ConnexionController;
+import com.example.sae204.Controller.Controller;
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOGroupe;
 import javafx.event.ActionEvent;
@@ -12,7 +14,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class PopUpSuppressionController extends  Controller implements Initializable {
+public class PopUpSuppressionController extends Controller implements Initializable {
 
     @FXML
     private Button RetourButton;

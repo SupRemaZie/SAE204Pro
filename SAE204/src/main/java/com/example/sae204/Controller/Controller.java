@@ -21,7 +21,7 @@ public class Controller {
     public void rechercherEtu(){
 
     }
-    static void GoToPage(String fichier_fxml, String nom) {
+    public static void GoToPage(String fichier_fxml, String nom) {
         FXMLLoader fxml = new FXMLLoader(EtudiantAPK.class.getResource(fichier_fxml));
         Scene scene = null;
         try {

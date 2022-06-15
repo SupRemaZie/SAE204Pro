@@ -1,9 +1,11 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Secretaire;
 
+import com.example.sae204.Controller.Accueil.ConnexionController;
+import com.example.sae204.Controller.Controller;
+import com.example.sae204.Controller.Personnel.PersonnelTrombiController;
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOGroupe;
 import com.example.sae204.Modele.DAO.DAOPromo;
-import com.example.sae204.Modele.Etudiant;
 import com.example.sae204.Modele.Promotion;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

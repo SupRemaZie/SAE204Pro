@@ -1,5 +1,7 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Accueil;
 
+import com.example.sae204.Controller.Controller;
+import com.example.sae204.Controller.Etudiant.EtudiantController;
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOEtudiant;
 import com.example.sae204.Modele.DAO.DAOPersonnel;
@@ -15,7 +17,7 @@ import javafx.scene.control.TextField;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class ConnexionController extends Controller{
+public class ConnexionController extends Controller {
     @FXML
     public TextField IDTextField; // champ de l'identifiant
 

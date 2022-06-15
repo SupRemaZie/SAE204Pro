@@ -1,5 +1,7 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Secretaire;
 
+import com.example.sae204.Controller.Accueil.ConnexionController;
+import com.example.sae204.Controller.Controller;
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOAppartenance;
 import com.example.sae204.Modele.DAO.DAOGroupe;
@@ -16,6 +18,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+
+import static com.example.sae204.Controller.Controller.GoToPage;
+import static com.example.sae204.Controller.Controller.chercherEtuGroupePromo;
 
 public class ModifierGroupeController extends Controller implements Initializable {
     public static String ancienNom;

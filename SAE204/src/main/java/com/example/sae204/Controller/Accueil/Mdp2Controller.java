@@ -1,4 +1,6 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Accueil;
+
+import com.example.sae204.Controller.Controller;
 
 public class Mdp2Controller {
 

@@ -1,10 +1,11 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Accueil;
 
+import com.example.sae204.Controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ChoixRoleController extends Controller{
+public class ChoixRoleController extends Controller {
 
 
 

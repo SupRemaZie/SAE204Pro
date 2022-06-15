@@ -1,6 +1,7 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Etudiant;
 
 
+import com.example.sae204.Controller.Controller;
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOEtudiant;
 import com.example.sae204.Modele.DAO.DAOPromo;
@@ -9,7 +10,6 @@ import com.example.sae204.Modele.Promotion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.net.URL;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-public class EtudiantController extends  Controller implements Initializable{
+public class EtudiantController extends Controller implements Initializable{
     public static String num_etu;
 
     @FXML

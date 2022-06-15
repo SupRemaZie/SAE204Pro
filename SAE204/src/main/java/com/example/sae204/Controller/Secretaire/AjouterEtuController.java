@@ -1,5 +1,6 @@
-package com.example.sae204.Controller;
+package com.example.sae204.Controller.Secretaire;
 
+import com.example.sae204.Controller.Controller;
 import com.example.sae204.Modele.DAO.DAO;
 
 import com.example.sae204.Modele.DAO.DAOGroupe;
