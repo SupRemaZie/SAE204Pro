@@ -94,4 +94,12 @@ public class DAOGroupe extends DAO {
         query ="DELETE DROM GROUPE WHERE Id_groupe='"+id_groupe+"';";
         EtudiantAPK.myjdbc.executeWriteQuery(query);
     }
+
+    public static void ModifierGroupe(String nom_groupe,String nouv_nom_groupe, String nouv_nom_groupe_parent) throws SQLException {
+        String query = "select id_groupe FROM groupe where Nom_groupe='"+nom_groupe+"';";
+        int id_groupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        query = "UPDATE groupe SET Nom_groupe = '"+nouv_nom_groupe+"', Groupe_parent = '"+nouv_nom_groupe_parent+"' WHERE groupe.Id_groupe = "+id_groupe+";";
+        EtudiantAPK.myjdbc.executeWriteQuery(query);
+    }
+
 }
