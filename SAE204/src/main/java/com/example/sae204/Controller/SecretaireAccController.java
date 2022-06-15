@@ -73,13 +73,11 @@ public class SecretaireAccController extends Controller implements Initializable
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
+                System.out.println(CurrentGroupeParent);
                 listGroupeEnfant.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
-
                 try {
                     listGroupeEnfant.getItems().addAll(DAOGroupe.ListGrpAffilGrpParent(CurrentGroupeParent));
-                    CurrentGroupeEnfant=listGroupeEnfant.getSelectionModel().getSelectedItem();
-
 
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -87,6 +85,13 @@ public class SecretaireAccController extends Controller implements Initializable
                     e.printStackTrace();
                 }
                 listGroupeEnfant.getItems().add("AUCUN");
+                listGroupeEnfant.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                        CurrentGroupeEnfant=listGroupeEnfant.getSelectionModel().getSelectedItem();
+                    }
+                });
+
 
 
             }
@@ -103,10 +108,12 @@ public class SecretaireAccController extends Controller implements Initializable
             System.out.println("Erreur veuillez entrez un groupe");
         }
         else if(verif()==0){
+
             PersonnelTrombiController.CurrentGroupeParent=CurrentGroupeParent;
             GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
         }
         else {
+
             PersonnelTrombiController.CurrentGroupeParent=CurrentGroupeEnfant;
             GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
         }

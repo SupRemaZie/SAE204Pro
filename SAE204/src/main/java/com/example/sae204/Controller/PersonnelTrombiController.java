@@ -204,6 +204,7 @@ public class PersonnelTrombiController extends Controller implements Initializab
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        listGroupe.setValue(CurrentGroupeParent);
         String mail ="";
         try {
             mail = DAO.mail(num_etu);
@@ -220,7 +221,8 @@ public class PersonnelTrombiController extends Controller implements Initializab
             e.printStackTrace();
         }
         try {
-            listEtu=Controller.chercherEtuGroupePromo(EtudiantController.trouverPromo(EtudiantController.etudiantActuel).getNiveau());
+
+            listEtu=Controller.chercherEtuGroupePromo(CurrentGroupeParent);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
