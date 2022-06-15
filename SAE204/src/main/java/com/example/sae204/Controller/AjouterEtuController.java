@@ -4,18 +4,17 @@ import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOEtudiant;
 import com.example.sae204.Modele.DAO.DAOGroupe;
 import com.example.sae204.Modele.Etudiant;
+import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
@@ -24,6 +23,7 @@ public class AjouterEtuController extends Controller implements Initializable {
     public static String Harpege;
     public static String CurrentGroupeParent1;
     public static String NouveauGroupe1;
+    public static LinkedList <Etudiant>nouveauGroupeliste = new LinkedList<Etudiant>();
     @FXML
     public Button retour;
 
@@ -36,7 +36,7 @@ public class AjouterEtuController extends Controller implements Initializable {
     @FXML
     public Label NouveauGroupe;
     @FXML
-    public static ListView<Etudiant> ListEtuGroupeSelect;
+    public  ListView<Etudiant> ListEtuGroupeSelect;
 
     @FXML
     private ListView<Etudiant> ListEtuNewGrp;
@@ -49,6 +49,7 @@ public class AjouterEtuController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ListEtuGroupeSelect.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         try {
             ChargerLaListeEtu();
         } catch (SQLException e) {
@@ -85,7 +86,10 @@ public class AjouterEtuController extends Controller implements Initializable {
 
 
     private void ChargerLaListeEtu() throws SQLException, ClassNotFoundException {
-        ListEtuGroupeSelect.getItems().addAll(chercherEtuGroupePromo(CurrentGroupeParent1));
+
+        ListEtuGroupeSelect.getItems().setAll(chercherEtuGroupePromo(CurrentGroupeParent1));
+
+
         listGroupeEnfant.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -112,14 +116,23 @@ public class AjouterEtuController extends Controller implements Initializable {
 
 
     public void onAjouterButtonEtuSelectButtonClick(ActionEvent event) {
+
+        Etudiant  etuSelect = ListEtuGroupeSelect.getSelectionModel().getSelectedItem();
+
+        ListEtuNewGrp.getItems().addAll(etuSelect);
     }
 
     public void OnValiderButtonClick(ActionEvent event) {
+        nouveauGroupeliste.addAll(ListEtuNewGrp.getItems());
+        GoToPage("Creergroupe.fxml","Créer un groupe");
     }
 
     public void onRemoveAllButtonClick(ActionEvent event) {
+        ListEtuNewGrp.getItems().clear();
     }
 
     public void onRemoveSingleButtonClick(ActionEvent event) {
+        Etudiant etuSelect = ListEtuGroupeSelect.getSelectionModel().getSelectedItem();
+        ListEtuNewGrp.getItems().remove(etuSelect);
     }
 }

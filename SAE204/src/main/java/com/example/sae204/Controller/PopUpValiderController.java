@@ -1,13 +1,16 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO.DAO;
+import com.example.sae204.Modele.DAO.DAOAppartenance;
 import com.example.sae204.Modele.DAO.DAOGroupe;
+import com.example.sae204.Modele.Etudiant;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class PopUpValiderController extends Controller implements Initializable {
@@ -29,6 +32,9 @@ public class PopUpValiderController extends Controller implements Initializable 
     void onVerifValiderButtonClick() throws SQLException {
         System.out.println(CreerGroupeController.NomduGroupe);
         DAOGroupe.CreerGroupe(CreerGroupeController.NomduGroupe,CreerGroupeController.CurrentGroupeParent);
+        for (Etudiant etu : AjouterEtuController.nouveauGroupeliste){
+            DAOAppartenance.CreerAppartenance(etu.getPrenom_etu(), etu.getNom_etu(), CreerGroupeController.NomduGroupe);
+        }
         GoToPage("SecretaireAcc.fxml","Acceuil secrétaire");
 
     }
