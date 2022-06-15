@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae204.Controller.ModifierGroupeController">
+   <children>
+      <ImageView fitHeight="768.0" fitWidth="1080.0">
+         <image>
+            <Image url="@image/ModifierGroupe.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="128.0" layoutY="351.0" opacity="0.0" prefHeight="50.0" prefWidth="339.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <ListView fx:id="CurrentGroupeListV" layoutX="107.0" layoutY="278.0" prefHeight="389.0" prefWidth="358.0" />
+      <ListView fx:id="NewGroupeListV" layoutX="700.0" layoutY="279.0" prefHeight="350.0" prefWidth="358.0" />
+      <Button fx:id="AjouterEtudiant" layoutX="42.0" layoutY="287.0" mnemonicParsing="false" onAction="#onAjouterEtudiantClick" opacity="0.0" prefHeight="39.0" prefWidth="52.0" text="Button" />
+      <Button fx:id="ValiderButton" layoutX="505.0" layoutY="674.0" mnemonicParsing="false" onAction="#onValiderButtonClick" opacity="0.0" prefHeight="67.0" prefWidth="166.0" text="Button" />
+      <Button fx:id="RemoveButton" layoutX="710.0" layoutY="640.0" mnemonicParsing="false" onAction="#onRemoveButtonClick" opacity="0.0" prefHeight="67.0" prefWidth="156.0" text="Button" />
+      <Button fx:id="RemoveALLButton" layoutX="887.0" layoutY="640.0" mnemonicParsing="false" onAction="#onRemoveALLButtonClick" opacity="0.0" prefHeight="67.0" prefWidth="166.0" text="Button" />
+      <TextField fx:id="NomDeGrpTextField" layoutX="700.0" layoutY="228.0" prefHeight="46.0" prefWidth="195.0" style="-fx-background-color: D07FD5;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label fx:id="adressemaillabel" layoutX="14.0" layoutY="30.0" text="Adressemail@gmail.com" />
+      <Button fx:id="retour" layoutX="14.0" layoutY="83.0" mnemonicParsing="false" onAction="#retour" opacity="0.0" prefHeight="59.0" prefWidth="69.0" />
+      <Label fx:id="GroupeLabel" layoutX="107.0" layoutY="228.0" prefHeight="50.0" prefWidth="198.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

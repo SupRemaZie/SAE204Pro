@@ -49,7 +49,7 @@ public class AjouterEtuController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListEtuGroupeSelect.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        ListEtuGroupeSelect.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         try {
             ChargerLaListeEtu();
         } catch (SQLException e) {
@@ -132,7 +132,7 @@ public class AjouterEtuController extends Controller implements Initializable {
     }
 
     public void onRemoveSingleButtonClick(ActionEvent event) {
-        Etudiant etuSelect = ListEtuGroupeSelect.getSelectionModel().getSelectedItem();
+        Etudiant etuSelect = ListEtuNewGrp.getSelectionModel().getSelectedItem();
         ListEtuNewGrp.getItems().remove(etuSelect);
     }
 }
