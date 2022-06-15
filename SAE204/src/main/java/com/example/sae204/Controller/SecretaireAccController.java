@@ -2,6 +2,9 @@ package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOGroupe;
+import com.example.sae204.Modele.DAO.DAOPromo;
+import com.example.sae204.Modele.Etudiant;
+import com.example.sae204.Modele.Promotion;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -17,7 +20,6 @@ public class SecretaireAccController extends Controller implements Initializable
 
     public static  String CurrentGroupeParent;
 
-    @FXML
     public static String GroupeSupprimer;
     @FXML
     private Label adressemaillabel;
@@ -28,6 +30,8 @@ public class SecretaireAccController extends Controller implements Initializable
     private String CurrentGroupeEnfant;
     @FXML
     private Label messageErreur;
+    @FXML
+    private Label messageErreurPromo;
 
     @FXML
     void onDisconnectButtonClick(ActionEvent event) {
@@ -54,16 +58,17 @@ public class SecretaireAccController extends Controller implements Initializable
             e.printStackTrace();
         }
         messageErreur.setOpacity(0);
+        messageErreurPromo.setOpacity(0);
     }
     public int verif(){
 
         if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-
+            //La colonne de droite est vide
             return 0;
 
         }
         else if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&!(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-
+            //La colonne de droite n'est pas vide
             return 2;
         }
         return 1;
@@ -106,6 +111,7 @@ public class SecretaireAccController extends Controller implements Initializable
     public void visualiserGr(){
         if(verif()==1){
             messageErreur.setOpacity(100);
+            messageErreurPromo.setOpacity(0);
         }
         else if(verif()==0){
 
@@ -120,22 +126,56 @@ public class SecretaireAccController extends Controller implements Initializable
 
     }
     @FXML
-    public void supprimerGr(){
+    public void supprimerGr() throws SQLException {
+            if(verif()==0){
+                for (Promotion promo : DAOPromo.listerPromo()){
+                    if (promo.getNiveau().equals(CurrentGroupeParent)){
+                        messageErreurPromo.setOpacity(100);
+                        messageErreur.setOpacity(0);
+                        break;
+                    }
+                }
+                if (messageErreurPromo.getOpacity()==0){
+
+                    GroupeSupprimer=CurrentGroupeParent;
+                    System.out.println(GroupeSupprimer);
+                    GoToPage("PopUpSuppression.fxml","Validation Saisie");
+                }
+
+            }
+            if(verif()==2){
+                GroupeSupprimer=CurrentGroupeEnfant;
+                System.out.println(GroupeSupprimer);
+                GoToPage("PopUpSuppression.fxml","Validation Saisie");
+            }
+            else if (messageErreurPromo.getOpacity()==0){
+                messageErreur.setOpacity(100);
+            }
+
+    }
+    @FXML
+    public void modifierGr() throws SQLException {
         if(verif()==0){
-            GroupeSupprimer=CurrentGroupeParent;
-            GoToPage("PopUpSuppression.fxml","Validation Saisie");
+            for (Promotion promo : DAOPromo.listerPromo()){
+                if (promo.getNiveau().equals(CurrentGroupeParent)){
+                    messageErreurPromo.setOpacity(100);
+                    messageErreur.setOpacity(0);
+                    break;
+                }
+            }
+            if (messageErreurPromo.getOpacity()==0){
+                GroupeSupprimer=CurrentGroupeParent;
+                GoToPage("ModifierGroupe.fxml","Modification du groupe");
+            }
+
         }
         if(verif()==2){
             GroupeSupprimer=CurrentGroupeEnfant;
-            GoToPage("PopUpSuppression.fxml","Validation Saisie");
+            GoToPage("ModifierGroupe.fxml","Modification du groupe");
         }
-        else{
+        else if (messageErreurPromo.getOpacity()==0){
             messageErreur.setOpacity(100);
         }
-    }
-    @FXML
-    public void modifierGr(){
-
     }
 }
 

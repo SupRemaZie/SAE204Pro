@@ -66,6 +66,11 @@ public class DAOGroupe extends DAO {
         }
         return listGrpParents;
     }
+    public static String getGroupeParent(String Groupe) throws SQLException {
+        String query ="select Groupe_parent FROM groupe WHERE Nom_groupe ='"+Groupe+"';";
+       String  GroupeParentGrp=EtudiantAPK.myjdbc.executeReadQuery(query);
+        return GroupeParentGrp;
+    }
     public static String getGroupe(String num_etu) throws SQLException { //liste les groupes lié à un étudiant
         String groupe="",groupetemp;
         String query = "select count(Nom_groupe) from groupe join appartenance on appartenance.id_groupe=groupe.Id_groupe join etudiant on etudiant.Num_etu=appartenance.num_etu where etudiant.Num_etu='"+num_etu+"' group by etudiant.Num_etu;";
