@@ -138,14 +138,14 @@ public class SecretaireAccController extends Controller implements Initializable
                 if (messageErreurPromo.getOpacity()==0){
 
                     GroupeSupprimer=CurrentGroupeParent;
-                    System.out.println(GroupeSupprimer);
+
                     GoToPage("PopUpSuppression.fxml","Validation Saisie");
                 }
 
             }
             if(verif()==2){
                 GroupeSupprimer=CurrentGroupeEnfant;
-                System.out.println(GroupeSupprimer);
+
                 GoToPage("PopUpSuppression.fxml","Validation Saisie");
             }
             else if (messageErreurPromo.getOpacity()==0){

@@ -1,10 +1,10 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO.DAO;
-import com.example.sae204.Modele.DAO.DAOEtudiant;
+
 import com.example.sae204.Modele.DAO.DAOGroupe;
 import com.example.sae204.Modele.Etudiant;
-import javafx.beans.Observable;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,7 +14,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Collection;
+
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 

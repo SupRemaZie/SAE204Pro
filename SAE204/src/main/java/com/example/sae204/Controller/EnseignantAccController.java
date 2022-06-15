@@ -18,7 +18,7 @@ public class EnseignantAccController extends Controller implements Initializable
     private Label adressemaillabel;
 
     @FXML
-    void onDisconnectButtonClick(ActionEvent event) {
+    void onDisconnectButtonClick() {
         GoToPage("Accueil.fxml", "Accueil");
     }
 
