@@ -195,7 +195,7 @@ public class PersonnelTrombiController extends Controller implements Initializab
     }
 
     @FXML
-    public void retour(ActionEvent event){
+    public void retour(){
         if(ChoixRoleController.choixRole.equals("Secrétariat")) {
             GoToPage("SecretaireAcc.fxml", "Accueil secrétaire");
         }

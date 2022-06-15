@@ -19,7 +19,7 @@ public class PopUpValiderController extends Controller implements Initializable 
     private Label VerifGroupeParentLab;
 
     @FXML
-    private Label VerifNomDeGroupeLab;
+    private Label VerifNomDeGroupeLab, nomGr;
 
     @FXML
     private Label adressemaillabel;
@@ -40,7 +40,7 @@ public class PopUpValiderController extends Controller implements Initializable 
         System.out.println(Harpege);
         String mail = "";
         try {
-            mail = DAO.mail(Harpege);
+            mail = DAO.mail(ConnexionController.Harpege);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -48,5 +48,6 @@ public class PopUpValiderController extends Controller implements Initializable 
         adressemaillabel.setText(mail);
         VerifNomDeGroupeLab.setText(nomGroupe);
         VerifGroupeParentLab.setText(nomGroupeParent);
+        nomGr.setText(AjouterEtuController.NouveauGroupe1);
     }
 }

@@ -18,9 +18,6 @@ public class CreerGroupeController extends Controller implements Initializable {
     private static String CurrentGroupe;
     public static String Harpege;
 
-    @FXML
-    private Button AjouterEtudiantButton;
-
 
     @FXML
     public TextField NomTextField;
@@ -61,6 +58,7 @@ public class CreerGroupeController extends Controller implements Initializable {
                 groupeParent = String.valueOf(listGroupe.getValue());
                 PopUpValiderController.nomGroupe = NomTextField.getText();
                 PopUpValiderController.nomGroupeParent = groupeParent;
+                AjouterEtuController.NouveauGroupe1 = NomTextField.getText();
                 GoToPage("PopUpValider.fxml", "Verification Saisis");
             } else if(verif()==2) {
                 erreur.setText("");
@@ -68,7 +66,7 @@ public class CreerGroupeController extends Controller implements Initializable {
                 PopUpValiderController.nomGroupe = NomTextField.getText();
                 PopUpValiderController.nomGroupeParent = groupeParent;
                 PopUpValiderController.Harpege = Harpege;
-
+                AjouterEtuController.NouveauGroupe1 = NomTextField.getText();
                 GoToPage("PopUpValider.fxml", "Verification Saisis");
             }
 
@@ -95,9 +93,9 @@ public class CreerGroupeController extends Controller implements Initializable {
     public void onAjouterEtudiantButtonClick(ActionEvent event) {
         String groupeParent="";
 
-            if (verif() == 1) {
-                erreur.setText("Nom textfield ou groupe non selectionné");
-            }
+        if (verif() == 1) {
+            erreur.setText("Nom textfield ou groupe non selectionné");
+        }
 
         else if (verif() == 0) {
             erreur.setText("");
