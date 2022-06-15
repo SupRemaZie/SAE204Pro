@@ -7,18 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae204.Controller.PopUpValiderController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae204.Controller.PopUpValiderController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1080.0" layoutX="-1.0">
          <image>
-            <Image url="@image/Popupvalider.png" />
+            <Image url="@image/CreerGroupe%20Popup.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="47.0" layoutY="207.0" prefHeight="64.0" prefWidth="307.0" style="-fx-border-color: black;">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
       <Label layoutX="55.0" layoutY="398.0" prefHeight="48.0" prefWidth="205.0" text="AUCUN">
          <font>
             <Font size="14.0" />
@@ -34,14 +29,14 @@
             <Image url="@image/Popup.png" />
          </image>
       </ImageView>
-      <Label fx:id="VerifNomDeGroupeLab" alignment="CENTER" layoutX="557.0" layoutY="477.0" prefHeight="58.0" prefWidth="108.0">
+      <Label fx:id="VerifNomDeGroupeLab" alignment="CENTER" layoutX="556.0" layoutY="474.0" prefHeight="58.0" prefWidth="108.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <Button fx:id="VerifRetourButton" layoutX="219.0" layoutY="559.0" mnemonicParsing="false" onAction="#onVerifRetourButtonClick" opacity="0.0" prefHeight="75.0" prefWidth="162.0" />
       <Button fx:id="VerifValiderButton" layoutX="712.0" layoutY="560.0" mnemonicParsing="false" onAction="#onVerifValiderButtonClick" opacity="0.0" prefHeight="74.0" prefWidth="162.0" />
-      <Label fx:id="VerifGroupeParentLab" alignment="CENTER" layoutX="545.0" layoutY="531.0" prefHeight="58.0" prefWidth="108.0">
+      <Label fx:id="VerifGroupeParentLab" alignment="CENTER" layoutX="545.0" layoutY="508.0" prefHeight="58.0" prefWidth="108.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -51,7 +46,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="407.0" layoutY="528.0" prefHeight="58.0" prefWidth="134.0" text="Groupe Parent :">
+      <Label alignment="CENTER" layoutX="407.0" layoutY="508.0" prefHeight="58.0" prefWidth="134.0" text="Groupe Parent :">
          <font>
             <Font size="18.0" />
          </font>
