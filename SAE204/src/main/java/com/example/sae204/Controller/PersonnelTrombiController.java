@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-public class EtudiantTrombiController extends Controller implements Initializable{
+public class PersonnelTrombiController extends Controller implements Initializable{
 
     public static String num_etu;
 
@@ -189,12 +189,17 @@ public class EtudiantTrombiController extends Controller implements Initializabl
     private LinkedList<Groupe> listGroup= DAOGroupe.listerGrp();
     LinkedList<Etudiant> listEtu=new LinkedList<>();
 
-    public EtudiantTrombiController() throws MalformedURLException, SQLException, ClassNotFoundException {
+    public PersonnelTrombiController() throws MalformedURLException, SQLException, ClassNotFoundException {
     }
 
     @FXML
     public void retour(ActionEvent event){
-        GoToPage("EtudiantView.fxml", "Accueil etudiant");
+        if(ChoixRoleController.choixRole.equals("Secrétariat")) {
+            GoToPage("SecretaireAcc.fxml", "Accueil secrétaire");
+        }
+        else if(ChoixRoleController.choixRole.equals("Enseignant")){
+            GoToPage("EnseignantAcc.fxml", "Accueil enseignant");
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -693,12 +698,12 @@ public class EtudiantTrombiController extends Controller implements Initializabl
     private  int verif(){
 
         if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-        //retourne la ComboBox groupe
+
             return 0;
 
         }
         else if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&!(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-        //retourne la ComboBox groupe enfant
+
             return 2;
         }
 

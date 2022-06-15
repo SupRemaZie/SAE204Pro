@@ -81,5 +81,17 @@ public class SecretaireAccController extends Controller implements Initializable
         CreerGroupeController.Harpege = Harpege;
         GoToPage("Creergroupe.fxml","Créer un groupe");
     }
+    @FXML
+    public void visualiserGr(){
+        GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
+    }
+    @FXML
+    public void supprimerGr(){
+
+    }
+    @FXML
+    public void modifierGr(){
+
+    }
 }
 
