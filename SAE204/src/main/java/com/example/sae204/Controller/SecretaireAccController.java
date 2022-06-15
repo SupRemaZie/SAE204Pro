@@ -50,6 +50,19 @@ public class SecretaireAccController extends Controller implements Initializable
             e.printStackTrace();
         }
     }
+    public int verif(){
+
+        if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
+            System.out.println(" colonne de gauche");
+            return 0;
+
+        }
+        else if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&!(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
+            System.out.println("colonne de droite ");
+            return 2;
+        }
+        return 1;
+    }
 
     void ChampGroupeParent () throws SQLException, ClassNotFoundException {
         listGroupe.getItems().addAll(DAOGroupe.ListGrpParent());
@@ -83,6 +96,7 @@ public class SecretaireAccController extends Controller implements Initializable
     }
     @FXML
     public void visualiserGr(){
+
         GoToPage("PersonnelTrombi.fxml", "Trombinoscope des étudiants");
     }
     @FXML

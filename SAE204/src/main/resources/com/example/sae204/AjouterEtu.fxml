@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,5 +37,16 @@
          </font>
       </Label>
       <ComboBox fx:id="listGroupeEnfant" layoutX="268.0" layoutY="267.0" prefHeight="50.0" prefWidth="266.0" promptText="AUCUN" style="-fx-background-color: D07FD5;" />
+      <ListView fx:id="ListEtuGroupeSelect" layoutX="106.0" layoutY="424.0" prefHeight="244.0" prefWidth="358.0" />
+      <TextField fx:id="SearchBarTextfield" layoutX="128.0" layoutY="348.0" opacity="0.0" prefHeight="58.0" prefWidth="342.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <ListView fx:id="ListEtuNewGrp" layoutX="698.0" layoutY="278.0" prefHeight="351.0" prefWidth="358.0" />
+      <Button fx:id="AjouterEtuSelectButton" layoutX="45.0" layoutY="424.0" mnemonicParsing="false" onAction="#onAjouterButtonEtuSelectButtonClick" opacity="0.0" prefHeight="41.0" prefWidth="55.0" text="Button" />
+      <Button fx:id="ValiderButton" layoutX="497.0" layoutY="670.0" mnemonicParsing="false" onAction="#OnValiderButtonClick" opacity="0.0" prefHeight="78.0" prefWidth="185.0" text="Button" />
+      <Button fx:id="RemoveAllButton" layoutX="886.0" layoutY="638.0" mnemonicParsing="false" onAction="#onRemoveAllButtonClick" opacity="0.0" prefHeight="64.0" prefWidth="167.0" text="Button" />
+      <Button fx:id="RemoveSingleButton" layoutX="707.0" layoutY="638.0" mnemonicParsing="false" onAction="#onRemoveSingleButtonClick" opacity="0.0" prefHeight="64.0" prefWidth="164.0" text="Button" />
    </children>
 </AnchorPane>

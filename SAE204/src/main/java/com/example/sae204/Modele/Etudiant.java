@@ -77,4 +77,8 @@ public class Etudiant {
         Id_promo = id_promo;
     }
 
+    @Override
+    public String toString() {
+        return getPrenom_etu()+"  "+getNom_etu();
+    }
 }

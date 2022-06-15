@@ -49,50 +49,55 @@ public class CreerGroupeController extends Controller implements Initializable {
 
     public void onValiderButtonClick(ActionEvent event) {
 
-        if(verif()==1){
-            erreur.setText("Veuillez entrez un Nom de groupe ou un groupe parent");
-        }
 
-        else if (verif() == 0) {
+
+            if (verif() == 1) {
+                erreur.setText("Veuillez entrez un Nom de groupe ou un groupe parent");
+            }
+
+
+             if (verif() == 0) {
                 erreur.setText("");
                 groupeParent = String.valueOf(listGroupe.getValue());
                 PopUpValiderController.nomGroupe = NomTextField.getText();
                 PopUpValiderController.nomGroupeParent = groupeParent;
-                System.out.println(groupeParent);
-                GoToPage("PopUpValider.fxml","Verification Saisis");
+                GoToPage("PopUpValider.fxml", "Verification Saisis");
+            } else if(verif()==2) {
+                erreur.setText("");
+                groupeParent = String.valueOf(listGroupeEnfant.getValue());
+                PopUpValiderController.nomGroupe = NomTextField.getText();
+                PopUpValiderController.nomGroupeParent = groupeParent;
+                PopUpValiderController.Harpege = Harpege;
+
+                GoToPage("PopUpValider.fxml", "Verification Saisis");
             }
-        else{
-            erreur.setText("");
-            groupeParent=String.valueOf(listGroupeEnfant.getValue());
-            PopUpValiderController.nomGroupe = NomTextField.getText();
-            PopUpValiderController.nomGroupeParent = groupeParent;
-            PopUpValiderController.Harpege = Harpege;
-            System.out.println(groupeParent);
-            GoToPage("PopUpValider.fxml","Verification Saisis");
-        }
+
+
+
 
     }
     public int verif(){
 
         if(!(NomTextField.getText().equals(""))&&!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-
+            System.out.println(" colonne de gauche");
             return 0;
 
         }
         else if(!(NomTextField.getText().equals(""))&&!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&!(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-
+            System.out.println("colonne de droite ");
             return 2;
         }
 
-        return 1;
 
+            return 1;
     }
 
     public void onAjouterEtudiantButtonClick(ActionEvent event) {
         String groupeParent="";
-        if(verif()==1){
-            erreur.setText("Nom textfield ou groupe non selectionné");
-        }
+
+            if (verif() == 1) {
+                erreur.setText("Nom textfield ou groupe non selectionné");
+            }
 
         else if (verif() == 0) {
             erreur.setText("");

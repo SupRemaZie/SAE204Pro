@@ -79,4 +79,12 @@ public class DAOGroupe extends DAO {
         }
         return groupe;
     }
+    public void CreerGroupe(String NomGroupe, String GroupeParent) throws SQLException {
+
+        String query ="SELECT max(Id_groupe) from groupe;";
+        int Id=Integer.parseInt(query);
+        EtudiantAPK.myjdbc.executeReadQuery(query);
+        String  query2="INSERT INTO groupe VALUES('"+Id+"','"+NomGroupe+"','"+GroupeParent+"');";
+        int nbGroupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query2));
+    }
 }
