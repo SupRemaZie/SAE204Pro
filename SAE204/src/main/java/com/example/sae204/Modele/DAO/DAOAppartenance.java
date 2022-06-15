@@ -39,8 +39,10 @@ public class DAOAppartenance {
         EtudiantAPK.myjdbc.executeWriteQuery(query);
     }
 
-    public static void RetirerAppartenance(String num_etu, String id_groupe) throws SQLException {
-        String query = "DELETE FROM appartenance WHERE appartenance.num_etu = '"+num_etu+"' AND appartenance.id_groupe = "+id_groupe+";";
+    public static void RetirerAppartenance(String num_etu, String nom_groupe) throws SQLException {
+        String query="select Id_groupe from groupe where Nom_groupe='"+nom_groupe+"';";
+        int id_groupe=Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        query = "DELETE FROM appartenance WHERE appartenance.num_etu = '"+num_etu+"' AND appartenance.id_groupe = "+id_groupe+";";
         EtudiantAPK.myjdbc.executeWriteQuery(query);
     }
 
