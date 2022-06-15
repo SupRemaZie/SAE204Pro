@@ -104,7 +104,7 @@ public class ModifierGroupeController extends Controller implements Initializabl
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ancienNom=SecretaireAccController.GroupeSupprimer;
         NomDeGrpTextField.setText(SecretaireAccController.GroupeSupprimer);
-
+        System.out.println("Supprimer secrétaire "+ SecretaireAccController.GroupeSupprimer);
 
         try {
 
