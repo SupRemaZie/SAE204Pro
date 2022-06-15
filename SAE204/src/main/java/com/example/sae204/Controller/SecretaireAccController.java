@@ -11,13 +11,14 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.ResourceBundle;
 
 public class SecretaireAccController extends Controller implements Initializable {
 
-    private String CurrentGroupeParent;
+    public static  String CurrentGroupeParent;
 
+    @FXML
+    public static String GroupeSupprimer;
     @FXML
     private Label adressemaillabel;
     @FXML
@@ -54,12 +55,12 @@ public class SecretaireAccController extends Controller implements Initializable
     public int verif(){
 
         if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-            System.out.println(" colonne de gauche");
+
             return 0;
 
         }
         else if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&!(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-            System.out.println("colonne de droite ");
+
             return 2;
         }
         return 1;
@@ -72,7 +73,7 @@ public class SecretaireAccController extends Controller implements Initializable
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
-                System.out.println(CurrentGroupeParent);
+
                 listGroupeEnfant.getItems().clear();
                 DAO.listGrpAffilGrpParents.clear();
                 try {
@@ -90,9 +91,6 @@ public class SecretaireAccController extends Controller implements Initializable
                         CurrentGroupeEnfant=listGroupeEnfant.getSelectionModel().getSelectedItem();
                     }
                 });
-
-
-
             }
         });
     }
@@ -120,7 +118,18 @@ public class SecretaireAccController extends Controller implements Initializable
     }
     @FXML
     public void supprimerGr(){
+        if(verif()==0){
+            GroupeSupprimer=CurrentGroupeParent;
+        }
+        if(verif()==2){
+            GroupeSupprimer=CurrentGroupeEnfant;
+        }
+        else{
+            System.out.println("entrez un nom ");
+        }
 
+
+        GoToPage("PopUpSuppression.fxml","Validation Saisie");
     }
     @FXML
     public void modifierGr(){
