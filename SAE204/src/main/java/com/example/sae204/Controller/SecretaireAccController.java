@@ -25,6 +25,8 @@ public class SecretaireAccController extends Controller implements Initializable
     @FXML
     private ComboBox<String> listGroupeEnfant;
     private String CurrentGroupeEnfant;
+    @FXML
+    private Label messageErreur;
 
     @FXML
     void onDisconnectButtonClick(ActionEvent event) {
@@ -50,16 +52,17 @@ public class SecretaireAccController extends Controller implements Initializable
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        messageErreur.setOpacity(0);
     }
     public int verif(){
 
         if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-            System.out.println(" colonne de gauche");
+            //retourne la colone de gauche
             return 0;
 
         }
         else if(!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&!(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-            System.out.println("colonne de droite ");
+            //retourne la colone de droite
             return 2;
         }
         return 1;
@@ -104,7 +107,7 @@ public class SecretaireAccController extends Controller implements Initializable
     @FXML
     public void visualiserGr(){
         if(verif()==1){
-            System.out.println("Erreur veuillez entrez un groupe");
+            messageErreur.setOpacity(100);
         }
         else if(verif()==0){
 

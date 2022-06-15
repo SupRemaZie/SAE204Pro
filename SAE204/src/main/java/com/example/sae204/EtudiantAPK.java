@@ -3,6 +3,8 @@ package com.example.sae204;
 import com.example.sae204.Controller.MyJDBC;
 import com.example.sae204.Modele.Appartenance;
 import com.example.sae204.Modele.DAO.DAOAppartenance;
+import com.example.sae204.Modele.DAO.DAOEtudiant;
+import com.example.sae204.Modele.Etudiant;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
