@@ -41,17 +41,11 @@ public class CreerGroupeController extends Controller implements Initializable {
 
         listGroupe.getSelectionModel().select("AUCUN");
 
-
         GoToPage("SecretaireAcc.fxml", "Accueil");
     }
 
 
     public void onValiderButtonClick(ActionEvent event) throws SQLException, ClassNotFoundException {
-        for(Groupe Grp : DAOGroupe.listerGrp()){
-            if(NomTextField.getText().equals(Grp.getNom_grp())){
-                erreur.setText("Nom de groupe existant");
-            }
-        }
             NomduGroupe=NomTextField.getText();
             if (verif() == 1) {
                 erreur.setText("Veuillez entrez un Nom de groupe ou un groupe parent");

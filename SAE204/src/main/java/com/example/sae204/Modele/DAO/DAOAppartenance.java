@@ -30,12 +30,16 @@ public class DAOAppartenance {
         return listApp;
     }
 
-    public void CreerAppartenance(String numetu, String nomgroupe) throws SQLException {
-        String query="INSERT INTO appartenance VALUES ('"+numetu+"', '"+nomgroupe+"');";
-        EtudiantAPK.myjdbc.executeReadQuery(query);
+    public static void CreerAppartenance(String prenom,String nom, String nomgroupe) throws SQLException {
+        String query= "SELECT num_etu from etudiant where Nom_etu='"+nom+"' and Prenom_etu='"+prenom+"';";
+        String numetu = EtudiantAPK.myjdbc.executeReadQuery(query);
+        query = "select Id_groupe from groupe where Nom_groupe = '"+nomgroupe+"';";
+        int id_groupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        query="INSERT INTO appartenance VALUES ('"+numetu+"', "+id_groupe+");";
+        EtudiantAPK.myjdbc.executeWriteQuery(query);
     }
 
-    public void RetirerAppartenance(String num_etu, String id_groupe) throws SQLException {
+    public static void RetirerAppartenance(String num_etu, String id_groupe) throws SQLException {
         String query = "DELETE FROM appartenance WHERE appartenance.num_etu = '"+num_etu+"' AND appartenance.id_groupe = "+id_groupe+";";
         EtudiantAPK.myjdbc.executeWriteQuery(query);
     }
