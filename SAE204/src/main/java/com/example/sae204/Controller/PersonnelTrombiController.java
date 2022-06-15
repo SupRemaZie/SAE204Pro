@@ -208,7 +208,7 @@ public class PersonnelTrombiController extends Controller implements Initializab
         listGroupe.setValue(CurrentGroupeParent);
         String mail ="";
         try {
-            mail = DAO.mail(SecretaireAccController.Harpege);
+            mail = DAO.mail(ConnexionController.Harpege);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -999,5 +999,4 @@ public class PersonnelTrombiController extends Controller implements Initializab
             GoToPage("InfoEtu.fxml", "Informations de l'étudiant");
         }
     }
-
 }

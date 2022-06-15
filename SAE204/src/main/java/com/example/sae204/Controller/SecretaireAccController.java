@@ -15,7 +15,6 @@ import java.sql.SQLOutput;
 import java.util.ResourceBundle;
 
 public class SecretaireAccController extends Controller implements Initializable {
-    public static String Harpege;
 
     private String CurrentGroupeParent;
 
@@ -38,7 +37,7 @@ public class SecretaireAccController extends Controller implements Initializable
 
         String mail ="";
         try {
-            mail = DAO.mail(Harpege);
+            mail = DAO.mail(ConnexionController.Harpege);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -99,7 +98,7 @@ public class SecretaireAccController extends Controller implements Initializable
     }
 
     public void onCreateGroupButtonClick(ActionEvent event) {
-        CreerGroupeController.Harpege = Harpege;
+        CreerGroupeController.Harpege = ConnexionController.Harpege;
         GoToPage("Creergroupe.fxml","Créer un groupe");
     }
     @FXML

@@ -16,5 +16,7 @@
       </ImageView>
       <Button layoutX="429.0" layoutY="702.0" mnemonicParsing="false" onAction="#onDisconnectButtonClick" opacity="0.0" prefHeight="34.0" prefWidth="225.0" />
       <Label fx:id="adressemaillabel" layoutX="14.0" layoutY="30.0" text="Adresse.mail@gmail.com" />
+      <Button layoutX="397.0" layoutY="364.0" mnemonicParsing="false" onAction="#visualiserGr" opacity="0.0" prefHeight="110.0" prefWidth="287.0" />
+      <Button layoutX="428.0" layoutY="653.0" mnemonicParsing="false" onAction="#deconnexion" opacity="0.0" prefHeight="40.0" prefWidth="225.0" />
    </children>
 </AnchorPane>

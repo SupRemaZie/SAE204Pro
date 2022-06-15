@@ -25,6 +25,7 @@ public class ConnexionController extends Controller{
     @FXML
     private Label loginMessageLabel; // text d'erreur de login
 
+    public static String Harpege;
 
 
     public void onMdpforgetButtonClick(){
@@ -73,13 +74,13 @@ public class ConnexionController extends Controller{
         }
         else if(EnterPwd.equals(result2) && !EnterId.equals("") && !EnterPwd.equals("")){
             if (DAO.verif(EnterId, ChoixRoleController.choixRole) && ChoixRoleController.choixRole.equals("Enseignant")){
-                EnseignantAccController.Harpege = EnterId;
+                Harpege = EnterId;
 
                 GoToPage("EnseignantAcc.fxml","Acceuil enseignant");// page pour le personnel
             }
 
             else if (DAO.verif(EnterId, ChoixRoleController.choixRole)&& ChoixRoleController.choixRole.equals("Secrétariat")){
-                SecretaireAccController.Harpege = EnterId;
+                Harpege = EnterId;
                 GoToPage("SecretaireAcc.fxml","Acceuil secrétaire");// page pour le personnel
             }
             else{

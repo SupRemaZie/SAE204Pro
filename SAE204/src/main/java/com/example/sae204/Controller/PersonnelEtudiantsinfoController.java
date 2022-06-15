@@ -57,7 +57,7 @@ public class PersonnelEtudiantsinfoController extends Controller implements Init
         String mail = "";
         LinkedList<Etudiant> listEtu=new LinkedList<>();
         try {
-            mail = DAO.mail(SecretaireAccController.Harpege);
+            mail = DAO.mail(ConnexionController.Harpege);
         } catch (SQLException e) {
             e.printStackTrace();
         }
