@@ -19,7 +19,7 @@
       <Button fx:id="rechercherEtu" layoutX="519.0" layoutY="208.0" mnemonicParsing="false" onAction="#rechercherEtu" opacity="0.0" prefHeight="63.0" prefWidth="61.0" />
       <Label fx:id="adressemaillabel" layoutX="14.0" layoutY="30.0" text="Adresse.mail@gmail.com" />
       <Button fx:id="retour" layoutX="12.0" layoutY="78.0" mnemonicParsing="false" onAction="#retour" opacity="0.0" prefHeight="59.0" prefWidth="73.0" />
-      <ImageView fx:id="image1" fitHeight="100.0" fitWidth="75.0" layoutX="40.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image1" fitHeight="75.0" fitWidth="75.0" layoutX="40.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/PhotoEtudiant/HugoTruil.png" />
          </image></ImageView>
@@ -188,5 +188,29 @@
       <Label fx:id="prenom24" layoutX="130.0" layoutY="657.0" text="Prénom" />
       <ComboBox fx:id="listGroupe" layoutX="19.0" layoutY="238.0" pickOnBounds="false" prefHeight="45.0" prefWidth="204.0" promptText="AUCUN" style="-fx-background-color: D07FD5;" />
       <ComboBox fx:id="listGroupeEnfant" layoutX="239.0" layoutY="238.0" prefHeight="45.0" prefWidth="262.0" promptText="AUCUN" style="-fx-background-color: D07FD5;" />
+      <Button layoutX="40.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu1" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="130.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu2" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="220.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu3" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="310.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu4" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="400.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu5" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="490.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu6" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="580.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu7" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="670.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu8" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="760.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu9" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="850.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu10" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="940.0" layoutY="310.0" mnemonicParsing="false" onAction="#infoEtu11" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="40.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu12" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="130.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu13" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="220.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu14" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="310.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu15" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="400.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu16" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="490.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu17" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="580.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu18" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="670.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu19" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="760.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu20" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="850.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu21" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="940.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoEtu22" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="40.0" layoutY="582.0" mnemonicParsing="false" onAction="#infoEtu23" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
+      <Button layoutX="130.0" layoutY="582.0" mnemonicParsing="false" onAction="#infoEtu24" opacity="0.0" prefHeight="75.0" prefWidth="75.0" />
    </children>
 </AnchorPane>
