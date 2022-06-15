@@ -87,4 +87,11 @@ public class DAOGroupe extends DAO {
         query="INSERT INTO groupe VALUES('"+Id+"','"+NomGroupe+"','"+GroupeParent+"');";
         EtudiantAPK.myjdbc.executeWriteQuery(query);
     }
+
+    public static void RetirerGroupe(String NomGroupe) throws SQLException {
+        String query = "SELECT Id_groupe FROM GROUPE WHRE Nom_groupe='"+NomGroupe+"';";
+        int id_groupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        query ="DELETE DROM GROUPE WHERE Id_groupe='"+id_groupe+"';";
+        EtudiantAPK.myjdbc.executeWriteQuery(query);
+    }
 }
