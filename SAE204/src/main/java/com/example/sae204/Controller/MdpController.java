@@ -38,24 +38,25 @@ public class MdpController extends Controller{
             erreur.setText("Veuillez entez une adresse mail "); // si le mdp est vide alors msg erreur
         }
 
-        else if (AccueilController.etatButton=="E"){
+        else if (AccueilController.etatButton=="E"){ //On regarde si l'utilisateur est un étudiant
             LinkedList<Etudiant> listEtu= DAOEtudiant.listerEtu();
-            for (Etudiant etu : listEtu) {
+            for (Etudiant etu : listEtu) {          //On cherche un étudiant qui correspond aux données entrées
                 if(etu.getNum_etu().equals(EnterId) && etu.getAdresse_mail_etu().equals(EnterMail))
                     Controller.GoToPage("MotDePasseOubliee2.fxml","Confirmation de l'envoi");
             }
-            erreur.setText("Identifiant ou mot de passe invalide");
+            erreur.setText("Identifiant ou mot de passe invalide"); //Envoi un message d'erreur si aucun étudiant trouvé
         }
-        else if (AccueilController.etatButton=="P"){
+        else if (AccueilController.etatButton=="P"){ //On regarde si l'utilisateur est un membre du personnel
             LinkedList<Personnel> listPer= DAOPersonnel.listerPer();
-            for (Personnel per : listPer) {
+            for (Personnel per : listPer) {    //On cherche un membre du personnel qui correspond aux données entrées
                 if(per.getHarpege().equals(Enterid.getText()) && per.getAdresse_mail().equals(Entermail.getText()))
                     Controller.GoToPage("MotDePasseOubliee2.fxml","Confirmation de l'envoi");
             }
-            erreur.setText("Identifiant ou adresse mail invalide");
+            erreur.setText("Identifiant ou adresse mail invalide"); //Envoi un message d'erreur si aucun membre trouvé
         }
     }
     public void retour(){
-        Controller.GoToPage("ConnexionPage.fxml","Page de Connexion");
+        Controller.GoToPage(
+                "ConnexionPage.fxml","Page de Connexion");
     }
 }

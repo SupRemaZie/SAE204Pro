@@ -19,8 +19,8 @@ public class AccueilController {
     private Button bouton_per;
     public static String etatButton;
 
-    @FXML
-    void bouton_etu(ActionEvent event) throws SQLException, ClassNotFoundException {
+    @FXML //Pour se connecter en tant qu'étudiant
+    void bouton_etu() throws SQLException, ClassNotFoundException {
         if(bouton_etu.isFocused()){
             etatButton="E";
             System.out.println(etatButton);
@@ -30,7 +30,7 @@ public class AccueilController {
 
     }
 
-    @FXML
+    @FXML //Pour se connecter en tant que membre du personnel
     void bouton_per(ActionEvent event) {
         if(bouton_per.isFocused()){
             etatButton="P";
