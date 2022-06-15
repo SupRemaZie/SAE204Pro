@@ -36,7 +36,7 @@ public class AjouterEtuController extends Controller implements Initializable {
     @FXML
     public Label NouveauGroupe;
     @FXML
-    private ListView<Etudiant> ListEtuGroupeSelect;
+    public static ListView<Etudiant> ListEtuGroupeSelect;
 
     @FXML
     private ListView<Etudiant> ListEtuNewGrp;

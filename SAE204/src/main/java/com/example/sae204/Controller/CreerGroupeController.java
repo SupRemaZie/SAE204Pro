@@ -2,6 +2,7 @@ package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO.DAO;
 import com.example.sae204.Modele.DAO.DAOGroupe;
+import com.example.sae204.Modele.Groupe;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -17,10 +18,11 @@ public class CreerGroupeController extends Controller implements Initializable {
     public static String CurrentGroupeParent;
     private static String CurrentGroupe;
     public static String Harpege;
+    public static String NomduGroupe ;
 
 
     @FXML
-    public TextField NomTextField;
+    public  TextField NomTextField;
 
     public static String groupeParent;
 
@@ -44,10 +46,13 @@ public class CreerGroupeController extends Controller implements Initializable {
     }
 
 
-    public void onValiderButtonClick(ActionEvent event) {
-
-
-
+    public void onValiderButtonClick(ActionEvent event) throws SQLException, ClassNotFoundException {
+        for(Groupe Grp : DAOGroupe.listerGrp()){
+            if(NomTextField.getText().equals(Grp.getNom_grp())){
+                erreur.setText("Nom de groupe existant");
+            }
+        }
+            NomduGroupe=NomTextField.getText();
             if (verif() == 1) {
                 erreur.setText("Veuillez entrez un Nom de groupe ou un groupe parent");
             }
@@ -73,16 +78,17 @@ public class CreerGroupeController extends Controller implements Initializable {
 
 
 
+
     }
     public int verif(){
 
         if(!(NomTextField.getText().equals(""))&&!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-            System.out.println(" colonne de gauche");
+
             return 0;
 
         }
         else if(!(NomTextField.getText().equals(""))&&!(listGroupe.getValue()==null|| listGroupe.getValue().equals("AUCUN"))&&!(listGroupeEnfant.getValue()==null|| listGroupeEnfant.getValue().equals("AUCUN"))){
-            System.out.println("colonne de droite ");
+
             return 2;
         }
 
@@ -123,9 +129,6 @@ public class CreerGroupeController extends Controller implements Initializable {
         listGroupe.getSelectionModel().select(CurrentGroupeParent); // sauvegarde du groupe
 
 
-
-
-
         String mail = "";
         try {
             mail = DAO.mail(Harpege);
@@ -161,7 +164,7 @@ public class CreerGroupeController extends Controller implements Initializable {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
 
                     CurrentGroupeParent = listGroupe.getSelectionModel().getSelectedItem();
-                    System.out.println("Parent "+CurrentGroupeParent);
+
 
 
 

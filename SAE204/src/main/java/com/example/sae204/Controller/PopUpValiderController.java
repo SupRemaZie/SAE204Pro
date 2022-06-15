@@ -1,6 +1,7 @@
 package com.example.sae204.Controller;
 
 import com.example.sae204.Modele.DAO.DAO;
+import com.example.sae204.Modele.DAO.DAOGroupe;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -25,7 +26,9 @@ public class PopUpValiderController extends Controller implements Initializable 
     private Label adressemaillabel;
 
     @FXML
-    void onVerifValiderButtonClick(){
+    void onVerifValiderButtonClick() throws SQLException {
+        System.out.println(CreerGroupeController.NomduGroupe);
+        DAOGroupe.CreerGroupe(CreerGroupeController.NomduGroupe,CreerGroupeController.CurrentGroupeParent);
         GoToPage("SecretaireAcc.fxml","Acceuil secrétaire");
 
     }
