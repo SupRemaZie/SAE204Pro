@@ -26,6 +26,8 @@ public class SecretaireAccController extends Controller implements Initializable
     @FXML
     private ComboBox<String> listGroupeEnfant;
     private String CurrentGroupeEnfant;
+    @FXML
+    private Label messageErreur;
 
     @FXML
     void onDisconnectButtonClick(ActionEvent event) {
@@ -51,6 +53,7 @@ public class SecretaireAccController extends Controller implements Initializable
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        messageErreur.setOpacity(0);
     }
     public int verif(){
 
@@ -102,7 +105,7 @@ public class SecretaireAccController extends Controller implements Initializable
     @FXML
     public void visualiserGr(){
         if(verif()==1){
-            System.out.println("Erreur veuillez entrez un groupe");
+            messageErreur.setOpacity(100);
         }
         else if(verif()==0){
 
@@ -120,16 +123,15 @@ public class SecretaireAccController extends Controller implements Initializable
     public void supprimerGr(){
         if(verif()==0){
             GroupeSupprimer=CurrentGroupeParent;
+            GoToPage("PopUpSuppression.fxml","Validation Saisie");
         }
         if(verif()==2){
             GroupeSupprimer=CurrentGroupeEnfant;
+            GoToPage("PopUpSuppression.fxml","Validation Saisie");
         }
         else{
-            System.out.println("entrez un nom ");
+            messageErreur.setOpacity(100);
         }
-
-
-        GoToPage("PopUpSuppression.fxml","Validation Saisie");
     }
     @FXML
     public void modifierGr(){
