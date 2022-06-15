@@ -29,4 +29,10 @@ public class DAOAppartenance {
         }
         return listApp;
     }
+
+    public void CreerAppartenance(String numetu, String nomgroupe) throws SQLException {
+        String query="INSERT INTO appartenance VALUES ('"+numetu+"', '"+nomgroupe+"');";
+        EtudiantAPK.myjdbc.executeReadQuery(query);
+    }
+
 }
