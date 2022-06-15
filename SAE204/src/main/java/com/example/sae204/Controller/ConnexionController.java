@@ -27,11 +27,13 @@ public class ConnexionController extends Controller{
 
     public static String Harpege;
 
-
+    @FXML //Redirige vers la page d'oublie de mot de passe
     public void onMdpforgetButtonClick(){
+
         GoToPage("MotDePasseOubliee.fxml","Mot de passe oublié");
     }
 
+    @FXML
     public void onConnexionButtonClick() throws SQLException, IOException, ClassNotFoundException {
 
         String EnterId=IDTextField.getText();// stockage de l'id entré
@@ -50,38 +52,38 @@ public class ConnexionController extends Controller{
            loginMessageLabel.setText("Veuillez entez un mot de passe "); // si le mdp est vide alors msg erreur
         }
 
-        else if(AccueilController.etatButton=="E"){
+        else if(AccueilController.etatButton=="E"){ //Si l'utilisateur est un étudiant
             for (Etudiant etu : listEtu) {
-                if(etu.getNum_etu().equals(EnterId)) {
-                    result1 = etu.getMdp_etu();
+                if(etu.getNum_etu().equals(EnterId)) { //On cherche un étudiant qui a pour ID celui entré par l'utilisateur
+                    result1 = etu.getMdp_etu();        //Quand on en trouve un, on stocke le mot de passe assigné à cet étudiant
                 }
             }
         }
-        else if(AccueilController.etatButton=="P"){
+        else if(AccueilController.etatButton=="P"){ //Si l'utilisateur est un membre du personnel
             for (Personnel per : listPer) {
-                if(per.getHarpege().equals(EnterId)) {
-                    result2 = per.getMdp_per();
+                if(per.getHarpege().equals(EnterId)) {  //On cherche un étudiant qui a pour ID celui entré par l'utilisateur
+                    result2 = per.getMdp_per();         //Quand on en trouve un, on stocke le mot de passe assigné à ce membre du personnel
                 }
             }
         }
 
               // execute la requete et stocke le resultat
 
-        if(EnterPwd.equals(result1) && !EnterId.equals("") && !EnterPwd.equals("")){ // verife si le mdp dans la base correspond au mdp entré
+        if(EnterPwd.equals(result1) && !EnterId.equals("") && !EnterPwd.equals("")){ // Vérifie que le mdp dans la base correspond au mdp entré
             EtudiantController.num_etu = EnterId;
             EtudiantController.etudiantActuel=EtudiantController.trouverEtu(EnterId);
-            GoToPage("EtudiantView.fxml", "Accueil etudiant");
+            GoToPage("EtudiantView.fxml", "Accueil etudiant");         //L'étudiant se connecte
         }
-        else if(EnterPwd.equals(result2) && !EnterId.equals("") && !EnterPwd.equals("")){
-            if (DAO.verif(EnterId, ChoixRoleController.choixRole) && ChoixRoleController.choixRole.equals("Enseignant")){
+        else if(EnterPwd.equals(result2) && !EnterId.equals("") && !EnterPwd.equals("")){ // Vérifie que le mdp dans la base correspond au mdp entré
+            if (DAO.verif(EnterId, ChoixRoleController.choixRole) && ChoixRoleController.choixRole.equals("Enseignant")){// Regarde si l'utilisateur est un enseignant
                 Harpege = EnterId;
 
-                GoToPage("EnseignantAcc.fxml","Acceuil enseignant");// page pour le personnel
+                GoToPage("EnseignantAcc.fxml","Acceuil enseignant");//L'enseignant se connecte
             }
 
-            else if (DAO.verif(EnterId, ChoixRoleController.choixRole)&& ChoixRoleController.choixRole.equals("Secrétariat")){
+            else if (DAO.verif(EnterId, ChoixRoleController.choixRole)&& ChoixRoleController.choixRole.equals("Secrétariat")){// Regarde si l'utilisateur est une secrétaire
                 Harpege = EnterId;
-                GoToPage("SecretaireAcc.fxml","Acceuil secrétaire");// page pour le personnel
+                GoToPage("SecretaireAcc.fxml","Acceuil secrétaire");//La secrétaire se connecte
             }
             else{
                 loginMessageLabel.setText("Identifiant ou mot de passe invalide avec le role choisi");
@@ -91,8 +93,8 @@ public class ConnexionController extends Controller{
             loginMessageLabel.setText("Identifiant ou mot de passe invalide");
         }
     }
-    public void retour(ActionEvent event){
-        if(ChoixRoleController.choixRole.equals("E")){
+    public void retour(){
+        if(ChoixRoleController.choixRole.equals("E")){ //Si l'utilisateur est un étudiant
             GoToPage("Accueil.fxml", "Accueil");
         }
         else{
