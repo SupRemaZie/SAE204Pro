@@ -1,5 +1,6 @@
 package com.example.sae204.Modele.DAO;
 
+import com.example.sae204.Controller.Controller;
 import com.example.sae204.EtudiantAPK;
 import com.example.sae204.Modele.Groupe;
 
@@ -88,10 +89,11 @@ public class DAOGroupe extends DAO {
         EtudiantAPK.myjdbc.executeWriteQuery(query);
     }
 
-    public static void RetirerGroupe(String NomGroupe) throws SQLException {
-        String query = "SELECT Id_groupe FROM GROUPE WHRE Nom_groupe='"+NomGroupe+"';";
-        int id_groupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
-        query ="DELETE DROM GROUPE WHERE Id_groupe='"+id_groupe+"';";
+    public static void RetirerGroupe(String NomGroupe) throws SQLException, ClassNotFoundException {
+        String query = "delete from appartenance where Id_groupe = (select Id_groupe from groupe where Nom_groupe='"+NomGroupe+"');";
+        EtudiantAPK.myjdbc.executeWriteQuery(query);
+        System.out.println(Controller.chercherEtuGroupePromo(NomGroupe));
+        query = "delete from groupe where Nom_groupe='"+NomGroupe+"';";
         EtudiantAPK.myjdbc.executeWriteQuery(query);
     }
 
@@ -100,6 +102,10 @@ public class DAOGroupe extends DAO {
         int id_groupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
         query = "UPDATE groupe SET Nom_groupe = '"+nouv_nom_groupe+"', Groupe_parent = '"+nouv_nom_groupe_parent+"' WHERE groupe.Id_groupe = "+id_groupe+";";
         EtudiantAPK.myjdbc.executeWriteQuery(query);
+    }
+
+    public static boolean isVide(String nom_groupe){
+        return true;
     }
 
 }
