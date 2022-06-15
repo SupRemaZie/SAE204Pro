@@ -79,11 +79,27 @@ public class DAOGroupe extends DAO {
         }
         return groupe;
     }
-    public void CreerGroupe(String NomGroupe, String GroupeParent) throws SQLException {
+    public static void CreerGroupe(String NomGroupe, String GroupeParent) throws SQLException {
 
         String query ="SELECT max(Id_groupe) from groupe;";
         int Id = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        Id+=1;
         query="INSERT INTO groupe VALUES('"+Id+"','"+NomGroupe+"','"+GroupeParent+"');";
-        EtudiantAPK.myjdbc.executeReadQuery(query);
+        EtudiantAPK.myjdbc.executeWriteQuery(query);
     }
+
+    public static void RetirerGroupe(String NomGroupe) throws SQLException {
+        String query = "SELECT Id_groupe FROM GROUPE WHRE Nom_groupe='"+NomGroupe+"';";
+        int id_groupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        query ="DELETE DROM GROUPE WHERE Id_groupe='"+id_groupe+"';";
+        EtudiantAPK.myjdbc.executeWriteQuery(query);
+    }
+
+    public static void ModifierGroupe(String nom_groupe,String nouv_nom_groupe, String nouv_nom_groupe_parent) throws SQLException {
+        String query = "select id_groupe FROM groupe where Nom_groupe='"+nom_groupe+"';";
+        int id_groupe = Integer.parseInt(EtudiantAPK.myjdbc.executeReadQuery(query));
+        query = "UPDATE groupe SET Nom_groupe = '"+nouv_nom_groupe+"', Groupe_parent = '"+nouv_nom_groupe_parent+"' WHERE groupe.Id_groupe = "+id_groupe+";";
+        EtudiantAPK.myjdbc.executeWriteQuery(query);
+    }
+
 }
