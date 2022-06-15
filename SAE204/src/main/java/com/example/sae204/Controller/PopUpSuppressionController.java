@@ -46,3 +46,4 @@ public class PopUpSuppressionController extends  Controller implements Initializ
         groupeSup.setText(SecretaireAccController.GroupeSupprimer);
     }
 }
+
